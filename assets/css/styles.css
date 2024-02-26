@@ -106,6 +106,10 @@ section {
 
 /* Body Background */
 
+body.active{
+    overflow: hidden;
+}
+
 body.active > .bodyBg{
     opacity: 0;
     transition: all 0.3s ease-in-out;
