@@ -52,6 +52,7 @@ function lenisSetup() {
 }
 
 $(function () {
+    ScrollTrigger.normalizeScroll(true); // enable
     menuToggle();
     bannerAnim();
     lenisSetup();
