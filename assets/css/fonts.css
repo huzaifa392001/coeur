@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: 'Milky Walky';
+    src: url('../fonts/website-fonts/MilkyWalky-Regular.woff2') format('woff2'),
+    url('../fonts/website-fonts/MilkyWalky-Regular.woff') format('woff'),
+    url('../fonts/website-fonts/MilkyWalky-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Monea Alegante';
+    src: url('../fonts/website-fonts/MoneaAlegante-Regular.woff2') format('woff2'),
+    url('../fonts/website-fonts/MoneaAlegante-Regular.woff') format('woff'),
+    url('../fonts/website-fonts/MoneaAlegante-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica Neu Bold';
+    src: url('../fonts/website-fonts/Helvetica-Neu-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica Neu Regular';
+    src: url('../fonts/website-fonts/HelveticaNeue.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica Neu Medium';
+    src: url('../fonts/website-fonts/HelveticaNeue-Medium.ttf') format('truetype');
+}

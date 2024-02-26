@@ -1,0 +1,180 @@
+@media (max-width: 1440px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    html {
+        font-size: 13px;
+    }
+
+    .contentBox.middle {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .contentBox.middle .contentImg {
+        left: -300px;
+    }
+
+    footer p {
+        text-shadow: 0 0 5px black;
+    }
+
+    footer .logo img {
+        filter: drop-shadow(0 0 5px black);
+    }
+}
+
+@media (max-width: 1024px) {
+    .contentBox.left .contentImg {
+        top: -50px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    html {
+        font-size: 12px;
+    }
+
+    .contentBox .bg svg {
+        width: 100%;
+    }
+
+    .contentBox .contentImg {
+        bottom: -90px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    html {
+        font-size: 14px;
+    }
+
+    .mainHeading {
+        font-size: 7rem;
+    }
+
+    .contentBox {
+        max-width: 100% !important;
+        margin-left: 0;
+        position: unset;
+    }
+
+    .contentBox .bg {
+        display: none;
+    }
+
+    .contentBox .content {
+        position: unset;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .contentBox .content h2 {
+        color: #fff;
+    }
+
+    .contentBox .content p {
+        color: #fff;
+    }
+
+    .themeBtnAltr {
+        color: #fff;
+        margin-left: 0;
+    }
+
+    .themeBtnAltr::before, .themeBtnAltr::after {
+        background: #fff;
+    }
+
+    .contentBox .contentImg {
+        top: 1rem !important;
+        bottom: unset !important;
+        right: 1rem !important;
+        left: unset !important;
+        transform: none !important;
+    }
+
+    .contentBox .content h6 {
+        color: #fff;
+    }
+
+    .contentBox .content h6 a {
+        color: #fff;
+    }
+
+    .contentBox .content h6 .links a + a::before {
+        background: #fff;
+    }
+
+    footer {
+        padding-bottom: 7rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    html {
+        font-size: 13px;
+    }
+
+    .contentBox .contentImg img {
+        width: 300px;
+    }
+
+    .contentBox .contentImg img {
+        width: 300px;
+    }
+
+    .mainHeading {
+        font-size: 4rem;
+    }
+
+    .contentBox .content h2 {
+        font-size: 3rem;
+    }
+
+    .contentBox .content h6 a {
+        font-size: 1.25rem;
+    }
+
+    footer .copyright {
+        justify-content: center;
+    }
+
+    footer .logo {
+        justify-content: center;
+    }
+
+    .contentBox .contentImg img {
+        width: 300px;
+    }
+
+    .mainHeading {
+        font-size: 4rem;
+    }
+
+    .contentBox .content h6 a {
+        font-size: 1.25rem;
+    }
+
+    footer .copyright {
+        justify-content: center;
+    }
+
+    footer .logo {
+        justify-content: center;
+    }
+
+    .cardHeading {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 320.98px) {
+    html {
+        font-size: 11px;
+    }
+}
