@@ -120,9 +120,9 @@
         font-size: 13px;
     }
 
-    .gradient-color{
-        animation: none;
-    }
+    /*.gradient-color{*/
+    /*    animation: none;*/
+    /*}*/
 
     .contentBox .contentImg img {
         width: 300px;
