@@ -1,8 +1,8 @@
 function menuToggle() {
-    let header = $('header')
+    let body = $('body')
     let icon = $('.menuBtn i')
     $('.menuBtn').click(function () {
-        header.toggleClass('active')
+        body.toggleClass('active')
         if (icon.hasClass('fas fa-bars')) {
             icon.removeClass()
             icon.addClass('fas fa-times')

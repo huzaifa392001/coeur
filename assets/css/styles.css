@@ -106,6 +106,12 @@ section {
 }
 
 /* Body Background */
+
+body.active > .bodyBg{
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+
 .bodyBg {
     position: fixed;
     inset: 0;
@@ -290,7 +296,7 @@ header .menu ul li a {
 /*    transform: scaleX(1);*/
 /*}*/
 
-header.active .menu {
+body.active .menu {
     opacity: 1;
     visibility: visible;
     user-select: all;
