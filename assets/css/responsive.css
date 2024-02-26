@@ -147,15 +147,15 @@
     .cardHeading {
         font-size: 3rem;
     }
-}
-
-@media (max-width: 499.98px) {
-    .contentBox .contentImg img {
-        width: 200px;
-    }
 
     .themeBtnAltr {
         width: 100% !important;
+    }
+}
+
+@media (max-width: 399.98px) {
+    .contentBox .contentImg img {
+        width: 250px;
     }
 }
 
