@@ -4,7 +4,6 @@
     --color-1: #00AAC1;
     --color-2: #BCCF02;
     --color-3: #EF9757;
-    --blur: blur(120px);
 }
 
 .img-auto {
@@ -167,7 +166,7 @@ section {
     left: 0;
     top: 0;
     background: transparent;
-    backdrop-filter: var(--blur);
+    backdrop-filter: blur(120px);
 }
 
 /* Body Background */

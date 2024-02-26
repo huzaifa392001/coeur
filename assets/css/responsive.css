@@ -111,7 +111,7 @@
     }
 
     footer {
-        padding-bottom: 7rem;
+        padding: 1rem 0 7rem;
     }
 }
 
@@ -124,40 +124,12 @@
         width: 300px;
     }
 
-    .contentBox .contentImg img {
-        width: 300px;
-    }
-
-    .mainHeading {
-        font-size: 4rem;
-    }
-
-    .contentBox .content h2 {
-        font-size: 3rem;
-    }
-
-    .contentBox .content h6 a {
-        font-size: 1.25rem;
-    }
-
-    footer .copyright {
-        justify-content: center;
-    }
-
-    footer .logo {
-        justify-content: center;
-    }
-
-    .contentBox .contentImg img {
-        width: 300px;
-    }
-
     .mainHeading {
         font-size: 4rem;
     }
 
     .contentBox .content h6 a {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
     }
 
     footer .copyright {
@@ -170,6 +142,16 @@
 
     .cardHeading {
         font-size: 3rem;
+    }
+}
+
+@media (max-width: 499.98px) {
+    .contentBox .contentImg img {
+        width: 200px;
+    }
+
+    .themeBtnAltr {
+        width: 100% !important;
     }
 }
 
