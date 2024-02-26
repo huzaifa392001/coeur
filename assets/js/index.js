@@ -1,18 +1,3 @@
-function menuToggle() {
-    let body = $('body')
-    let icon = $('.menuBtn i')
-    $('.menuBtn').click(function () {
-        body.toggleClass('active')
-        if (icon.hasClass('fas fa-bars')) {
-            icon.removeClass()
-            icon.addClass('fas fa-times')
-        } else {
-            icon.removeClass()
-            icon.addClass('fas fa-bars')
-        }
-    });
-}
-
 function bannerAnim() {
     let headingElem = document.querySelector('.homeBanner .blob h1')
     let heading = new SplitType(headingElem, {types: 'words, chars'})
@@ -49,11 +34,24 @@ function lenisSetup() {
             lenis.scrollTo(this.getAttribute("href"));
         });
     });
+    let body = $('body')
+    let icon = $('.menuBtn i')
+    $('.menuBtn').click(function () {
+        body.toggleClass('active')
+        if (icon.hasClass('fas fa-bars')) {
+            lenis.stop()
+            icon.removeClass()
+            icon.addClass('fas fa-times')
+        } else {
+            lenis.start()
+            icon.removeClass()
+            icon.addClass('fas fa-bars')
+        }
+    });
 }
 
 $(function () {
-    ScrollTrigger.normalizeScroll(true); // enable
-    menuToggle();
+    ScrollTrigger.normalizeScroll(true);
     bannerAnim();
     lenisSetup();
 })
