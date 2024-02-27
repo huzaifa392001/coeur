@@ -264,6 +264,16 @@
     .footerBtn span {
         font-size: 2rem;
     }
+
+    .gallerySlider .swiper-wrapper {
+        align-items: center;
+    }
+
+    .secBannerImg {
+        width: calc(100% - 9px * 2) !important;
+        border-radius: 20px;
+        right: auto;
+    }
 }
 
 @media (max-width: 399.98px) {
