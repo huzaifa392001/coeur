@@ -1,3 +1,18 @@
+function menuToggle() {
+    let body = $('body')
+    let icon = $('.menuBtn i')
+    $('.menuBtn').click(function () {
+        body.toggleClass('active')
+        if (icon.hasClass('fas fa-bars')) {
+            icon.removeClass()
+            icon.addClass('fas fa-times')
+        } else {
+            icon.removeClass()
+            icon.addClass('fas fa-bars')
+        }
+    });
+}
+
 function bannerAnim() {
     let headingElem = document.querySelector('.homeBanner .blob h1')
     let innerHeadingElem = document.querySelector('.innerBan .content h1')
@@ -16,27 +31,18 @@ function bannerAnim() {
 }
 
 function lenisSetup() {
-    const locomotiveScroll = new LocomotiveScroll();
+    const locomotiveScroll = new LocomotiveScroll({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        smooth: true,
+        mouseMultiplier: 1,
+    });
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             locomotiveScroll.scrollTo(this.getAttribute("href"));
         });
-    });
-    let body = $('body')
-    let icon = $('.menuBtn i')
-    $('.menuBtn').click(function () {
-        body.toggleClass('active')
-        if (icon.hasClass('fas fa-bars')) {
-            locomotiveScroll.stop()
-            icon.removeClass()
-            icon.addClass('fas fa-times')
-        } else {
-            locomotiveScroll.start()
-            icon.removeClass()
-            icon.addClass('fas fa-bars')
-        }
     });
 }
 
@@ -87,6 +93,7 @@ function barba() {
 
 $(function () {
     ScrollTrigger.normalizeScroll(true);
+    menuToggle();
     bannerAnim();
     lenisSetup();
     allSliders();
