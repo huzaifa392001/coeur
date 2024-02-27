@@ -1,6 +1,7 @@
 function bannerAnim() {
     let headingElem = document.querySelector('.homeBanner .blob h1')
-    let heading = new SplitType(headingElem, {types: 'words, chars'})
+    let innerHeadingElem = document.querySelector('.innerBan .content h1')
+    let heading = new SplitType(headingElem ? headingElem : innerHeadingElem, {types: 'words, chars'})
 
     let tl = gsap.timeline({delay: 1})
     tl
@@ -15,23 +16,12 @@ function bannerAnim() {
 }
 
 function lenisSetup() {
-    const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        smooth: true,
-        mouseMultiplier: 1,
-    })
+    const locomotiveScroll = new LocomotiveScroll();
 
-    function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf);
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            lenis.scrollTo(this.getAttribute("href"));
+            locomotiveScroll.scrollTo(this.getAttribute("href"));
         });
     });
     let body = $('body')
@@ -39,19 +29,68 @@ function lenisSetup() {
     $('.menuBtn').click(function () {
         body.toggleClass('active')
         if (icon.hasClass('fas fa-bars')) {
-            lenis.stop()
+            locomotiveScroll.stop()
             icon.removeClass()
             icon.addClass('fas fa-times')
         } else {
-            lenis.start()
+            locomotiveScroll.start()
             icon.removeClass()
             icon.addClass('fas fa-bars')
         }
     });
 }
 
+function allSliders() {
+    var swiper = new Swiper(".gallerySlider", {
+        slidesPerView: 'auto',
+        spaceBetween: 32,
+        centeredSlides: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+}
+
+function barba() {
+    barba.init({
+        debug: true,
+        // transitions: [{
+        //     name: 'default-transaction',
+        //     async leave(data) {
+        //         let currentCont = data.current
+        //         ScrollTrigger.getAll().forEach(t => t.kill());
+        //         scroll.destroy();
+        //         return barbaTl
+        //             .to(currentCont, {autoAlpha: 0})
+        //             .to('.preLoader', {css: {display: 'flex'},})
+        //             .to('.preLoader.white > img', {y: 0, autoAlpha: 1})
+        //             .to('.preLoader.white', {yPercent: 0, ease: 'Circ.easeInOut'})
+        //             .to('.preLoader.black', {xPercent: 0, ease: 'Circ.easeInOut'});
+        //         // console.log("Leave")
+        //     },
+        //     async afterEnter(data) {
+        //         let nextCont = data.next
+        //
+        //         data.current.container.remove();
+        //         barbaTl
+        //             .to(nextCont, {autoAlpha: 1})
+        //             .to('.preLoader.white > img', {y: 50, autoAlpha: 0})
+        //             .to('.preLoader.white', {yPercent: -100, ease: 'Circ.easeInOut'})
+        //             .to('.preLoader.black', {xPercent: -100, ease: 'Circ.easeInOut'})
+        //             .to(".preLoader", {css: {display: 'none'}})
+        //             .from('.navbar-brand > img', {x: -50, autoAlpha: 0})
+        //     }
+        // }]
+    })
+}
+
 $(function () {
     ScrollTrigger.normalizeScroll(true);
     bannerAnim();
     lenisSetup();
+    allSliders();
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // Your custom options for a specific gallery
+    });
 })
