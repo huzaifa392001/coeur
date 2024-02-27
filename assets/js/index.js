@@ -31,7 +31,12 @@ function bannerAnim() {
 }
 
 function lenisSetup() {
-    const locomotiveScroll = new LocomotiveScroll();
+    const locomotiveScroll = new LocomotiveScroll({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        smooth: true,
+        mouseMultiplier: 1,
+    });
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -90,10 +95,7 @@ $(function () {
     ScrollTrigger.normalizeScroll(true);
     menuToggle();
     bannerAnim();
-    if (window.innerWidth >= 768) {
-        console.log('greater than 768')
-        lenisSetup();
-    }
+    lenisSetup();
     allSliders();
     Fancybox.bind('[data-fancybox="gallery"]', {
         // Your custom options for a specific gallery
