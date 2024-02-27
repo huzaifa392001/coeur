@@ -44,6 +44,10 @@ function lenisSetup() {
             locomotiveScroll.scrollTo(this.getAttribute("href"));
         });
     });
+
+    if(window.innerWidth <= 991){
+        $('[data-scroll]').removeAttr('data-scroll-speed')
+    }
 }
 
 function allSliders() {
@@ -95,7 +99,7 @@ $(function () {
     ScrollTrigger.normalizeScroll(true);
     menuToggle();
     bannerAnim();
-    // lenisSetup();
+    lenisSetup();
     allSliders();
     Fancybox.bind('[data-fancybox="gallery"]', {
         // Your custom options for a specific gallery
