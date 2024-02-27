@@ -95,7 +95,7 @@ $(function () {
     ScrollTrigger.normalizeScroll(true);
     menuToggle();
     bannerAnim();
-    lenisSetup();
+    // lenisSetup();
     allSliders();
     Fancybox.bind('[data-fancybox="gallery"]', {
         // Your custom options for a specific gallery
