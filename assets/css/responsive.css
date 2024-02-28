@@ -274,6 +274,16 @@
         border-radius: 20px;
         right: auto;
     }
+
+    .wrapper .contentSec {
+        padding-top: 16rem;
+    }
+
+    .wrapper .contentSec.contactSec {
+        height: 100vh;
+        align-items: start;
+        padding: 10rem 0 0;
+    }
 }
 
 @media (max-width: 399.98px) {
