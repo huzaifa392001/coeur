@@ -45,7 +45,7 @@ function lenisSetup() {
         });
     });
 
-    if(window.innerWidth <= 991){
+    if (window.innerWidth <= 991) {
         $('[data-scroll]').removeAttr('data-scroll-speed')
     }
 }
@@ -104,4 +104,9 @@ $(function () {
     Fancybox.bind('[data-fancybox="gallery"]', {
         // Your custom options for a specific gallery
     });
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active')
+    });
+
 })

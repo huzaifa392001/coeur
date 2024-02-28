@@ -14,6 +14,20 @@ html.lenis {
     height: auto
 }
 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to top right, var(--color-1), var(--color-2), var(--color-3));
+}
+
 .lenis.lenis-smooth {
     scroll-behavior: auto
 }
@@ -130,6 +144,29 @@ figure {
     top: -15px;
 }
 
+.themeBtnSm {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
+.themeBtnSm i {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: -webkit-linear-gradient(#00AAC1, #EAE007, #EF9757);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+}
+
 section {
     position: relative;
     min-height: 100vh;
@@ -235,6 +272,10 @@ body.active > .bodyBg {
     overflow: hidden;
 }
 
+.mainHeading.nowrap .word {
+    display: inline !important;
+}
+
 .mainHeading .word .char {
     transform: translateY(30px) translateZ(5px);
     opacity: 0.5;
@@ -265,6 +306,10 @@ body.active > .bodyBg {
     font-size: 1.875rem;
     font-family: 'Genos';
     font-weight: 400;
+}
+
+.normalText span {
+    font-weight: bold;
 }
 
 .smallText {
@@ -448,11 +493,6 @@ body.active .menu {
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 0 5px BLACK;
-}
-
-.scrollToBottom svg {
-    width: 15px;
-    fill: #fff;
 }
 
 /*Home Banner*/
@@ -650,9 +690,9 @@ footer .copyright {
 
 .innerBan .content {
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 25%;
-    transform: translate(-25%, -10%);
+    transform: translate(-25%, -15%);
 }
 
 .innerBan .content h1 {
@@ -832,11 +872,6 @@ footer .copyright {
     font-size: 1.25rem;
 }
 
-.footerBtn svg {
-    fill: #fff;
-    width: 20px;
-}
-
 .footerBtn span {
     font-size: 3.125rem;
     font-weight: 400;
@@ -850,4 +885,109 @@ footer .copyright {
 
 .gallerySlider .slide-75 {
     width: 75% !important;
+}
+
+.imgCol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.imgCol .longImg.rotated {
+    display: none;
+}
+
+.imgCol .longImg img {
+    height: 670px;
+    border-radius: 20px;
+    max-width: 270px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.imgCol .brandRow {
+    position: relative;
+}
+
+.imgCol .brandRow .brandWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    background: #fff;
+    z-index: 1;
+    padding: 2rem 1rem;
+}
+
+.imgCol .brandRow::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border: 9px solid transparent;
+    background: linear-gradient(transparent, transparent), linear-gradient(to top right, var(--color-1), var(--color-2), var(--color-3));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.lgImgSec .content.lg {
+    position: absolute;
+    bottom: 20%;
+    z-index: 1;
+    width: 75%;
+}
+
+.lgImgSec .content.lg .cardHeading {
+    color: #fff;
+}
+
+.lgImgSec .content.lg p {
+    color: #fff;
+    font-size: 3rem;
+    font-family: 'Milky Walky';
+    text-align: center;
+    width: 65%;
+    margin: 4rem auto 0;
+}
+
+.sideModal {
+    position: fixed;
+    top: 0;
+    right: -650px;
+    max-width: 650px;
+    width: 100%;
+    z-index: 11;
+    background: #fff;
+    border-radius: 20px 0 0 20px;
+    overflow: clip;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+    height: 100vh;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.sideModal.active {
+    right: 0;
+}
+
+.sideModal figure img {
+    height: 350px;
+    width: 100%;
+    margin: 0 0 1rem;
+    object-fit: cover;
+}
+
+.sideModal .themeBtnSm {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sideModal .themeBtnSm svg {
+    opacity: 0;
 }
