@@ -95,6 +95,18 @@ function barba() {
     })
 }
 
+function svgRotate() {
+    let tl = gsap.timeline({defaults: {duration: 3, repeat: -1, yoyo: true}})
+    let elements = gsap.utils.toArray('#svgRotate > *')
+
+
+    tl.to(elements, {
+        scale: 1.5,
+        transformOrigin: 'center center',
+        stagger: 2
+    })
+}
+
 $(function () {
     ScrollTrigger.normalizeScroll(true);
     menuToggle();
@@ -108,5 +120,5 @@ $(function () {
         var modalTarget = $(this).data('modal-target');
         $(modalTarget).toggleClass('active')
     });
-
+    svgRotate()
 })
