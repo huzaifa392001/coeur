@@ -117,39 +117,39 @@ function makeImageDraggableAndScrollable(image, container) {
     let posX = 0, posY = 0, posInitialX = 0, posInitialY = 0;
     let isDragging = false;
 
-    image.onmousedown = function (e) {
-        e.preventDefault();
-        posInitialX = e.clientX;
-        posInitialY = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
+    function dragStart(e) {
         isDragging = true;
         image.style.cursor = 'grabbing';
-    };
+        posInitialX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        posInitialY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+        document.addEventListener('mousemove', elementDrag);
+        document.addEventListener('touchmove', elementDrag);
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('touchend', dragEnd);
+    }
 
     function elementDrag(e) {
         if (isDragging) {
             e.preventDefault();
-            posX = posInitialX - e.clientX;
-            posY = posInitialY - e.clientY;
-            posInitialX = e.clientX;
-            posInitialY = e.clientY;
+            const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            posX = posInitialX - clientX;
+            posY = posInitialY - clientY;
+            posInitialX = clientX;
+            posInitialY = clientY;
 
             updateImagePosition(image, -posX, -posY);
         }
     }
 
-    function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
+    function dragEnd() {
         isDragging = false;
         image.style.cursor = 'grab';
+        document.removeEventListener('mousemove', elementDrag);
+        document.removeEventListener('touchmove', elementDrag);
+        document.removeEventListener('mouseup', dragEnd);
+        document.removeEventListener('touchend', dragEnd);
     }
-
-    container.addEventListener('wheel', function (e) {
-        e.preventDefault(); // This will prevent body scroll when image is scrolled
-        updateImagePosition(image, e.deltaX, e.deltaY);
-    }, {passive: false});
 
     function updateImagePosition(img, deltaX, deltaY) {
         let newLeft = img.offsetLeft + deltaX;
@@ -163,6 +163,9 @@ function makeImageDraggableAndScrollable(image, container) {
         img.style.left = newLeft + "px";
         img.style.top = newTop + "px";
     }
+
+    image.addEventListener('mousedown', dragStart);
+    image.addEventListener('touchstart', dragStart);
 }
 
 $(window).on('load', function () {
@@ -175,7 +178,7 @@ $(function () {
     bannerAnim();
     allSliders();
     Fancybox.bind('[data-fancybox="gallery"]', {
-        // Your custom options for a specific gallery
+
     });
     svgRotate()
 
