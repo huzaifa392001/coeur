@@ -17,6 +17,10 @@
     .gallerySlider .sliderImg img {
         height: 600px;
     }
+
+    .innerBan.contactBan .content {
+        padding: 0 1%;
+    }
 }
 
 @media (max-width: 1199.98px) {
@@ -60,6 +64,15 @@
 @media (max-width: 1024px) {
     .contentBox.left .contentImg {
         top: -50px;
+    }
+
+
+    .innerBan.contactBan .content {
+        display: block;
+    }
+
+    .innerBan.contactBan .content {
+        padding: 0 5%;
     }
 }
 
@@ -195,6 +208,10 @@
     .lgImgSec .content.lg p {
         font-size: 2rem;
         text-align: left;
+    }
+
+    .contactCont h6 a {
+        font-size: 1.25rem;
     }
 }
 
@@ -349,6 +366,24 @@
 
     .cardsRow.gentily > * > * {
         max-width: -webkit-fill-available;
+    }
+
+    .contactCont h6 .links {
+        flex-direction: column;
+        gap: 0;
+        margin-top: 0.5rem;
+    }
+
+    .contactCont {
+        padding: 2rem;
+    }
+
+    .contactCont h6 .links a + a::before {
+        content: none;
+    }
+
+    .contactCont h6 {
+        font-size: 2rem;
     }
 }
 
