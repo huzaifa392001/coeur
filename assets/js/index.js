@@ -48,6 +48,12 @@ function lenisSetup() {
     if (window.innerWidth <= 991) {
         $('[data-scroll]').removeAttr('data-scroll-speed')
     }
+
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active');
+        locomotiveScroll.stop()
+    });
 }
 
 function allSliders() {
@@ -107,18 +113,74 @@ function svgRotate() {
     })
 }
 
+function makeImageDraggableAndScrollable(image, container) {
+    let posX = 0, posY = 0, posInitialX = 0, posInitialY = 0;
+    let isDragging = false;
+
+    image.onmousedown = function (e) {
+        e.preventDefault();
+        posInitialX = e.clientX;
+        posInitialY = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        isDragging = true;
+        image.style.cursor = 'grabbing';
+    };
+
+    function elementDrag(e) {
+        if (isDragging) {
+            e.preventDefault();
+            posX = posInitialX - e.clientX;
+            posY = posInitialY - e.clientY;
+            posInitialX = e.clientX;
+            posInitialY = e.clientY;
+
+            updateImagePosition(image, -posX, -posY);
+        }
+    }
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+        isDragging = false;
+        image.style.cursor = 'grab';
+    }
+
+    container.addEventListener('wheel', function (e) {
+        e.preventDefault(); // This will prevent body scroll when image is scrolled
+        updateImagePosition(image, e.deltaX, e.deltaY);
+    }, {passive: false});
+
+    function updateImagePosition(img, deltaX, deltaY) {
+        let newLeft = img.offsetLeft + deltaX;
+        let newTop = img.offsetTop + deltaY;
+
+        if (newLeft > 0) newLeft = 0;
+        if (newTop > 0) newTop = 0;
+        if (newLeft < container.offsetWidth - img.offsetWidth) newLeft = container.offsetWidth - img.offsetWidth;
+        if (newTop < container.offsetHeight - img.offsetHeight) newTop = container.offsetHeight - img.offsetHeight;
+
+        img.style.left = newLeft + "px";
+        img.style.top = newTop + "px";
+    }
+}
+
+$(window).on('load', function () {
+    lenisSetup();
+})
+
 $(function () {
     ScrollTrigger.normalizeScroll(true);
     menuToggle();
     bannerAnim();
-    lenisSetup();
     allSliders();
     Fancybox.bind('[data-fancybox="gallery"]', {
         // Your custom options for a specific gallery
     });
-    $('.modalPopup').on('click', function () {
-        var modalTarget = $(this).data('modal-target');
-        $(modalTarget).toggleClass('active')
-    });
     svgRotate()
+
+    const image = document.getElementById('draggableImage');
+    const container = document.querySelector('.mapSec .mapImg');
+
+    makeImageDraggableAndScrollable(image, container);
 })

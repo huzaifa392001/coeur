@@ -348,6 +348,10 @@
     .sideModal figure img {
         height: 200px;
     }
+
+    .cardsRow.gentily > * > * {
+        max-width: -webkit-fill-available;
+    }
 }
 
 @media (max-width: 399.98px) {
