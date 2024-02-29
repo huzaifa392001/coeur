@@ -169,7 +169,9 @@ function makeImageDraggableAndScrollable(image, container) {
 }
 
 $(window).on('load', function () {
-    lenisSetup();
+    if (window.innerWidth >= 991) {
+        lenisSetup();
+    }
 })
 
 $(function () {
@@ -177,9 +179,7 @@ $(function () {
     menuToggle();
     bannerAnim();
     allSliders();
-    Fancybox.bind('[data-fancybox="gallery"]', {
-
-    });
+    Fancybox.bind('[data-fancybox="gallery"]', {});
     svgRotate()
 
     const image = document.getElementById('draggableImage');
