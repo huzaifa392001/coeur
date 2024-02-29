@@ -620,8 +620,6 @@ body.active .menu {
 }
 
 .wrapper section:last-of-type {
-    position: sticky;
-    top: 0;
 }
 
 footer {
