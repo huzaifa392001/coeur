@@ -30,32 +30,6 @@ function bannerAnim() {
         })
 }
 
-function lenisSetup() {
-    const locomotiveScroll = new LocomotiveScroll({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        smooth: true,
-        mouseMultiplier: 1,
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            locomotiveScroll.scrollTo(this.getAttribute("href"));
-        });
-    });
-
-    if (window.innerWidth <= 991) {
-        $('[data-scroll]').removeAttr('data-scroll-speed')
-    }
-
-    $('.modalPopup').on('click', function () {
-        var modalTarget = $(this).data('modal-target');
-        $(modalTarget).toggleClass('active');
-        locomotiveScroll.stop()
-    });
-}
-
 function allSliders() {
     var swiper = new Swiper(".gallerySlider", {
         slidesPerView: 'auto',
@@ -168,14 +142,8 @@ function makeImageDraggableAndScrollable(image, container) {
     image.addEventListener('touchstart', dragStart);
 }
 
-$(window).on('load', function () {
-    if (window.innerWidth >= 991) {
-        lenisSetup();
-    }
-})
 
 $(function () {
-    ScrollTrigger.normalizeScroll(true);
     menuToggle();
     bannerAnim();
     allSliders();
@@ -185,5 +153,7 @@ $(function () {
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
 
-    makeImageDraggableAndScrollable(image, container);
+    if (image) {
+        makeImageDraggableAndScrollable(image, container);
+    }
 })
