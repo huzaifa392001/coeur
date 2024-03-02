@@ -156,4 +156,10 @@ $(function () {
     if (image) {
         makeImageDraggableAndScrollable(image, container);
     }
+
+
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active');
+    });
 })

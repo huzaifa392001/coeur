@@ -31,9 +31,9 @@ html {
 /*    height: 600vh;*/
 /*}*/
 
-.wrapper > * {
-    scroll-snap-align: start;
-}
+/*.wrapper > * {*/
+/*    scroll-snap-align: start;*/
+/*}*/
 
 .img-auto {
     display: block;
@@ -165,6 +165,8 @@ section {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 6rem 0;
+    scroll-snap-align: start;
 }
 
 /* Body Background */
@@ -174,11 +176,11 @@ body.active > .bodyBg {
     transition: all 0.3s ease-in-out;
 }
 
-header .bodyBg .gradient-color{
+header .bodyBg .gradient-color {
     animation: none;
 }
 
-header .bodyBg .gradient-color:nth-child(1){
+header .bodyBg .gradient-color:nth-child(1) {
     height: 100%;
 }
 
@@ -196,10 +198,10 @@ header .bodyBg .gradient-color:nth-child(1){
 }
 
 @keyframes scaled {
-    0%{
+    0% {
         transform: scale(1);
     }
-    100%{
+    100% {
         transform: scale(4);
     }
 }
@@ -604,14 +606,12 @@ body.active .menu {
     max-width: 950px;
 }
 
-.wrapper section:last-of-type {
-}
-
 footer {
     position: relative;
     z-index: 1;
     width: 100%;
     padding: 1rem 5rem 5rem;
+    scroll-snap-align: start;
 }
 
 footer.colored {
@@ -669,8 +669,8 @@ footer .copyright {
     animation: gradientChange 5s linear infinite 3.33s; /* Offset the animation */
 }
 
-.wrapper section {
-    padding: 6rem 0;
+.innerBan {
+    padding: 0;
 }
 
 .innerBan .bannerImg {
@@ -778,7 +778,7 @@ footer .copyright {
     border-radius: 100%;
 }
 
-.wrapper section.imgSec {
+section.imgSec {
     padding: 20rem 0 6rem;
 }
 
