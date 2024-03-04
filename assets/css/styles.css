@@ -1,9 +1,9 @@
 @import "./fonts.css";
 
 :root {
-    --color-1: #00AAC1;
-    --color-2: #BCCF02;
-    --color-3: #EF9757;
+    --color-1: #BCCF02;
+    --color-2: #EF9757;
+    --color-3: #00AAC1;
 }
 
 ::-webkit-scrollbar-track {
@@ -21,28 +21,23 @@
 }
 
 html.lenis {
-    height: auto
-}
-
-:root {
-    scroll-behavior: initial;
-    overscroll-behavior: none;
+    height: auto;
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto
+    scroll-behavior: auto !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain
+    overscroll-behavior: contain;
 }
 
 .lenis.lenis-stopped {
-    overflow: hidden
+    overflow: hidden;
 }
 
 .lenis.lenis-scrolling iframe {
-    pointer-events: none
+    pointer-events: none;
 }
 
 .img-auto {
@@ -175,6 +170,7 @@ section {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 6rem 0;
 }
 
 /* Body Background */
@@ -184,77 +180,72 @@ body.active > .bodyBg {
     transition: all 0.3s ease-in-out;
 }
 
+header .bodyBg .gradient-color {
+    animation: none;
+}
+
+header .bodyBg .gradient-color:nth-child(1) {
+    height: 100%;
+}
+
 .bodyBg {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
-    background: var(--color-2);
     flex-wrap: wrap;
     overflow: hidden;
     user-select: none;
     pointer-events: none;
+    transform-origin: center;
+}
+
+@keyframes scaled {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(4);
+    }
 }
 
 .gradient-color {
-    width: 50%;
-    height: 50%;
+    width: 60vw;
+    height: 60vh;
     display: flex;
-    border-radius: 30% 80% 75% 40% / 40% 40% 70% 50%;
-    animation-name: animate;
-    animation-duration: 5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-@media (max-width: 991px) {
-    .gradient-color {
-        animation: none;
-    }
-}
-
-@keyframes animate {
-    0% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 60%;
-        transform: scale(2) rotate(0deg) translate(10%, 10%);
-    }
-    100% {
-        border-radius: 88% 10% 22% 58% / 73% 56% 34% 77%;
-        transform: scale(2) rotate(180deg) translate(10%, -10%);
-    }
+    position: absolute;
+    filter: blur(100px);
+    /* mix-blend-mode: overlay; */
+    animation: scaled 20s linear infinite alternate;
 }
 
 .gradient-color:nth-child(1) {
     background-color: var(--color-1);
-    animation-direction: backwards;
+    top: 0;
+    left: 0;
+    /*height: 100%;*/
 }
 
 .gradient-color:nth-child(2) {
     background-color: var(--color-2);
+    top: 0;
+    right: 0;
+    animation-delay: 7s;
+    /* width: 80%; */
 }
 
 .gradient-color:nth-child(3) {
     background-color: var(--color-3);
-    animation-direction: backwards;
+    bottom: 0;
+    right: 0;
+    animation-delay: 14s;
+    /* width: 80%; */
 }
 
 /*.gradient-color:nth-child(4) {*/
 /*    background-color: var(--color-4);*/
 /*}*/
-
-.gradient-backdrop {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: transparent;
-    backdrop-filter: blur(120px);
-    -webkit-backdrop-filter: blur(120px);
-}
 
 /* Body Background */
 
@@ -280,7 +271,6 @@ body.active > .bodyBg {
     transform: translateY(30px) translateZ(5px);
     opacity: 0.5;
     visibility: hidden;
-    text-shadow: 0 0 36px #000;
 }
 
 .cardHeading {
@@ -620,14 +610,12 @@ body.active .menu {
     max-width: 950px;
 }
 
-.wrapper section:last-of-type {
-}
-
 footer {
     position: relative;
     z-index: 1;
     width: 100%;
     padding: 1rem 5rem 5rem;
+    scroll-snap-align: start;
 }
 
 footer.colored {
@@ -685,8 +673,8 @@ footer .copyright {
     animation: gradientChange 5s linear infinite 3.33s; /* Offset the animation */
 }
 
-.wrapper section {
-    padding: 6rem 0;
+.innerBan {
+    padding: 0;
 }
 
 .innerBan .bannerImg {
@@ -794,7 +782,7 @@ footer .copyright {
     border-radius: 100%;
 }
 
-.wrapper section.imgSec {
+section.imgSec {
     padding: 20rem 0 6rem;
 }
 
@@ -974,7 +962,7 @@ footer .copyright {
     right: -650px;
     max-width: 650px;
     width: 100%;
-    z-index: 11;
+    z-index: 11111;
     background: #fff;
     border-radius: 20px 0 0 20px;
     overflow: clip;
@@ -1148,4 +1136,25 @@ footer .copyright {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 11111;
+    opacity: 0;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    height: 100vh;
+    width: 100vw;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    user-select: auto;
+    pointer-events: auto;
 }
