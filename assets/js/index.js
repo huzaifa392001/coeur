@@ -30,43 +30,6 @@ function bannerAnim() {
         })
 }
 
-function lenisSetup() {
-    const locomotiveScroll = new LocomotiveScroll({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        smooth: true,
-        mouseMultiplier: 1,
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            locomotiveScroll.scrollTo(this.getAttribute("href"));
-        });
-    });
-
-
-    $('.modalPopup').on('click', function () {
-        var modalTarget = $(this).data('modal-target');
-        $(modalTarget).toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
-    });
-    $('.overlay').on('click', function () {
-        $('.sideModal.active').toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
-    });
-}
-
 function allSliders() {
     var swiper = new Swiper(".gallerySlider", {
         slidesPerView: 'auto',
@@ -109,6 +72,18 @@ function barba() {
         //             .from('.navbar-brand > img', {x: -50, autoAlpha: 0})
         //     }
         // }]
+    })
+}
+
+function svgRotate() {
+    let tl = gsap.timeline({defaults: {duration: 3, repeat: -1, yoyo: true}})
+    let elements = gsap.utils.toArray('#svgRotate > *')
+
+
+    tl.to(elements, {
+        scale: 1.5,
+        transformOrigin: 'center center',
+        stagger: 2
     })
 }
 
@@ -167,11 +142,13 @@ function makeImageDraggableAndScrollable(image, container) {
     image.addEventListener('touchstart', dragStart);
 }
 
+
 $(function () {
     menuToggle();
     bannerAnim();
     allSliders();
     Fancybox.bind('[data-fancybox="gallery"]', {});
+    svgRotate()
 
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
@@ -179,19 +156,10 @@ $(function () {
     if (image) {
         makeImageDraggableAndScrollable(image, container);
     }
-})
-$(window).on("load", function () {
-    if (window.innerWidth >= 992) {
-        let pageLoc = window.location.href;
-        let pageLocParts = pageLoc.split('/'); // Split the URL
-        console.log(pageLocParts); // Log the parts to see if they split correctly
 
-        // Check if the last part is "index.html", "", or "index"
-        let lastPart = pageLocParts[pageLocParts.length - 1];
-        if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
-            console.log("Last part is index.html, an empty string, or index. lenisSetup() won't run.");
-        } else {
-            lenisSetup(); // If not, call lenisSetup()
-        }
-    }
-});
+
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active');
+    });
+})

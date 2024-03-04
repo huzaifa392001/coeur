@@ -20,25 +20,20 @@
     background-image: linear-gradient(to top right, var(--color-1), var(--color-2), var(--color-3));
 }
 
-html.lenis {
-    height: auto;
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-}
+/*.wrapper {*/
+/*    height: 600vh;*/
+/*}*/
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-    pointer-events: none;
-}
+/*.wrapper > * {*/
+/*    scroll-snap-align: start;*/
+/*}*/
 
 .img-auto {
     display: block;
@@ -171,6 +166,7 @@ section {
     justify-content: center;
     overflow: hidden;
     padding: 6rem 0;
+    scroll-snap-align: start;
 }
 
 /* Body Background */
@@ -962,7 +958,7 @@ section.imgSec {
     right: -650px;
     max-width: 650px;
     width: 100%;
-    z-index: 11111;
+    z-index: 11;
     background: #fff;
     border-radius: 20px 0 0 20px;
     overflow: clip;
@@ -1136,25 +1132,4 @@ section.imgSec {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 11111;
-    opacity: 0;
-    visibility: hidden;
-    user-select: none;
-    pointer-events: none;
-    transition: all 0.3s ease-in-out;
-    height: 100vh;
-    width: 100vw;
-}
-
-.overlay.active {
-    opacity: 1;
-    visibility: visible;
-    user-select: auto;
-    pointer-events: auto;
 }
