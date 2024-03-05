@@ -20,6 +20,10 @@
     background-image: linear-gradient(to top right, var(--color-1), var(--color-2), var(--color-3));
 }
 
+body {
+    overflow-x: clip;
+}
+
 html.lenis {
     height: auto;
 }
@@ -215,7 +219,7 @@ header .bodyBg .gradient-color:nth-child(1) {
     height: 60vh;
     display: flex;
     position: absolute;
-    filter: blur(100px);
+    /*filter: blur(100px);*/
     /* mix-blend-mode: overlay; */
     animation: scaled 20s linear infinite alternate;
 }
@@ -224,7 +228,7 @@ header .bodyBg .gradient-color:nth-child(1) {
     background-color: var(--color-1);
     top: 0;
     left: 0;
-    /*height: 100%;*/
+    height: 100%;
 }
 
 .gradient-color:nth-child(2) {
@@ -243,9 +247,11 @@ header .bodyBg .gradient-color:nth-child(1) {
     /* width: 80%; */
 }
 
-/*.gradient-color:nth-child(4) {*/
-/*    background-color: var(--color-4);*/
-/*}*/
+.gradient-backdrop {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(120px);
+}
 
 /* Body Background */
 
@@ -715,7 +721,7 @@ footer .copyright {
 
 .bgBlob {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -724,6 +730,7 @@ footer .copyright {
     z-index: -1;
     pointer-events: none;
     user-select: none;
+    overflow: clip;
 }
 
 .bgBlob img,
@@ -1157,4 +1164,95 @@ section.imgSec {
     visibility: visible;
     user-select: auto;
     pointer-events: auto;
+}
+
+.sliderSec {
+    justify-content: flex-start;
+    align-items: normal;
+    /*margin-left: 50%;*/
+    /*gap: 3rem;*/
+    /*padding-left: 50%;*/
+    padding: 0;
+}
+
+.sliderSec::-webkit-scrollbar-track {
+    display: none;
+}
+
+.panel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floorSec .label.heading {
+    font-size: 1.625rem;
+    font-family: 'Milky Walky';
+    font-weight: 600;
+    text-align: left;
+}
+
+.floorSec .label {
+    font-family: 'Genos';
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.floorSec .label span {
+    font-size: 1.25rem;
+}
+
+.floorSec .floorImg img {
+    height: 180px;
+    object-fit: contain;
+    position: relative;
+}
+
+.floorSec .row {
+    align-items: center;
+}
+
+.floorSec .row + .row {
+    margin-top: -3rem;
+}
+
+.floorSec .label.main {
+    font-size: 2.5rem;
+    text-align: left;
+}
+
+.floorSec .row:nth-child(2) {
+    margin: 0;
+}
+
+.floorSec .row .caption {
+    margin: 0;
+}
+
+.clrBox {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    flex: 0 1 20%;
+}
+
+.clrBox .color {
+    width: 20px;
+    height: 20px;
+    flex: 0 1 20px;
+}
+
+.clrBox .caption {
+    flex: 0 1 calc(100% - 20px);
+}
+
+.colorRow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 0;
+    margin-top: 2rem;
 }

@@ -1,3 +1,35 @@
+$(function () {
+    menuToggle();
+    bannerAnim();
+    allSliders();
+    Fancybox.bind();
+
+    const image = document.getElementById('draggableImage');
+    const container = document.querySelector('.mapSec .mapImg');
+
+    if (image) {
+        makeImageDraggableAndScrollable(image, container);
+    }
+    stackingImages();
+    horizontalSection()
+})
+
+$(window).on("load", function () {
+    if (window.innerWidth >= 992) {
+        let pageLoc = window.location.href;
+        let pageLocParts = pageLoc.split('/'); // Split the URL
+        console.log(pageLocParts); // Log the parts to see if they split correctly
+
+        // Check if the last part is "index.html", "", or "index"
+        let lastPart = pageLocParts[pageLocParts.length - 1];
+        if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
+            console.log("Last part is index.html, an empty string, or index. lenisSetup() won't run.");
+        } else {
+            lenisSetup(); // If not, call lenisSetup()
+        }
+    }
+});
+
 function menuToggle() {
     let body = $('body')
     let icon = $('.menuBtn i')
@@ -167,31 +199,34 @@ function makeImageDraggableAndScrollable(image, container) {
     image.addEventListener('touchstart', dragStart);
 }
 
-$(function () {
-    menuToggle();
-    bannerAnim();
-    allSliders();
-    Fancybox.bind('[data-fancybox="gallery"]', {});
+function horizontalSection() {
+    let allWrapper = document.querySelectorAll('.sliderSec')
 
-    const image = document.getElementById('draggableImage');
-    const container = document.querySelector('.mapSec .mapImg');
+    allWrapper.forEach((wrapper) => {
 
-    if (image) {
-        makeImageDraggableAndScrollable(image, container);
-    }
-})
-$(window).on("load", function () {
-    if (window.innerWidth >= 992) {
-        let pageLoc = window.location.href;
-        let pageLocParts = pageLoc.split('/'); // Split the URL
-        console.log(pageLocParts); // Log the parts to see if they split correctly
+        let sections = wrapper.querySelectorAll('.panel')
+        console.log(`${sections.length * 100}%`)
+        wrapper.style.width = `${sections.length * 100}%`
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: wrapper,
+                pin: true,
+                start: 'top',
+                scrub: 1,
+                end: () => "+=" + (wrapper.offsetWidth / 2),
+            }
+        })
+    })
+}
 
-        // Check if the last part is "index.html", "", or "index"
-        let lastPart = pageLocParts[pageLocParts.length - 1];
-        if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
-            console.log("Last part is index.html, an empty string, or index. lenisSetup() won't run.");
-        } else {
-            lenisSetup(); // If not, call lenisSetup()
-        }
-    }
-});
+function stackingImages() {
+    let images = document.querySelectorAll('.floorImg img');
+
+    // Assign z-index in descending order
+    images.forEach((image, index) => {
+        image.style.zIndex = images.length - index;
+    });
+}
+
