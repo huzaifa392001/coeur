@@ -18,12 +18,11 @@ $(window).on("load", function () {
     if (window.innerWidth >= 992) {
         let pageLoc = window.location.href;
         let pageLocParts = pageLoc.split('/'); // Split the URL
-        console.log(pageLocParts); // Log the parts to see if they split correctly
 
         // Check if the last part is "index.html", "", or "index"
         let lastPart = pageLocParts[pageLocParts.length - 1];
         if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
-            console.log("Last part is index.html, an empty string, or index. lenisSetup() won't run.");
+
         } else {
             lenisSetup(); // If not, call lenisSetup()
         }
@@ -204,21 +203,22 @@ function horizontalSection() {
 
     allWrapper.forEach((wrapper) => {
 
-        let sections = wrapper.querySelectorAll('.panel')
-        console.log(`${sections.length * 100}%`)
-        wrapper.style.width = `${sections.length * 100}%`
-        gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
-            scrollTrigger: {
-                trigger: wrapper,
-                pin: true,
-                start: 'top',
-                scrub: 1,
-                end: () => "+=" + (wrapper.offsetWidth / 2),
-            }
-        })
-    })
+            let sections = wrapper.querySelectorAll('.panel')
+            wrapper.style.width = `${sections.length * 100}%`
+
+            gsap.to(sections, {
+                xPercent: -100 * (sections.length - 1) - 5,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: wrapper,
+                    pin: true,
+                    start: 'top',
+                    scrub: 1,
+                    end: () => "+=" + (wrapper.offsetWidth / 2)
+                }
+            })
+        }
+    )
 }
 
 function stackingImages() {
