@@ -251,6 +251,7 @@ header .bodyBg .gradient-color:nth-child(1) {
     position: fixed;
     inset: 0;
     backdrop-filter: blur(120px);
+    -webkit-backdrop-filter: blur(120px);
 }
 
 /* Body Background */
