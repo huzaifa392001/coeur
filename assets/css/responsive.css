@@ -245,6 +245,10 @@
     .floorSec .row .caption {
         text-align: center;
     }
+
+    .simpleContentSec .contentCardHeading {
+        margin: 1rem 0 0;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -438,6 +442,40 @@
 
     .floorSec .label.heading {
         font-size: 1.25rem;
+    }
+
+    .simpleContentSec {
+        min-height: auto;
+    }
+
+    .simpleContentSec .btnRow .themeBtnAltr {
+        color: #000;
+        flex: 0 1 47%;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .themeBtnAltr::before, .themeBtnAltr::after {
+        background: #000;
+    }
+
+    .simpleContentSec .btnRow {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem 0;
+    }
+
+    .videoCont img {
+        height: 450px;
+    }
+
+    .infoBrandRow img {
+        width: 15%;
+        flex: 0 1 15%;
+    }
+
+    .infoclesTable {
+        margin-top: 2rem;
     }
 }
 

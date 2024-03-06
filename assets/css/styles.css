@@ -173,23 +173,52 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 6rem 0;
+    height: 100%;
 }
 
 /* Body Background */
 
-body.active > .bodyBg {
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-}
+/*body.active > .bodyBg {*/
+/*    opacity: 0;*/
+/*    transition: all 0.3s ease-in-out;*/
+/*}*/
 
-header .bodyBg .gradient-color {
-    animation: none;
-}
-
-header .bodyBg .gradient-color:nth-child(1) {
+.colorWrapper {
+    position: absolute;
     height: 100%;
+    width: 100%;
+    transform-origin: center center;
+    overflow-x: clip;
+}
+
+.colorWrapper .color {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    filter: blur(120px);
+    border-radius: 100%;
+    -webkit-backdrop-filter: blur(120px);
+}
+
+.colorWrapper .color.color-1 {
+    background: var(--color-1);
+    left: -50%;
+    top: 0;
+    z-index: 1;
+}
+
+.colorWrapper .color.color-2 {
+    background: var(--color-2);
+    top: -30%;
+    left: 30%;
+}
+
+.colorWrapper .color.color-3 {
+    background: var(--color-3);
+    right: -40%;
+    top: 40%;
 }
 
 .bodyBg {
@@ -222,6 +251,7 @@ header .bodyBg .gradient-color:nth-child(1) {
     /*filter: blur(100px);*/
     /* mix-blend-mode: overlay; */
     animation: scaled 20s linear infinite alternate;
+    border-radius: 100%;
 }
 
 .gradient-color:nth-child(1) {
@@ -285,6 +315,7 @@ header .bodyBg .gradient-color:nth-child(1) {
     font-family: 'Milky Walky';
     text-transform: uppercase;
     font-weight: 400;
+    margin: 0;
 }
 
 .contentCardHeading {
@@ -361,10 +392,6 @@ header .menuBtn:hover {
     transform: scale(1.1);
 }
 
-header .menuBtn svg {
-    animation: rotation 10s linear infinite alternate;
-}
-
 @keyframes rotation {
     from {
         transform: rotate(0deg);
@@ -395,6 +422,7 @@ header .menu ul {
     justify-content: center;
     gap: 4rem;
     list-style: none;
+    z-index: 1;
 }
 
 header .menu ul li a {
@@ -1187,6 +1215,10 @@ section.imgSec {
     justify-content: center;
 }
 
+.floorSec {
+    display: block;
+}
+
 .floorSec .label.heading {
     font-size: 1.625rem;
     font-family: 'Milky Walky';
@@ -1256,4 +1288,141 @@ section.imgSec {
     flex-wrap: wrap;
     gap: 1rem 0;
     margin-top: 2rem;
+}
+
+.infoClesBanner {
+    padding: 0;
+}
+
+.infoClesBanner .content {
+    z-index: 1;
+}
+
+.headingBar {
+    border-bottom: 1px solid #000;
+    margin-bottom: 2rem;
+}
+
+.simpleContentSec ul li::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 100%;
+    flex: 0 1 10px;
+}
+
+.simpleContentSec ul li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.simpleContentSec ul li p {
+    flex: 0 1 calc(100% - 10px);
+}
+
+.infoclesTable .smallText {
+    font-size: 1.25rem;
+}
+
+.infoclesTable h3 {
+    text-transform: capitalize;
+}
+
+.infoClesMap img {
+    border-radius: 20px;
+}
+
+.infoBrandRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.infoBrandRow img {
+    flex: 0 1 20%;
+    width: 20%;
+    height: 120px;
+    object-fit: scale-down;
+}
+
+.infoClesBanner .content .bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    animation: rotation 15s linear infinite forwards;
+}
+
+.infoClesBanner .content .bg svg {
+    transform: scale(0.8);
+}
+
+.videoCont {
+    position: relative;
+}
+
+.videoCont img {
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+}
+
+.videoCont .playBtn {
+    position: absolute;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoCont .playBtn i {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: -webkit-linear-gradient(#00AAC1, #EAE007, #EF9757);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+}
+
+.simpleContentSec .btnRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.simpleContentSec .btnRow .themeBtnAltr {
+    display: inline-flex;
+    width: fit-content;
+    margin: 0;
+}
+
+.simpleContentSec.low {
+    min-height: auto;
+}
+
+.infoClesFooter {
+    padding: 4rem 0 1rem;
+}
+
+.infoClesFooter p {
+    color: #000;
+    text-shadow: none !important;
+}
+
+footer .logo img {
+    filter: none !important;
 }

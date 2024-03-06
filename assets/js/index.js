@@ -11,7 +11,7 @@ $(function () {
         makeImageDraggableAndScrollable(image, container);
     }
     stackingImages();
-    horizontalSection()
+    horizontalSection();
 })
 
 $(window).on("load", function () {
@@ -42,6 +42,13 @@ function menuToggle() {
             icon.addClass('fas fa-bars')
         }
     });
+
+    gsap.to("header .menuBtn svg", {
+        rotation: "+=360",
+        repeat: -1,
+        duration: 10,
+        ease: "none"
+    })
 }
 
 function bannerAnim() {
