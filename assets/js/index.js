@@ -23,11 +23,14 @@ $(window).on("load", function () {
         let lastPart = pageLocParts[pageLocParts.length - 1];
         if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
             HomeBannerAnim();
-        } else {
-            bannerAnim();
+        } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
+            console.log(lastPart)
+            lenisSetup()
+        }
+        else{
+            bannerAnim()
         }
     } else {
-
         mobileBannerAnim()
     }
 });
