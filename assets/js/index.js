@@ -26,8 +26,10 @@ $(window).on("load", function () {
         } else {
             bannerAnim();
         }
+    } else {
+
+        mobileBannerAnim()
     }
-    mobileBannerAnim()
 });
 
 function menuToggle() {
