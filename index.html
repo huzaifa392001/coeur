@@ -21,9 +21,12 @@
     section {
         scroll-snap-align: start;
     }
+
+    body {
+        overflow: clip;
+    }
 </style>
 <body>
-
 <div class="bodyBg">
     <div class="gradient-color"></div>
     <div class="gradient-color"></div>
@@ -67,8 +70,8 @@
 </header>
 <div class="wrapper">
 
-    <section class="homeBanner">
-        <img src="./assets/images/bannerBg.webp" alt="">
+    <section class="homeBanner p-0">
+        <img src="./assets/images/bannerBg.webp" alt="" class="w-100 h-100 object-fit-cover">
         <!--        <video autoplay loop muted>-->
         <!--            <source src="./assets/images/bannerVideo.mp4">-->
         <!--        </video>-->
@@ -118,7 +121,7 @@
                     </svg>
                 </div>
                 <div class="content">
-                    <h2 class="cardHeading">Comme <br> un fruit !</h2>
+                    <h2 class="cardHeading secHeading">Comme <br> un fruit !</h2>
                     <p class="smallText">
                         Cœur fertile s’apprécie comme un fruit. Derrière son écorce urbaine, sa façade minérale, il
                         révèle
@@ -151,7 +154,7 @@
                     </svg>
                 </div>
                 <div class="content">
-                    <h2 class="cardHeading">Cœur <br> fertile</h2>
+                    <h2 class="cardHeading secHeading">Cœur <br> fertile</h2>
                     <p class="smallText">
                         Cœur fertile est un immeuble différent, singulier et vivant grâce à une forte présence de la
                         végétation. Ici, la nature s’exprime pleinement. II y a le potager sur le rooftop, les
@@ -184,7 +187,7 @@
                     </svg>
                 </div>
                 <div class="content">
-                    <h2 class="cardHeading">Gentilly,<br>
+                    <h2 class="cardHeading secHeading">Gentilly,<br>
                         porte d’entrée <br>de paris</h2>
                     <p class="smallText">
                         Reliée à Paris par une passerelle, Gentilly, accessible en métro, en RER, en tramway, en
@@ -217,7 +220,7 @@
                     </svg>
                 </div>
                 <div class="content">
-                    <h2 class="cardHeading">
+                    <h2 class="cardHeading secHeading">
                         COntacts
                     </h2>
                     <img src="./assets/images/batipart-logo.webp" alt="" class="logoImg">
@@ -306,7 +309,6 @@
             </span>
     </a>
 </div>
-
 </body>
 <script src="./assets/js/app.js"></script>
 <script src="./assets/js/index.js"></script>

@@ -1,7 +1,9 @@
 $(function () {
     menuToggle();
-    bannerAnim();
     allSliders();
+    stackingImages();
+    horizontalSection();
+    secHeading();
     Fancybox.bind();
 
     const image = document.getElementById('draggableImage');
@@ -10,23 +12,22 @@ $(function () {
     if (image) {
         makeImageDraggableAndScrollable(image, container);
     }
-    stackingImages();
-    horizontalSection();
 })
 
 $(window).on("load", function () {
+    window.scrollTo(0, 0);
     if (window.innerWidth >= 992) {
         let pageLoc = window.location.href;
-        let pageLocParts = pageLoc.split('/'); // Split the URL
+        let pageLocParts = pageLoc.split('/');
 
-        // Check if the last part is "index.html", "", or "index"
         let lastPart = pageLocParts[pageLocParts.length - 1];
         if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
-
+            HomeBannerAnim();
         } else {
-            lenisSetup(); // If not, call lenisSetup()
+            bannerAnim();
         }
     }
+    mobileBannerAnim()
 });
 
 function menuToggle() {
@@ -51,13 +52,74 @@ function menuToggle() {
     })
 }
 
-function bannerAnim() {
+function HomeBannerAnim() {
+    let headingElem = document.querySelector('.homeBanner .blob h1')
+    let heading = new SplitType(headingElem, {types: 'words, chars'})
+
+    let tl = gsap.timeline({delay: 1, pause: true})
+    tl
+        .to(heading.chars, {
+            translateY: 0,
+            translateZ: 0,
+            autoAlpha: 1,
+            stagger: 0.1,
+            duration: 1.5,
+            ease: "expo.out",
+        })
+}
+
+function mobileBannerAnim() {
     let headingElem = document.querySelector('.homeBanner .blob h1')
     let innerHeadingElem = document.querySelector('.innerBan .content h1')
     let heading = new SplitType(headingElem ? headingElem : innerHeadingElem, {types: 'words, chars'})
+    gsap.set(innerHeadingElem, {
+        autoAlpha: 1
+    })
 
     let tl = gsap.timeline({delay: 1})
     tl
+        .to(heading.chars, {
+            translateY: 0,
+            translateZ: 0,
+            autoAlpha: 1,
+            stagger: 0.1,
+            duration: 1.5,
+            ease: "expo.out",
+        })
+}
+
+function bannerAnim() {
+    let innerHeadingElem = document.querySelector('.innerBan .content h1')
+    let bannerOverlay = document.querySelector('.innerBan .overlayWrapper')
+    let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
+    let ban = document.querySelector('.innerBan')
+    let bannerImg = document.querySelector('.innerBan .bannerImg')
+    let body = document.querySelector('body')
+    bannerOverlay.style.width = `${body.getBoundingClientRect().width / 3.5}px`
+    bannerOverlay.style.height = `-${body.getBoundingClientRect().height / 2}px`
+    console.log(body.getBoundingClientRect().width / 2)
+    bannerImg.style.left = `-${bannerImg.getBoundingClientRect().x}px`
+    bannerImg.style.top = `-${bannerImg.getBoundingClientRect().y}px`
+    gsap.set(innerHeadingElem, {
+        autoAlpha: 1
+    })
+    let tl = gsap.timeline({
+        delay: 1, pause: true, onComplete: () => {
+            lenisSetup();
+        }
+    })
+    tl
+        .to(bannerOverlay, {
+            borderRadius: '0% 0% 0% 0% / 0% 0% 0% 0%',
+            width: ban.getBoundingClientRect().width,
+            height: ban.getBoundingClientRect().height,
+            duration: 2.5,
+        })
+        .to(bannerImg, {
+            left: 0,
+            top: 0,
+            duration: 2.5,
+        }, "<")
         .to(heading.chars, {
             translateY: 0,
             translateZ: 0,
@@ -115,39 +177,6 @@ function allSliders() {
             clickable: true,
         },
     });
-}
-
-function barba() {
-    barba.init({
-        debug: true,
-        // transitions: [{
-        //     name: 'default-transaction',
-        //     async leave(data) {
-        //         let currentCont = data.current
-        //         ScrollTrigger.getAll().forEach(t => t.kill());
-        //         scroll.destroy();
-        //         return barbaTl
-        //             .to(currentCont, {autoAlpha: 0})
-        //             .to('.preLoader', {css: {display: 'flex'},})
-        //             .to('.preLoader.white > img', {y: 0, autoAlpha: 1})
-        //             .to('.preLoader.white', {yPercent: 0, ease: 'Circ.easeInOut'})
-        //             .to('.preLoader.black', {xPercent: 0, ease: 'Circ.easeInOut'});
-        //         // console.log("Leave")
-        //     },
-        //     async afterEnter(data) {
-        //         let nextCont = data.next
-        //
-        //         data.current.container.remove();
-        //         barbaTl
-        //             .to(nextCont, {autoAlpha: 1})
-        //             .to('.preLoader.white > img', {y: 50, autoAlpha: 0})
-        //             .to('.preLoader.white', {yPercent: -100, ease: 'Circ.easeInOut'})
-        //             .to('.preLoader.black', {xPercent: -100, ease: 'Circ.easeInOut'})
-        //             .to(".preLoader", {css: {display: 'none'}})
-        //             .from('.navbar-brand > img', {x: -50, autoAlpha: 0})
-        //     }
-        // }]
-    })
 }
 
 function makeImageDraggableAndScrollable(image, container) {
@@ -237,3 +266,42 @@ function stackingImages() {
     });
 }
 
+function secHeading() {
+    let headings = document.querySelectorAll('.secHeading')
+    let paraElem = document.querySelectorAll('.linesAnim')
+    headings.forEach((heading) => {
+        let text = new SplitType(heading, {types: 'words, chars'})
+
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: heading,
+                toggleActions: "play none none reverse"
+            }
+        })
+
+        tl.from(text.chars, {
+            autoAlpha: 0,
+            stagger: 0.1,
+            duration: 0.5
+        })
+    })
+
+    paraElem.forEach((elem) => {
+        let text = new SplitType(elem, {types: 'lines'})
+
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: elem,
+                toggleActions: "play none none reverse"
+            }
+        })
+
+        tl.from(text.lines, {
+            autoAlpha: 0,
+            y: -50,
+            stagger: 0.2,
+            duration: 0.5
+        })
+    })
+
+}

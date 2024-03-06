@@ -21,7 +21,11 @@
 }
 
 body {
-    overflow-x: clip;
+    overflow: hidden;
+}
+
+html.lenis body {
+    overflow: clip;
 }
 
 html.lenis {
@@ -316,6 +320,7 @@ section {
     text-transform: uppercase;
     font-weight: 400;
     margin: 0;
+    /*line-height: 1.8;*/
 }
 
 .contentCardHeading {
@@ -714,8 +719,9 @@ footer .copyright {
 
 .innerBan .bannerImg {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     object-fit: cover;
+    position: relative;
 }
 
 .innerBan .content {
@@ -732,6 +738,7 @@ footer .copyright {
 
 .innerBan .content h1 {
     color: #fff;
+    opacity: 0;
 }
 
 .imgRow {
@@ -1425,4 +1432,34 @@ section.imgSec {
 
 footer .logo img {
     filter: none !important;
+}
+
+.secHeading .word,
+.secHeading,
+.linesAnim,
+.linesAnim .line {
+    overflow: hidden;
+}
+
+.overlayWrapper {
+    overflow: hidden;
+    position: absolute;
+    border-radius: 70% 30% 30% 70% / 60% 40% 70% 50%;
+    width: 400px;
+    height: 400px;
+}
+
+/*.innerBan .bannerImg {*/
+/*    transform: scaleX(0.3) scaleY(0.4);*/
+/*    border-radius: 70% 30% 30% 70% / 60% 40% 70% 50%;*/
+/*}*/
+
+.overlayImg {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 70% 30% 30% 70% / 60% 40% 70% 50%;
 }

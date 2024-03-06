@@ -81,6 +81,14 @@
         font-size: 12px;
     }
 
+    .overlayWrapper {
+        overflow: hidden;
+        position: unset;
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
     .contentBox .bg svg {
         width: 100%;
     }
@@ -137,6 +145,14 @@
 
     .sliderSec {
         gap: 1rem;
+    }
+
+    .gradient-color {
+        animation: scaled 10s linear infinite alternate;
+    }
+
+    body {
+        overflow: initial;
     }
 }
 
@@ -256,9 +272,6 @@
         font-size: 13px;
     }
 
-    /*.gradient-color{*/
-    /*    animation: none;*/
-    /*}*/
     .contentBox .contentImg img {
         width: 300px;
     }
