@@ -203,8 +203,12 @@ section {
     height: 100vh;
     filter: blur(120px);
     border-radius: 100%;
-    -webkit-backdrop-filter: blur(120px);
+    backdrop-filter: blur(120px); /* Standard syntax */
+    -webkit-backdrop-filter: blur(120px); /* Fallback for Safari */
+    transform: translate3d(0, 0, 0); /* Trigger hardware acceleration */
+    will-change: filter, backdrop-filter, -webkit-backdrop-filter; /* Hint to browsers that these properties will change */
 }
+
 
 .colorWrapper .color.color-1 {
     background: var(--color-1);
@@ -254,8 +258,8 @@ section {
     position: absolute;
     /*filter: blur(100px);*/
     /* mix-blend-mode: overlay; */
-    animation: scaled 20s linear infinite alternate;
-    border-radius: 100%;
+    /*animation: scaled 20s linear infinite alternate;*/
+    border-radius: 30% 80% 75% 40% / 40% 40% 70% 50%;
 }
 
 .gradient-color:nth-child(1) {
@@ -1283,6 +1287,7 @@ section.imgSec {
     width: 20px;
     height: 20px;
     flex: 0 1 20px;
+    transform-origin: center center;
 }
 
 .clrBox .caption {

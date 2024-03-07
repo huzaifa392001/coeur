@@ -5,6 +5,7 @@ $(function () {
     horizontalSection();
     secHeading();
     Fancybox.bind();
+    bgAnim()
 
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
@@ -26,8 +27,7 @@ $(window).on("load", function () {
         } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
             console.log(lastPart)
             lenisSetup()
-        }
-        else{
+        } else {
             bannerAnim()
         }
     } else {
@@ -308,5 +308,34 @@ function secHeading() {
             duration: 0.5
         })
     })
+
+}
+
+function bgAnim() {
+// Define the colors
+    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
+
+// Select all divs that will have the colors applied.
+    const colorDivs = gsap.utils.toArray('.colorWrapper .color');
+
+// Function to get the next color in the array
+    function getNextColor(index) {
+        return colors[(index + 1) % colors.length];
+    }
+
+// GSAP timeline setup
+    const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
+
+    colorDivs.forEach((div, i) => {
+        tl.to(div, {
+            backgroundColor: getNextColor(i), // Use the getNextColor function
+            duration: 10,
+            // rotation: '+=360',
+            scale: 2,
+            ease: "none",
+        }, 0); // Start all animations at the same time
+    });
+
+    tl.play(); // Play the timeline
 
 }
