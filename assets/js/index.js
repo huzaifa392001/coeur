@@ -25,10 +25,10 @@ $(window).on("load", function () {
         if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
             HomeBannerAnim();
         } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
-            console.log(lastPart)
             lenisSetup()
         } else {
             bannerAnim()
+            lenisSetup()
         }
     } else {
         mobileBannerAnim()
@@ -108,11 +108,7 @@ function bannerAnim() {
     gsap.set(innerHeadingElem, {
         autoAlpha: 1
     })
-    let tl = gsap.timeline({
-        delay: 1, pause: true, onComplete: () => {
-            lenisSetup();
-        }
-    })
+    let tl = gsap.timeline({delay: 1, pause: true,})
     tl
         .to(bannerOverlay, {
             borderRadius: '0% 0% 0% 0% / 0% 0% 0% 0%',
@@ -149,7 +145,6 @@ function lenisSetup() {
             locomotiveScroll.scrollTo(this.getAttribute("href"));
         });
     });
-
 
     $('.modalPopup').on('click', function () {
         var modalTarget = $(this).data('modal-target');
