@@ -233,6 +233,21 @@ section {
     z-index: 1;
 }
 
+@media (min-width: 992px) {
+    .infoClesBanner .colorWrapper {
+        overflow: initial;
+        overflow-x: clip;
+    }
+
+    .infoClesBanner .backdrop {
+        display: none;
+    }
+
+    .infoClesBanner .color {
+        filter: blur(120px);
+        -webkit-filter: blur(120px);
+    }
+}
 
 /* Body Background */
 
