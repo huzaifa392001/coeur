@@ -233,15 +233,6 @@ section {
     z-index: 1;
 }
 
-.infoClesBanner .colorWrapper .backdrop {
-    display: none;
-}
-
-.infoClesBanner .colorWrapper .color,
-.header .color {
-    filter: blur(100px);
-    -webkit-filter: blur(100px);
-}
 
 /* Body Background */
 
