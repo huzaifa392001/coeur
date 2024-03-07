@@ -224,13 +224,22 @@ section {
 }
 
 .colorWrapper .backdrop {
-    position: fixed;
+    position: absolute;
     inset: 0;
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(120px); /* Standard syntax */
     -webkit-backdrop-filter: blur(120px); /* Fallback for Safari */
     z-index: 1;
+}
+
+.infoClesBanner .backdrop {
+    display: none;
+}
+
+.infoClesBanner .color {
+    filter: blur(120px);
+    -webkit-filter: blur(120px);
 }
 
 /* Body Background */

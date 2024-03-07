@@ -316,7 +316,7 @@ function bgAnim() {
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
 // Select all divs that will have the colors applied.
-    const colorDivs = gsap.utils.toArray('.colorWrapper .color');
+    const colorDivs = gsap.utils.toArray('#colorAnim .color');
 
 // Function to get the next color in the array
     function getNextColor(index) {
