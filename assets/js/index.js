@@ -25,10 +25,10 @@ $(window).on("load", function () {
         if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
             HomeBannerAnim();
         } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
+            console.log(lastPart)
             lenisSetup()
         } else {
             bannerAnim()
-            lenisSetup()
         }
     } else {
         mobileBannerAnim()
@@ -91,6 +91,26 @@ function mobileBannerAnim() {
             duration: 1.5,
             ease: "expo.out",
         })
+
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active');
+        $('.overlay').toggleClass('active');
+        if (document.querySelector('html').style.overflow === 'hidden') {
+            document.querySelector('html').style.overflow = 'auto'
+        } else {
+            document.querySelector('html').style.overflow = 'hidden'
+        }
+    });
+    $('.overlay').on('click', function () {
+        $('.sideModal.active').toggleClass('active');
+        $('.overlay').toggleClass('active');
+        if (document.querySelector('html').style.overflow === 'hidden') {
+            document.querySelector('html').style.overflow = 'auto'
+        } else {
+            document.querySelector('html').style.overflow = 'hidden'
+        }
+    });
 }
 
 function bannerAnim() {
@@ -108,7 +128,11 @@ function bannerAnim() {
     gsap.set(innerHeadingElem, {
         autoAlpha: 1
     })
-    let tl = gsap.timeline({delay: 1, pause: true,})
+    let tl = gsap.timeline({
+        delay: 1, pause: true, onComplete: () => {
+            lenisSetup();
+        }
+    })
     tl
         .to(bannerOverlay, {
             borderRadius: '0% 0% 0% 0% / 0% 0% 0% 0%',
