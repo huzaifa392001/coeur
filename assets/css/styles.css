@@ -641,33 +641,6 @@ footer .copyright {
     gap: 2rem;
 }
 
-@keyframes gradientChange {
-    0% {
-        stop-color: #EAE007;
-    }
-    33% {
-        stop-color: #EF9757;
-    }
-    66% {
-        stop-color: #00AAC1;
-    }
-    100% {
-        stop-color: #EAE007;
-    }
-}
-
-.gradient-stop1 {
-    animation: gradientChange 5s linear infinite;
-}
-
-.gradient-stop2 {
-    animation: gradientChange 5s linear infinite 1.67s; /* Offset the animation */
-}
-
-.gradient-stop3 {
-    animation: gradientChange 5s linear infinite 3.33s; /* Offset the animation */
-}
-
 .innerBan {
     padding: 0;
 }
