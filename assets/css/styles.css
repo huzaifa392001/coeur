@@ -194,7 +194,7 @@ section {
     height: 100%;
     width: 100%;
     transform-origin: center center;
-    overflow-x: clip;
+    overflow: clip;
 }
 
 .colorWrapper .color {
