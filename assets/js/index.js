@@ -348,7 +348,7 @@ function bgAnim() {
     colorDivs.forEach((div, i) => {
         tl.to(div, {
             backgroundColor: getNextColor(i), // Use the getNextColor function
-            duration: 10,
+            duration: 7,
             // rotation: '+=360',
             scale: 1.5,
             ease: "none",
