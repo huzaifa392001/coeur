@@ -331,7 +331,7 @@ function bgAnim() {
             backgroundColor: getNextColor(i), // Use the getNextColor function
             duration: 10,
             // rotation: '+=360',
-            scale: 2,
+            scale: 1.5,
             ease: "none",
         }, 0); // Start all animations at the same time
     });

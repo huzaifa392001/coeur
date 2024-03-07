@@ -201,14 +201,8 @@ section {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    filter: blur(120px);
     border-radius: 100%;
-    backdrop-filter: blur(120px); /* Standard syntax */
-    -webkit-backdrop-filter: blur(120px); /* Fallback for Safari */
-    transform: translate3d(0, 0, 0); /* Trigger hardware acceleration */
-    will-change: filter, backdrop-filter, -webkit-backdrop-filter; /* Hint to browsers that these properties will change */
 }
-
 
 .colorWrapper .color.color-1 {
     background: var(--color-1);
@@ -229,67 +223,14 @@ section {
     top: 40%;
 }
 
-.bodyBg {
+.colorWrapper .backdrop {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    user-select: none;
-    pointer-events: none;
-    transform-origin: center;
-}
-
-@keyframes scaled {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(4);
-    }
-}
-
-.gradient-color {
-    width: 60vw;
-    height: 60vh;
-    display: flex;
-    position: absolute;
-    /*filter: blur(100px);*/
-    /* mix-blend-mode: overlay; */
-    /*animation: scaled 20s linear infinite alternate;*/
-    border-radius: 30% 80% 75% 40% / 40% 40% 70% 50%;
-}
-
-.gradient-color:nth-child(1) {
-    background-color: var(--color-1);
-    top: 0;
-    left: 0;
-    height: 100%;
-}
-
-.gradient-color:nth-child(2) {
-    background-color: var(--color-2);
-    top: 0;
-    right: 0;
-    animation-delay: 7s;
-    /* width: 80%; */
-}
-
-.gradient-color:nth-child(3) {
-    background-color: var(--color-3);
-    bottom: 0;
-    right: 0;
-    animation-delay: 14s;
-    /* width: 80%; */
-}
-
-.gradient-backdrop {
-    position: fixed;
-    inset: 0;
-    backdrop-filter: blur(120px);
-    -webkit-backdrop-filter: blur(120px);
+    backdrop-filter: blur(120px); /* Standard syntax */
+    -webkit-backdrop-filter: blur(120px); /* Fallback for Safari */
+    z-index: 1;
 }
 
 /* Body Background */
