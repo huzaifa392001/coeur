@@ -153,6 +153,7 @@
 
     body {
         overflow: initial;
+        overflow-x: clip;
     }
 }
 
