@@ -233,11 +233,11 @@ section {
     z-index: 1;
 }
 
-.infoClesBanner .backdrop {
+.infoClesBanner .colorWrapper .backdrop {
     display: none;
 }
 
-.infoClesBanner .color,
+.infoClesBanner .colorWrapper .color,
 .header .color {
     filter: blur(120px);
     -webkit-filter: blur(120px);
