@@ -665,8 +665,13 @@ footer .copyright {
     z-index: -1;
 }
 
+@media (min-width: 992px) {
+    .innerBan .bannerImgContainer img {
+        clip-path: url(#myClip);
+    }
+}
+
 .innerBan .bannerImgContainer img {
-    clip-path: url(#myClip);
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1389,33 +1394,3 @@ footer .logo img {
 .linesAnim .line {
     overflow: hidden;
 }
-
-/*.overlayWrapper {*/
-/*    overflow: hidden;*/
-/*    position: absolute;*/
-/*    border-radius: 70% 30% 30% 70% / 60% 40% 70% 50%;*/
-/*    width: 400px;*/
-/*    height: 400px;*/
-/*}*/
-
-/*.innerBan .bannerImg {*/
-/*    transform: scaleX(0.3) scaleY(0.4);*/
-/*    border-radius: 70% 30% 30% 70% / 60% 40% 70% 50%;*/
-/*}*/
-
-.overlayImg {
-    position: absolute;
-    inset: 0;
-    background: #fff;
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
-    border-radius: 70% 30% 30% 70% / 60% 40% 70% 50%;
-}
-
-.innerBan svg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-}
-
