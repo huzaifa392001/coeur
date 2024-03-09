@@ -1,4 +1,5 @@
 $(function () {
+    gsap.registerPlugin(DrawSVGPlugin)
     menuToggle();
     allSliders();
     stackingImages();
@@ -115,16 +116,8 @@ function mobileBannerAnim() {
 
 function bannerAnim() {
     let innerHeadingElem = document.querySelector('.innerBan .content h1')
-    let bannerOverlay = document.querySelector('.innerBan .overlayWrapper')
+    let bannerImage = document.querySelector('.innerBan .bannerImg')
     let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
-    let ban = document.querySelector('.innerBan')
-    let bannerImg = document.querySelector('.innerBan .bannerImg')
-    let body = document.querySelector('body')
-    bannerOverlay.style.width = `${body.getBoundingClientRect().width / 3.5}px`
-    bannerOverlay.style.height = `-${body.getBoundingClientRect().height / 2}px`
-    console.log(body.getBoundingClientRect().width / 2)
-    bannerImg.style.left = `-${bannerImg.getBoundingClientRect().x}px`
-    bannerImg.style.top = `-${bannerImg.getBoundingClientRect().y}px`
     gsap.set(innerHeadingElem, {
         autoAlpha: 1
     })
@@ -134,17 +127,13 @@ function bannerAnim() {
         }
     })
     tl
-        .to(bannerOverlay, {
-            borderRadius: '0% 0% 0% 0% / 0% 0% 0% 0%',
-            width: ban.getBoundingClientRect().width,
-            height: ban.getBoundingClientRect().height,
-            duration: 2.5,
+        .to("#myClip path ", {
+            attr: {
+                d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
+            },
+            ease: "none",
+            duration: 2
         })
-        .to(bannerImg, {
-            left: 0,
-            top: 0,
-            duration: 2.5,
-        }, "<")
         .to(heading.chars, {
             translateY: 0,
             translateZ: 0,

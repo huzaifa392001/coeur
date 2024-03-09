@@ -11,6 +11,14 @@
     <title>Comme Un Fruit</title>
 </head>
 <body>
+<svg width="0" height="0" class="position-absolute">
+    <defs>
+        <clipPath id="myClip">
+            <path d="M 620.629 550.468 C 589.781 597.454 581.903 679.087 680.982 744.135 C 716.167 767.235 863.104 826.16 915.117 746.936 C 936.112 714.957 1013.379 538.889 910.45 471.312 C 817.848 410.516 658.119 493.365 620.629 550.468 Z"
+                  fill="white"></path>
+        </clipPath>
+    </defs>
+</svg>
 <header>
     <div class="menu">
         <div class="colorWrapper">
@@ -47,13 +55,19 @@
     </button>
 </header>
 <section class="innerBan">
-    <div class="overlayWrapper">
-        <img src="./assets/images/comme-un-fruit-bg.webp" alt="" class="bannerImg">
-        <div class="content">
-            <h1 class="mainHeading nowrap">
-                Comme un fruit!
-            </h1>
+    <figure class="bannerImgContainer">
+        <div class="colorWrapper">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="backdrop"></div>
         </div>
+        <img src="./assets/images/comme-un-fruit-bg.webp" alt="">
+    </figure>
+    <div class="content">
+        <h1 class="mainHeading nowrap">
+            Comme un fruit!
+        </h1>
     </div>
     <a href="#firstSec" class="scrollToBottom">
         <span>Défiler</span>
@@ -253,5 +267,6 @@
 </div>
 </body>
 <script src="./assets/js/app.js"></script>
+<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>

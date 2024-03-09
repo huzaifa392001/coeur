@@ -46,16 +46,29 @@
         <i class="fas fa-bars"></i>
     </button>
 </header>
-
+<svg width="0" height="0" class="position-absolute">
+    <defs>
+        <clipPath id="myClip">
+            <path d="M 1020.629 208.468 C 989.781 255.454 981.903 337.087 1080.982 402.135 C 1116.167 425.235 1263.104 484.16 1315.117 404.936 C 1336.112 372.957 1413.379 196.889 1310.45 129.312 C 1217.848 68.516 1058.119 151.365 1020.629 208.468 Z"
+                  fill="white"></path>
+        </clipPath>
+    </defs>
+</svg>
 <section class="innerBan">
-   <div class="overlayWrapper">
-       <img src="./assets/images/couer-fertile-bg.webp" alt="" class="bannerImg">
-       <div class="content">
-           <h1 class="mainHeading">
-               Cœur Fertile
-           </h1>
-       </div>
-   </div>
+    <figure class="bannerImgContainer">
+        <div class="colorWrapper">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="backdrop"></div>
+        </div>
+        <img src="./assets/images/couer-fertile-bg.webp" alt="">
+    </figure>
+    <div class="content">
+        <h1 class="mainHeading">
+            Cœur Fertile
+        </h1>
+    </div>
     <a href="#firstSec" class="scrollToBottom">
         <span>Défiler</span>
         <i class='fas fa-long-arrow-down'></i>
@@ -908,5 +921,6 @@
 
 </body>
 <script src="./assets/js/app.js"></script>
+<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>
