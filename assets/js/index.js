@@ -50,7 +50,7 @@ function menuToggle() {
         }
     });
 
-    gsap.to("header .menuBtn svg", {
+    gsap.to(".rotateSvg", {
         rotation: "+=360",
         repeat: -1,
         duration: 10,
