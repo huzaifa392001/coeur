@@ -491,6 +491,20 @@
     .infoclesTable {
         margin-top: 2rem;
     }
+
+    .bgBlob {
+        height: 40vh;
+    }
+
+    .lgImgSec {
+        padding-top: 0;
+        margin-top: -5rem;
+    }
+
+    .innerBan.contactBan .content {
+        top: 25%;
+        transform: translateY(-25%);
+    }
 }
 
 @media (max-width: 399.98px) {
