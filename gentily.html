@@ -8,17 +8,24 @@
     <link rel="stylesheet" href="./assets/css/app.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <title>Comme Un Fruit</title>
+    <title>Gentilly</title>
 </head>
 <body>
+<svg width="0" height="0" class="position-absolute">
+    <defs>
+        <clipPath id="myClip">
+            <path d="M 399.629 452.468 C 368.781 499.454 360.903 581.087 459.982 646.135 C 495.167 669.235 642.104 728.16 694.117 648.936 C 715.112 616.957 792.379 440.889 689.45 373.312 C 596.848 312.516 437.119 395.365 399.629 452.468 Z"
+                  fill="white"></path>
+        </clipPath>
+    </defs>
+</svg>
 <header>
     <div class="menu">
-        <div class="bodyBg">
-            <div class="gradient-color"></div>
-            <div class="gradient-color"></div>
-            <div class="gradient-color"></div>
-            <!--    <div class="gradient-color"></div>-->
-            <div class="gradient-backdrop"></div>
+        <div class="colorWrapper">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="backdrop"></div>
         </div>
         <ul>
             <li>
@@ -39,7 +46,7 @@
         </ul>
     </div>
     <button class="menuBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+        <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                     d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                     fill="white"/>
@@ -48,7 +55,15 @@
     </button>
 </header>
 <section class="innerBan">
-    <img src="./assets/images/gentilyBg.jpg" alt="" class="bannerImg">
+    <figure class="bannerImgContainer">
+        <div class="colorWrapper">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="backdrop"></div>
+        </div>
+        <img src="./assets/images/gentilyBg.webp" alt="" class="">
+    </figure>
     <div class="content full">
         <h1 class="mainHeading nowrap">
             Gentilly, <br>
@@ -90,7 +105,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="content pe-md-5">
-                    <h2 class="cardHeading">
+                    <h2 class="cardHeading secHeading">
                         CÔTÉ PRATIQUE !
                     </h2>
                     <p class="normalText">
@@ -140,15 +155,15 @@
             </div>
             <div class="col-lg-5 ms-auto">
                 <figure class="contentImg">
-                    <img src="./assets/images/g-img-1.jpg" alt="">
+                    <img src="./assets/images/g-img-1.webp" alt="">
                 </figure>
             </div>
         </div>
     </div>
 </section>
 <section class="mapSec">
-    <figure class="mapImg" >
-        <img src="./assets/images/mapImg.jpg" alt="" id="draggableImage">
+    <figure class="mapImg">
+        <img src="./assets/images/mapImg.webp" alt="" id="draggableImage">
     </figure>
     <div class="contentTable">
         <h3 class="contentCardHeading">Temps de transport</h3>
@@ -365,12 +380,12 @@
                             </h6>
                         </div>
                         <figure class="imgCard">
-                            <img src="./assets/images/g-img-3.png" alt="">
+                            <img src="./assets/images/g-img-3.webp" alt="">
                         </figure>
                     </div>
                     <div class="cardsRow vertical" data-scroll data-scroll-speed="0.6">
                         <figure class="imgCard">
-                            <img src="./assets/images/g-img-2.png" alt="">
+                            <img src="./assets/images/g-img-2.webp" alt="">
                         </figure>
                         <div class="contentCard">
                             <h3 class="contentCardHeading">
@@ -393,7 +408,7 @@
             </div>
             <div class="col-lg-5 mx-auto">
                 <div class="content pe-md-5">
-                    <h2 class="cardHeading">
+                    <h2 class="cardHeading secHeading">
                         CÔTÉ PRATIQUE !
                     </h2>
                     <p class="normalText">
@@ -448,7 +463,7 @@
 </footer>
 <div class="bottomBtn">
     <button class="themeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+        <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                 d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                 fill="white"/>
@@ -458,7 +473,7 @@
             </span>
     </button>
     <button class="themeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+        <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                 d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                 fill="white"/>
@@ -467,8 +482,8 @@
                 pers<br>pective
             </span>
     </button>
-    <button class="themeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+    <a href='./info-cles.html' class="themeBtn">
+        <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                 d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                 fill="white"/>
@@ -476,10 +491,15 @@
         <span>
                 Infos<br>clés
             </span>
-    </button>
+    </a>
 </div>
 
 </body>
 <script src="./assets/js/app.js"></script>
+<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>
+
+
+
+

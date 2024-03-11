@@ -1,3 +1,41 @@
+$(function () {
+    gsap.registerPlugin(DrawSVGPlugin)
+    menuToggle();
+    allSliders();
+    stackingImages();
+    horizontalSection();
+    secHeading();
+    Fancybox.bind();
+    bgAnim()
+
+    const image = document.getElementById('draggableImage');
+    const container = document.querySelector('.mapSec .mapImg');
+
+    if (image) {
+        makeImageDraggableAndScrollable(image, container);
+    }
+})
+
+$(window).on("load", function () {
+    window.scrollTo(0, 0);
+    if (window.innerWidth >= 992) {
+        let pageLoc = window.location.href;
+        let pageLocParts = pageLoc.split('/');
+
+        let lastPart = pageLocParts[pageLocParts.length - 1];
+        if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
+            HomeBannerAnim();
+        } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
+            console.log(lastPart)
+            lenisSetup()
+        } else {
+            bannerAnim()
+        }
+    } else {
+        mobileBannerAnim()
+    }
+});
+
 function menuToggle() {
     let body = $('body')
     let icon = $('.menuBtn i')
@@ -11,15 +49,91 @@ function menuToggle() {
             icon.addClass('fas fa-bars')
         }
     });
+
+    gsap.to(".rotateSvg", {
+        rotation: "+=360",
+        repeat: -1,
+        duration: 10,
+        ease: "none"
+    })
 }
 
-function bannerAnim() {
+function HomeBannerAnim() {
+    let headingElem = document.querySelector('.homeBanner .blob h1')
+    let heading = new SplitType(headingElem, {types: 'words, chars'})
+
+    let tl = gsap.timeline({delay: 1, pause: true})
+    tl
+        .to(heading.chars, {
+            translateY: 0,
+            translateZ: 0,
+            autoAlpha: 1,
+            stagger: 0.1,
+            duration: 1.5,
+            ease: "expo.out",
+        })
+}
+
+function mobileBannerAnim() {
     let headingElem = document.querySelector('.homeBanner .blob h1')
     let innerHeadingElem = document.querySelector('.innerBan .content h1')
     let heading = new SplitType(headingElem ? headingElem : innerHeadingElem, {types: 'words, chars'})
+    gsap.set(innerHeadingElem, {
+        autoAlpha: 1
+    })
 
     let tl = gsap.timeline({delay: 1})
     tl
+        .to(heading.chars, {
+            translateY: 0,
+            translateZ: 0,
+            autoAlpha: 1,
+            stagger: 0.1,
+            duration: 1.5,
+            ease: "expo.out",
+        })
+
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active');
+        $('.overlay').toggleClass('active');
+        if (document.querySelector('html').style.overflow === 'hidden') {
+            document.querySelector('html').style.overflow = 'auto'
+        } else {
+            document.querySelector('html').style.overflow = 'hidden'
+        }
+    });
+    $('.overlay').on('click', function () {
+        $('.sideModal.active').toggleClass('active');
+        $('.overlay').toggleClass('active');
+        if (document.querySelector('html').style.overflow === 'hidden') {
+            document.querySelector('html').style.overflow = 'auto'
+        } else {
+            document.querySelector('html').style.overflow = 'hidden'
+        }
+    });
+}
+
+function bannerAnim() {
+    let innerHeadingElem = document.querySelector('.innerBan .content h1')
+    let bannerImage = document.querySelector('.innerBan .bannerImg')
+    let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
+    gsap.set(innerHeadingElem, {
+        autoAlpha: 1
+    })
+    let tl = gsap.timeline({
+        delay: 1, pause: true, onComplete: () => {
+            lenisSetup();
+        }
+    })
+    tl
+        .to("#myClip path ", {
+            attr: {
+                d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
+            },
+            ease: "none",
+            duration: 2
+        })
         .to(heading.chars, {
             translateY: 0,
             translateZ: 0,
@@ -44,7 +158,6 @@ function lenisSetup() {
             locomotiveScroll.scrollTo(this.getAttribute("href"));
         });
     });
-
 
     $('.modalPopup').on('click', function () {
         var modalTarget = $(this).data('modal-target');
@@ -77,39 +190,6 @@ function allSliders() {
             clickable: true,
         },
     });
-}
-
-function barba() {
-    barba.init({
-        debug: true,
-        // transitions: [{
-        //     name: 'default-transaction',
-        //     async leave(data) {
-        //         let currentCont = data.current
-        //         ScrollTrigger.getAll().forEach(t => t.kill());
-        //         scroll.destroy();
-        //         return barbaTl
-        //             .to(currentCont, {autoAlpha: 0})
-        //             .to('.preLoader', {css: {display: 'flex'},})
-        //             .to('.preLoader.white > img', {y: 0, autoAlpha: 1})
-        //             .to('.preLoader.white', {yPercent: 0, ease: 'Circ.easeInOut'})
-        //             .to('.preLoader.black', {xPercent: 0, ease: 'Circ.easeInOut'});
-        //         // console.log("Leave")
-        //     },
-        //     async afterEnter(data) {
-        //         let nextCont = data.next
-        //
-        //         data.current.container.remove();
-        //         barbaTl
-        //             .to(nextCont, {autoAlpha: 1})
-        //             .to('.preLoader.white > img', {y: 50, autoAlpha: 0})
-        //             .to('.preLoader.white', {yPercent: -100, ease: 'Circ.easeInOut'})
-        //             .to('.preLoader.black', {xPercent: -100, ease: 'Circ.easeInOut'})
-        //             .to(".preLoader", {css: {display: 'none'}})
-        //             .from('.navbar-brand > img', {x: -50, autoAlpha: 0})
-        //     }
-        // }]
-    })
 }
 
 function makeImageDraggableAndScrollable(image, container) {
@@ -167,31 +247,103 @@ function makeImageDraggableAndScrollable(image, container) {
     image.addEventListener('touchstart', dragStart);
 }
 
-$(function () {
-    menuToggle();
-    bannerAnim();
-    allSliders();
-    Fancybox.bind('[data-fancybox="gallery"]', {});
+function horizontalSection() {
+    let allWrapper = document.querySelectorAll('.sliderSec')
 
-    const image = document.getElementById('draggableImage');
-    const container = document.querySelector('.mapSec .mapImg');
+    allWrapper.forEach((wrapper) => {
 
-    if (image) {
-        makeImageDraggableAndScrollable(image, container);
-    }
-})
-$(window).on("load", function () {
-    if (window.innerWidth >= 992) {
-        let pageLoc = window.location.href;
-        let pageLocParts = pageLoc.split('/'); // Split the URL
-        console.log(pageLocParts); // Log the parts to see if they split correctly
+            let sections = wrapper.querySelectorAll('.panel')
+            wrapper.style.width = `${sections.length * 100}%`
 
-        // Check if the last part is "index.html", "", or "index"
-        let lastPart = pageLocParts[pageLocParts.length - 1];
-        if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
-            console.log("Last part is index.html, an empty string, or index. lenisSetup() won't run.");
-        } else {
-            lenisSetup(); // If not, call lenisSetup()
+            gsap.to(sections, {
+                xPercent: -100 * (sections.length - 1) - 5,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: wrapper,
+                    pin: true,
+                    start: 'top',
+                    scrub: 1,
+                    end: () => "+=" + (wrapper.offsetWidth / 2)
+                }
+            })
         }
+    )
+}
+
+function stackingImages() {
+    let images = document.querySelectorAll('.floorImg img');
+
+    // Assign z-index in descending order
+    images.forEach((image, index) => {
+        image.style.zIndex = images.length - index;
+    });
+}
+
+function secHeading() {
+    let headings = document.querySelectorAll('.secHeading')
+    let paraElem = document.querySelectorAll('.linesAnim')
+    headings.forEach((heading) => {
+        let text = new SplitType(heading, {types: 'words, chars'})
+
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: heading,
+                toggleActions: "play none none reverse"
+            }
+        })
+
+        tl.from(text.chars, {
+            autoAlpha: 0,
+            stagger: 0.1,
+            duration: 0.5
+        })
+    })
+
+    paraElem.forEach((elem) => {
+        let text = new SplitType(elem, {types: 'lines'})
+
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: elem,
+                toggleActions: "play none none reverse"
+            }
+        })
+
+        tl.from(text.lines, {
+            autoAlpha: 0,
+            y: -50,
+            stagger: 0.2,
+            duration: 0.5
+        })
+    })
+
+}
+
+function bgAnim() {
+// Define the colors
+    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
+
+// Select all divs that will have the colors applied.
+    const colorDivs = gsap.utils.toArray('#colorAnim .color');
+
+// Function to get the next color in the array
+    function getNextColor(index) {
+        return colors[(index + 1) % colors.length];
     }
-});
+
+// GSAP timeline setup
+    const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
+
+    colorDivs.forEach((div, i) => {
+        tl.to(div, {
+            backgroundColor: getNextColor(i), // Use the getNextColor function
+            duration: 7,
+            // rotation: '+=360',
+            scale: 1.5,
+            ease: "none",
+        }, 0); // Start all animations at the same time
+    });
+
+    tl.play(); // Play the timeline
+
+}

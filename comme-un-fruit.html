@@ -11,14 +11,34 @@
     <title>Comme Un Fruit</title>
 </head>
 <body>
+<style>
+    @media (max-width: 575px) {
+        .bgBlob {
+            height: 40vh;
+        }
+
+        .lgImgSec {
+            padding-top: 0;
+            margin-top: -5rem;
+        }
+    }
+</style>
+<svg width="0" height="0" class="position-absolute">
+    <defs>
+        <clipPath id="myClip">
+            <path
+                d="M 620.629 550.468 C 589.781 597.454 581.903 679.087 680.982 744.135 C 716.167 767.235 863.104 826.16 915.117 746.936 C 936.112 714.957 1013.379 538.889 910.45 471.312 C 817.848 410.516 658.119 493.365 620.629 550.468 Z"
+                fill="white"></path>
+        </clipPath>
+    </defs>
+</svg>
 <header>
     <div class="menu">
-        <div class="bodyBg">
-            <div class="gradient-color"></div>
-            <div class="gradient-color"></div>
-            <div class="gradient-color"></div>
-            <!--    <div class="gradient-color"></div>-->
-            <div class="gradient-backdrop"></div>
+        <div class="colorWrapper">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="backdrop"></div>
         </div>
         <ul>
             <li>
@@ -39,16 +59,24 @@
         </ul>
     </div>
     <button class="menuBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+        <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
-                    d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                    fill="white"/>
+                d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                fill="white"/>
         </svg>
         <i class="fas fa-bars"></i>
     </button>
 </header>
 <section class="innerBan">
-    <img src="./assets/images/comme-un-fruit-bg.jpg" alt="" class="bannerImg">
+    <figure class="bannerImgContainer">
+        <div class="colorWrapper">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="backdrop"></div>
+        </div>
+        <img src="./assets/images/comme-un-fruit-bg.webp" alt="">
+    </figure>
     <div class="content">
         <h1 class="mainHeading nowrap">
             Comme un fruit!
@@ -84,13 +112,13 @@
     <!--        </svg>-->
     <img src="./assets/images/bgBlob.webp" alt="">
 </figure>
-<section class="altrContentSec lgImgSec">
-    <img src="./assets/images/cuf-bg.png" alt="">
-    <div class="content lg" id="firstSec">
-        <h2 class="cardHeading">
+<section class="altrContentSec lgImgSec" id="firstSec">
+    <img src="./assets/images/cuf-bg.webp" alt="">
+    <div class="content lg">
+        <h2 class="cardHeading secHeading">
             PAROLES D’ARCHITECTE
         </h2>
-        <p>
+        <p class="linesAnim">
             Cœur fertile interroge. <br>
             Conçu pour et avec son environnement immédiat, <br>
             il laisse deviner son intériorité par la profondeur de champ et la porosité de la végétation.
@@ -110,15 +138,15 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-5">
                 <div class="content">
-                    <h2 class="cardHeading">
+                    <h2 class="cardHeading secHeading">
                         UNE RÉALISATION <br> ENGAGÉE
                     </h2>
                     <p class="normalText">
                         La conception qui privilégie « le juste matériau au bon endroit » s’inscrit dans le cadre du
                         décret tertiaire avec des objectifs, à horizon 2040, de
                         <span>
-                                réduction de la consommation d’énergie de 50%.
-                            </span>
+                            réduction de la consommation d’énergie de 50%.
+                        </span>
                     </p>
                     <p class="normalText">
                         Elle ambitionne aussi d’offrir un confort exceptionnel aux futurs utilisateurs, qualité de
@@ -136,18 +164,18 @@
             <div class="col-lg-6 mx-auto">
                 <div class="imgCol">
                     <figure class="longImg rotated">
-                        <img src="./assets/images/cuf-img-1-rotated.jpg" alt="">
+                        <img src="./assets/images/cuf-img-1-rotated.webp" alt="">
                     </figure>
                     <figure class="longImg" data-scroll data-scroll-speed="0.3">
-                        <img src="./assets/images/cuf-img-1.jpg" alt="">
+                        <img src="./assets/images/cuf-img-1.webp" alt="">
                     </figure>
                     <div class="brandRow">
                         <div class="brandWrapper">
-                            <img src="./assets/images/brand1.png" alt="">
-                            <img src="./assets/images/brand2.png" alt="">
-                            <img src="./assets/images/brand3.png" alt="">
-                            <img src="./assets/images/brand4.png" alt="">
-                            <img src="./assets/images/brand5.png" alt="">
+                            <img src="./assets/images/brand1.webp" alt="">
+                            <img src="./assets/images/brand2.webp" alt="">
+                            <img src="./assets/images/brand3.webp" alt="">
+                            <img src="./assets/images/brand4.webp" alt="">
+                            <img src="./assets/images/brand5.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -166,7 +194,7 @@
         <i class="fas fa-times"></i>
     </button>
     <figure>
-        <img src="./assets/images/modalimg1.jpg" alt="">
+        <img src="./assets/images/modalimg1.webp" alt="">
     </figure>
     <div class="content">
         <p class="normalText">
@@ -220,7 +248,7 @@
 </footer>
 <div class="bottomBtn">
     <button class="themeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+        <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                     d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                     fill="white"/>
@@ -230,7 +258,7 @@
             </span>
     </button>
     <button class="themeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+        <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                     d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                     fill="white"/>
@@ -239,8 +267,8 @@
                 pers<br>pective
             </span>
     </button>
-    <button class="themeBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+    <a href='./info-cles.html' class="themeBtn">
+        <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
             <path
                     d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                     fill="white"/>
@@ -248,9 +276,10 @@
         <span>
                 Infos<br>clés
             </span>
-    </button>
+    </a>
 </div>
 </body>
 <script src="./assets/js/app.js"></script>
+<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>
