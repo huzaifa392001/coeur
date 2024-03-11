@@ -158,17 +158,13 @@ figure {
     margin: auto;
 }
 
-.themeBtnSm i {
+.themeBtnSm span {
     position: absolute;
     z-index: 1;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: -webkit-linear-gradient(#00AAC1, #EAE007, #EF9757);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.5rem;
 }
 
 section {
@@ -369,17 +365,22 @@ header .menuBtn:hover {
     }
 }
 
-header .menuBtn i {
+header .menuBtn span {
     position: absolute;
     z-index: 1;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.5rem;
+}
+
+header .menuBtn span svg {
+    width: 20px;
+    height: 20px;
     background: -webkit-linear-gradient(#00AAC1, #EAE007, #EF9757);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.5rem;
 }
 
 header .menu ul {
@@ -495,6 +496,11 @@ body.active .menu {
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 0 5px BLACK;
+}
+
+.scrollToBottom svg {
+    fill: #fff;
+    height: 30px;
 }
 
 /*Home Banner*/
@@ -872,6 +878,11 @@ section.imgSec {
     font-size: 1.25rem;
 }
 
+.footerBtn svg {
+    width: 20px;
+    fill: #fff;
+}
+
 .footerBtn span {
     font-size: 3.125rem;
     font-weight: 400;
@@ -986,10 +997,6 @@ section.imgSec {
     position: absolute;
     top: 0;
     right: 0;
-}
-
-.sideModal .themeBtnSm svg {
-    opacity: 0;
 }
 
 .contentImg img {
@@ -1173,6 +1180,8 @@ section.imgSec {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 3rem;
+    transform: translateX(50%);
 }
 
 .floorSec {
@@ -1345,7 +1354,7 @@ section.imgSec {
     justify-content: center;
 }
 
-.videoCont .playBtn i {
+.videoCont .playBtn span {
     position: absolute;
     z-index: 1;
     inset: 0;

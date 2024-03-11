@@ -38,15 +38,35 @@ $(window).on("load", function () {
 
 function menuToggle() {
     let body = $('body')
-    let icon = $('.menuBtn i')
+    let icon = $('.menuBtn .btnIcon')
     $('.menuBtn').click(function () {
         body.toggleClass('active')
-        if (icon.hasClass('fas fa-bars')) {
-            icon.removeClass()
-            icon.addClass('fas fa-times')
+        if (icon.hasClass('active')) {
+            icon.removeClass('active')
+            $('.menuBtn .btnIcon').html(null)
+            $('.menuBtn .btnIcon').html('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">\n' +
+                '<path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/>\n' +
+                '<defs>\n' +
+                '<linearGradient id="paint0_linear_4024_680" x1="21.4286" y1="0.285714" x2="11.3793" y2="25.4089" gradientUnits="userSpaceOnUse">\n' +
+                '<stop stop-color="#00AAC1"/>\n' +
+                '<stop offset="0.555514" stop-color="#EAE007"/>\n' +
+                '<stop offset="1" stop-color="#EF9757"/>\n' +
+                '</linearGradient>\n' +
+                '</defs>\n' +
+                '</svg>')
         } else {
-            icon.removeClass()
-            icon.addClass('fas fa-bars')
+            icon.addClass('active')
+            $('.menuBtn .btnIcon').html(null)
+            $('.menuBtn .btnIcon').html('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">\n' +
+                '<path fill-rule="evenodd" clip-rule="evenodd" d="M8.87879 11L0.939453 18.9393L3.06077 21.0606L11.0001 13.1213L18.9395 21.0606L21.0608 18.9393L13.1214 11L21.0608 3.06065L18.9395 0.939331L11.0001 8.87867L3.06077 0.939331L0.939453 3.06065L8.87879 11Z" fill="url(#paint0_linear_4024_1942)"/>\n' +
+                '<defs>\n' +
+                '<linearGradient id="paint0_linear_4024_1942" x1="22.498" y1="-1.21652" x2="7.83819" y2="28.1031" gradientUnits="userSpaceOnUse">\n' +
+                '<stop stop-color="#00AAC1"/>\n' +
+                '<stop offset="0.555514" stop-color="#EAE007"/>\n' +
+                '<stop offset="1" stop-color="#EF9757"/>\n' +
+                '</linearGradient>\n' +
+                '</defs>\n' +
+                '</svg>')
         }
     });
 
@@ -251,19 +271,21 @@ function horizontalSection() {
     let allWrapper = document.querySelectorAll('.sliderSec')
 
     allWrapper.forEach((wrapper) => {
-
+            let width = 0;
             let sections = wrapper.querySelectorAll('.panel')
-            wrapper.style.width = `${sections.length * 100}%`
-
+            sections.forEach((sec) => {
+                width += sec.clientWidth
+            })
+            wrapper.style.width = `${width}px`;
             gsap.to(sections, {
-                xPercent: -100 * (sections.length - 1) - 5,
+                x: -(width / 2),
                 ease: "none",
                 scrollTrigger: {
                     trigger: wrapper,
                     pin: true,
                     start: 'top',
                     scrub: 1,
-                    end: () => "+=" + (wrapper.offsetWidth / 2)
+                    end: () => "+=" + (wrapper.offsetWidth)
                 }
             })
         }
