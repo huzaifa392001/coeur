@@ -259,7 +259,7 @@ function horizontalSection() {
             } else if (window.innerWidth >= 450) {
                 transform = (width - (lastImgWidth / 2))
             } else {
-                transform = width - (window.innerWidth / 2)
+                transform = width - lastImgWidth + 50
             }
             gsap.to(sections, {
                 x: -transform,

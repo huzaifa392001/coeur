@@ -455,6 +455,8 @@
 
     .panel a img {
         box-shadow: 0 0 15px #0003;
+        width: 90vw;
+        height: 50vh;
     }
 
     .panel a {
