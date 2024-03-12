@@ -1,73 +1,15 @@
-$(function () {
-    gsap.registerPlugin(DrawSVGPlugin)
-    menuToggle();
-    allSliders();
-    stackingImages();
-    horizontalSection();
-    secHeading();
-    Fancybox.bind();
-    bgAnim()
-
+$(document).ready(function () {
+    const body = $('body');
+    const icon = $('.menuBtn .btnIcon');
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
+    const isDesktop = window.innerWidth >= 992;
 
-    if (image) {
-        makeImageDraggableAndScrollable(image, container);
-    }
-})
-
-$(window).on("load", function () {
-    window.scrollTo(0, 0);
-    if (window.innerWidth >= 992) {
-        let pageLoc = window.location.href;
-        let pageLocParts = pageLoc.split('/');
-
-        let lastPart = pageLocParts[pageLocParts.length - 1];
-        if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
-            HomeBannerAnim();
-        } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
-            console.log(lastPart)
-            lenisSetup()
-        } else {
-            bannerAnim()
-        }
-    } else {
-        mobileBannerAnim()
-    }
-});
-
-function menuToggle() {
-    let body = $('body')
-    let icon = $('.menuBtn .btnIcon')
     $('.menuBtn').click(function () {
-        body.toggleClass('active')
-        if (icon.hasClass('active')) {
-            icon.removeClass('active')
-            $('.menuBtn .btnIcon').html(null)
-            $('.menuBtn .btnIcon').html('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">\n' +
-                '<path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/>\n' +
-                '<defs>\n' +
-                '<linearGradient id="paint0_linear_4024_680" x1="21.4286" y1="0.285714" x2="11.3793" y2="25.4089" gradientUnits="userSpaceOnUse">\n' +
-                '<stop stop-color="#00AAC1"/>\n' +
-                '<stop offset="0.555514" stop-color="#EAE007"/>\n' +
-                '<stop offset="1" stop-color="#EF9757"/>\n' +
-                '</linearGradient>\n' +
-                '</defs>\n' +
-                '</svg>')
-        } else {
-            icon.addClass('active')
-            $('.menuBtn .btnIcon').html(null)
-            $('.menuBtn .btnIcon').html('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">\n' +
-                '<path fill-rule="evenodd" clip-rule="evenodd" d="M8.87879 11L0.939453 18.9393L3.06077 21.0606L11.0001 13.1213L18.9395 21.0606L21.0608 18.9393L13.1214 11L21.0608 3.06065L18.9395 0.939331L11.0001 8.87867L3.06077 0.939331L0.939453 3.06065L8.87879 11Z" fill="url(#paint0_linear_4024_1942)"/>\n' +
-                '<defs>\n' +
-                '<linearGradient id="paint0_linear_4024_1942" x1="22.498" y1="-1.21652" x2="7.83819" y2="28.1031" gradientUnits="userSpaceOnUse">\n' +
-                '<stop stop-color="#00AAC1"/>\n' +
-                '<stop offset="0.555514" stop-color="#EAE007"/>\n' +
-                '<stop offset="1" stop-color="#EF9757"/>\n' +
-                '</linearGradient>\n' +
-                '</defs>\n' +
-                '</svg>')
-        }
+        body.toggleClass('active');
+        icon.toggleClass('active');
+        const iconHTML = icon.hasClass('active') ? '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.87879 11L0.939453 18.9393L3.06077 21.0606L11.0001 13.1213L18.9395 21.0606L21.0608 18.9393L13.1214 11L21.0608 3.06065L18.9395 0.939331L11.0001 8.87867L3.06077 0.939331L0.939453 3.06065L8.87879 11Z" fill="url(#paint0_linear_4024_1942)"/></svg>';
+        $('.menuBtn .btnIcon').html(iconHTML);
     });
 
     gsap.to(".rotateSvg", {
@@ -75,8 +17,37 @@ function menuToggle() {
         repeat: -1,
         duration: 10,
         ease: "none"
-    })
-}
+    });
+
+    if (image) {
+        makeImageDraggableAndScrollable(image, container);
+    }
+
+    $(window).on("load", function () {
+        window.scrollTo(0, 0);
+
+        if (isDesktop) {
+            const pageLoc = window.location.href;
+            const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
+            if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
+                HomeBannerAnim();
+            } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
+                lenisSetup();
+            } else {
+                bannerAnim();
+            }
+        } else {
+            mobileBannerAnim();
+        }
+    });
+
+    allSliders();
+    stackingImages();
+    horizontalSection();
+    secHeading();
+    Fancybox.bind();
+    bgAnim();
+});
 
 function HomeBannerAnim() {
     let headingElem = document.querySelector('.homeBanner .blob h1')
@@ -271,21 +242,34 @@ function horizontalSection() {
     let allWrapper = document.querySelectorAll('.sliderSec')
 
     allWrapper.forEach((wrapper) => {
-            let width = 0;
+            let width = 0, transform = 0, lastImgWidth = 0;
             let sections = wrapper.querySelectorAll('.panel')
-            sections.forEach((sec) => {
+            let images = wrapper.querySelectorAll('.panel img')
+            images.forEach((sec) => {
                 width += sec.clientWidth
+                lastImgWidth = sec.clientWidth
             })
             wrapper.style.width = `${width}px`;
+            if (window.innerWidth >= 1367) {
+                transform = (width / 2)
+            } else if (window.innerWidth >= 992) {
+                transform = (width / 1.5)
+            } else if (window.innerWidth >= 576) {
+                transform = (width - (lastImgWidth / 1.5))
+            } else if (window.innerWidth >= 450) {
+                transform = (width - (lastImgWidth / 2))
+            } else {
+                transform = width - (window.innerWidth / 2)
+            }
             gsap.to(sections, {
-                x: -(width / 2),
+                x: -transform,
                 ease: "none",
                 scrollTrigger: {
                     trigger: wrapper,
                     pin: true,
                     start: 'top',
                     scrub: 1,
-                    end: () => "+=" + (wrapper.offsetWidth)
+                    end: () => "+=" + width
                 }
             })
         }

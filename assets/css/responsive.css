@@ -21,6 +21,14 @@
     .innerBan.contactBan .content {
         padding: 0 1%;
     }
+
+    .panel {
+        transform: translateX(15%);
+    }
+
+    .panel img {
+        height: 90vh;
+    }
 }
 
 @media (max-width: 1199.98px) {
@@ -137,8 +145,8 @@
     }
 
     .panel a img {
-        width: 80%;
-        height: 80%;
+        /* width: 80%; */
+        /* height: 80%; */
         object-fit: cover;
         border-radius: 20px;
     }
@@ -265,6 +273,11 @@
 
     .simpleContentSec .contentCardHeading {
         margin: 1rem 0 0;
+    }
+
+
+    .panel {
+        transform: translateX(5%);
     }
 }
 
@@ -436,9 +449,12 @@
         font-size: 2rem;
     }
 
+    .panel {
+        transform: translateX(0.7%);
+    }
+
     .panel a img {
-        width: 95%;
-        height: 95%;
+        box-shadow: 0 0 15px #0003;
     }
 
     .panel a {

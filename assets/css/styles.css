@@ -1179,7 +1179,7 @@ section.imgSec {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     gap: 3rem;
     transform: translateX(50%);
 }
