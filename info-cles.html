@@ -11,9 +11,10 @@
     <title>INFOS CLÉS</title>
 </head>
 <body>
+
 <header>
     <div class="menu">
-        <div class="colorWrapper">
+        <div class="colorWrapper" id="colorAnim">
             <div class="color color-1"></div>
             <div class="color color-2"></div>
             <div class="color color-3"></div>
@@ -45,17 +46,8 @@
                     fill="white"/>
         </svg>
         <span class='btnIcon'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/>
-                <defs>
-                    <linearGradient id="paint0_linear_4024_680" x1="21.4286" y1="0.285714" x2="11.3793" y2="25.4089"
-                                    gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#00AAC1"/>
-                        <stop offset="0.555514" stop-color="#EAE007"/>
-                        <stop offset="1" stop-color="#EF9757"/>
-                    </linearGradient>
-                </defs>
-            </svg>
+            <img src="./assets/images/menuIcon.png" alt="">
+            <img src="./assets/images/menuIconActive.png" alt="">
         </span>
     </button>
 </header>
@@ -82,7 +74,7 @@
     </div>
 </section>
 
-<section class="simpleContentSec">
+<section class="simpleContentSec h-auto">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -126,7 +118,7 @@
     </div>
 </section>
 
-<section class="simpleContentSec">
+<section class="simpleContentSec h-auto">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -175,6 +167,121 @@
                         </p>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="simpleContentSec h-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="headingBar">
+                    <h2 class="cardHeading secHeading">
+                        Perspectives & Space planning
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row galleryRow d-none d-md-flex">
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img1.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img2.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img3.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img4.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img5.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img6.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img7.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img8.png" alt="">
+                </figure>
+            </div>
+            <div class="col-md-4">
+                <figure class="galleryImg">
+                    <img src="./assets/images/gallery/img9.png" alt="">
+                </figure>
+            </div>
+        </div>
+        <div class="row sliderRow d-md-none">
+            <div class="col-12">
+                <div class="galleryInnerSlider swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img1.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img2.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img3.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img4.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img5.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img6.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img7.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img8.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="swiper-slide">
+                            <figure class="galleryImg">
+                                <img src="./assets/images/gallery/img9.png" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -924,7 +1031,7 @@
     </div>
 </section>
 
-<section class="simpleContentSec low">
+<section class="simpleContentSec low" id="film">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -1005,9 +1112,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="copyright">
-                    <p class="smallText">
+                    <a href='#' class="smallText">
                         Mentions légales
-                    </p>
+                    </a>
                     <p class="smallText">
                         ©2024
                     </p>
@@ -1019,6 +1126,5 @@
 
 </body>
 <script src="./assets/js/app.js"></script>
-<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>

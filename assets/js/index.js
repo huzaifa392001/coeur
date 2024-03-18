@@ -8,8 +8,6 @@ $(document).ready(function () {
     $('.menuBtn').click(function () {
         body.toggleClass('active');
         icon.toggleClass('active');
-        const iconHTML = icon.hasClass('active') ? '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.87879 11L0.939453 18.9393L3.06077 21.0606L11.0001 13.1213L18.9395 21.0606L21.0608 18.9393L13.1214 11L21.0608 3.06065L18.9395 0.939331L11.0001 8.87867L3.06077 0.939331L0.939453 3.06065L8.87879 11Z" fill="url(#paint0_linear_4024_1942)"/></svg>';
-        $('.menuBtn .btnIcon').html(iconHTML);
     });
 
     gsap.to(".rotateSvg", {
@@ -31,8 +29,6 @@ $(document).ready(function () {
             const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
             if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
                 HomeBannerAnim();
-            } else if (lastPart === "info-cles" || lastPart === "info-cles.html") {
-                lenisSetup();
             } else {
                 bannerAnim();
             }
@@ -45,8 +41,17 @@ $(document).ready(function () {
     stackingImages();
     horizontalSection();
     secHeading();
-    Fancybox.bind();
     bgAnim();
+    document.querySelectorAll('[data-image-modal]').forEach(item => {
+        item.addEventListener('click', () => {
+            openModal(item);
+        });
+    });
+
+    document.querySelector(".close").addEventListener("click", () => {
+        document.getElementById("myModal").style.display = "none";
+    });
+
 });
 
 function HomeBannerAnim() {
@@ -106,33 +111,38 @@ function mobileBannerAnim() {
 }
 
 function bannerAnim() {
-    let innerHeadingElem = document.querySelector('.innerBan .content h1')
-    let bannerImage = document.querySelector('.innerBan .bannerImg')
-    let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
-    gsap.set(innerHeadingElem, {
-        autoAlpha: 1
-    })
-    let tl = gsap.timeline({
-        delay: 1, pause: true, onComplete: () => {
-            lenisSetup();
-        }
-    })
-    tl
-        .to("#myClip path ", {
-            attr: {
-                d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
-            },
-            ease: "none",
-            duration: 2
+    let banner = document.querySelector('.innerBan')
+    if (banner) {
+        let innerHeadingElem = document.querySelector('.innerBan .content h1')
+        let bannerImage = document.querySelector('.innerBan .bannerImg')
+        let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
+        gsap.set(innerHeadingElem, {
+            autoAlpha: 1
         })
-        .to(heading.chars, {
-            translateY: 0,
-            translateZ: 0,
-            autoAlpha: 1,
-            stagger: 0.1,
-            duration: 1.5,
-            ease: "expo.out",
+        let tl = gsap.timeline({
+            delay: 1, pause: true, onComplete: () => {
+                lenisSetup();
+            }
         })
+        tl
+            .to("#myClip path ", {
+                attr: {
+                    d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
+                },
+                ease: "none",
+                duration: 2
+            })
+            .to(heading.chars, {
+                translateY: 0,
+                translateZ: 0,
+                autoAlpha: 1,
+                stagger: 0.1,
+                duration: 1.5,
+                ease: "expo.out",
+            })
+    } else {
+        lenisSetup();
+    }
 }
 
 function lenisSetup() {
@@ -172,14 +182,15 @@ function lenisSetup() {
 }
 
 function allSliders() {
-    var swiper = new Swiper(".gallerySlider", {
-        slidesPerView: 'auto',
-        spaceBetween: 32,
-        centeredSlides: true,
+    var swiper = new Swiper(".galleryInnerSlider", {
+        slidesPerView: '1',
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
         },
+        autoplay: {
+            delay: 1500
+        }
     });
 }
 
@@ -352,4 +363,27 @@ function bgAnim() {
 
     tl.play(); // Play the timeline
 
+}
+
+// Function to open modal
+const openModal = (anchor) => {
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modal-image");
+    const captionText = document.getElementById("caption");
+    const imgSrc = anchor.getAttribute('data-src');
+    const imgCaption = anchor.getAttribute('data-caption');
+
+    modal.style.display = "flex";
+    modal.classList.remove("fadeOut");
+    modalImg.src = imgSrc;
+    captionText.innerHTML = imgCaption;
+}
+
+// Function to close modal
+const closeModal = () => {
+    const modal = document.getElementById("myModal");
+    modal.classList.add("fadeOut");
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 500);
 }

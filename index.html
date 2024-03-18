@@ -39,7 +39,7 @@
 </div>
 <header>
     <div class="menu">
-        <div class="colorWrapper">
+        <div class="colorWrapper" id="colorAnim">
             <div class="color color-1"></div>
             <div class="color color-2"></div>
             <div class="color color-3"></div>
@@ -71,27 +71,18 @@
                     fill="white"/>
         </svg>
         <span class='btnIcon'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/>
-                <defs>
-                    <linearGradient id="paint0_linear_4024_680" x1="21.4286" y1="0.285714" x2="11.3793" y2="25.4089"
-                                    gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#00AAC1"/>
-                        <stop offset="0.555514" stop-color="#EAE007"/>
-                        <stop offset="1" stop-color="#EF9757"/>
-                    </linearGradient>
-                </defs>
-            </svg>
+            <img src="./assets/images/menuIcon.png" alt="">
+            <img src="./assets/images/menuIconActive.png" alt="">
         </span>
     </button>
 </header>
 <div class="wrapper">
 
     <section class="homeBanner p-0">
-        <img src="./assets/images/bannerBg.webp" alt="" class="w-100 h-100 object-fit-cover">
-        <!--        <video autoplay loop muted>-->
-        <!--            <source src="./assets/images/bannerVideo.mp4">-->
-        <!--        </video>-->
+        <!--        <img src="./assets/images/bannerBg.webp" alt="" class="w-100 h-100 object-fit-cover">-->
+        <video autoplay loop muted poster="./assets/images/bannerBg.webp">
+            <source src="./assets/images/bannerVideo.mp4">
+        </video>
         <div class="blob">
             <img src="./assets/images/bannerBlob.webp" alt="">
             <h1 class="mainHeading">
@@ -110,12 +101,11 @@
         <div class="container-lg">
             <div class="contentBox right">
                 <div class="bg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="764" height="645" viewBox="0 0 764 645"
-                         fill="none">
-                        <path
-                                d="M486.086 0C607.392 0 764 69.6318 764 285.586C764 362.276 696.267 645 491.731 645C409.17 645 0 586.624 0 362.276C0 160.439 338.663 0 486.086 0Z"
-                                fill="white"/>
+                    <svg width="764" height="645" viewBox="0 0 764 645" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M486.086 0C607.392 0 764 69.6318 764 285.586C764 362.276 696.267 645 491.731 645C409.17 645 0 586.624 0 362.276C0 160.439 338.663 0 486.086 0Z"
+                              fill="white"/>
                     </svg>
+
                 </div>
                 <div class="content">
                     <h2 class="cardHeading secHeading">Comme <br> un fruit !</h2>
@@ -126,7 +116,7 @@
                         de
                         transparence et de couleurs. Pour un parfait équilibre.
                     </p>
-                    <a href="./comme-un-fruit.html" class="themeBtnAltr">
+                    <a href="./comme-un-fruit.html" class="themeBtnAltr p-0">
                     <span>
                         Partagez la vision <br> de l'architecte
                     </span>
@@ -143,11 +133,9 @@
         <div class="container-lg">
             <div class="contentBox left">
                 <div class="bg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="759" height="639" viewBox="0 0 759 639"
-                         fill="none">
-                        <path
-                                d="M141.975 581.168C38.5381 521.448 -60.6356 384.828 45.9425 200.23C83.7909 134.674 281.077 -73.6549 455.484 27.0394C525.884 67.6845 845.971 319.021 735.25 510.795C635.639 683.326 267.683 653.745 141.975 581.168Z"
-                                fill="white"/>
+                    <svg width="759" height="639" viewBox="0 0 759 639" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M141.975 581.168C38.5381 521.448 -60.6356 384.828 45.9425 200.23C83.7909 134.674 281.077 -73.6549 455.484 27.0394C525.884 67.6845 845.971 319.021 735.25 510.795C635.639 683.326 267.683 653.745 141.975 581.168Z"
+                              fill="white"/>
                     </svg>
                 </div>
                 <div class="content">
@@ -176,11 +164,9 @@
         <div class="container-lg">
             <div class="contentBox middle">
                 <div class="bg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="740" height="733" viewBox="0 0 740 733"
-                         fill="none">
-                        <path
-                                d="M460.199 688.398C349.742 752.17 170.445 770.94 56.6341 573.814C16.2172 503.81 -71.1076 210.128 115.136 102.6C190.313 59.1965 593.652 -102.622 711.886 102.166C818.257 286.405 594.437 610.896 460.199 688.398Z"
-                                fill="white"/>
+                    <svg width="740" height="733" viewBox="0 0 740 733" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M460.199 688.398C349.742 752.17 170.445 770.94 56.6341 573.814C16.2172 503.81 -71.1076 210.128 115.136 102.6C190.313 59.1965 593.652 -102.622 711.886 102.166C818.257 286.405 594.437 610.896 460.199 688.398Z"
+                              fill="white"/>
                     </svg>
                 </div>
                 <div class="content">
@@ -275,7 +261,7 @@
 </div>
 
 <div class="bottomBtn">
-    <button class="themeBtn">
+    <a href="info-cles.html#film" class="themeBtn">
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
@@ -285,7 +271,7 @@
         <span>
                 Film
             </span>
-    </button>
+    </a>
     <button class="themeBtn">
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
@@ -311,6 +297,5 @@
 </div>
 </body>
 <script src="./assets/js/app.js"></script>
-<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>

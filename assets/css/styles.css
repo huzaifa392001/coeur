@@ -112,7 +112,7 @@ figure {
     text-align: center;
     font-size: 2rem;
     color: #000;
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
     position: relative;
     display: flex;
@@ -252,15 +252,16 @@ section {
 /* General Fonts */
 
 .mainHeading {
-    font-size: 9.375rem;
+    font-size: 9rem;
     font-family: 'Milky Walky';
     text-transform: uppercase;
     font-weight: 400;
+    line-height: 0.9;
 }
 
 .mainHeading .word {
     display: block !important;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .mainHeading.nowrap .word {
@@ -369,18 +370,27 @@ header .menuBtn span {
     position: absolute;
     z-index: 1;
     inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
 }
 
-header .menuBtn span svg {
-    width: 20px;
-    height: 20px;
-    background: -webkit-linear-gradient(#00AAC1, #EAE007, #EF9757);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+header .menuBtn .btnIcon img {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+}
+
+header .menuBtn .btnIcon img:first-child {
+    opacity: 1;
+}
+
+header .menuBtn .btnIcon.active img:first-child {
+    opacity: 0;
+}
+
+header .menuBtn .btnIcon.active img:last-child {
+    opacity: 1;
 }
 
 header .menu ul {
@@ -459,8 +469,8 @@ body.active .menu {
 }
 
 .blob img {
-    width: 75%;
-    height: 75%;
+    width: 35%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -508,14 +518,17 @@ body.active .menu {
 .contentBox {
     position: relative;
     max-width: 764px;
+    margin: auto;
 }
 
 .contentBox .bg {
-    animation: rotation 15s linear infinite backwards;
+    animation: rotation 25s linear infinite backwards;
     transform-origin: center center;
 }
 
 .contentBox.right {
+    margin-left: auto;
+    margin: 0;
     margin-left: auto;
 }
 
@@ -525,16 +538,17 @@ body.active .menu {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 66%;
+    width: 55%;
     margin: auto;
 }
 
 .contentBox .content h2 {
     margin: 0 0 10px;
+    line-height: 1;
 }
 
 .contentBox .content p {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .contentBox .contentImg {
@@ -551,8 +565,8 @@ body.active .menu {
 }
 
 .contentBox.middle {
-    max-width: 800px;
-    margin: auto;
+    /* max-width: 800px; */
+    margin-left: 35%;
 }
 
 .contentBox.middle .content {
@@ -1273,6 +1287,10 @@ section.imgSec {
     margin-bottom: 2rem;
 }
 
+.simpleContentSec.h-auto {
+    min-height: auto;
+}
+
 .simpleContentSec ul li::before {
     content: '';
     width: 10px;
@@ -1401,5 +1419,128 @@ footer .logo img {
 .secHeading,
 .linesAnim,
 .linesAnim .line {
+    /* overflow: hidden; */
+}
+
+.bgBlob + * {
+    margin-top: -25%;
+}
+
+.galleryImg {
+    height: 365px;
     overflow: hidden;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.galleryImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.galleryImg:hover img {
+    transform: scale(1.2);
+}
+
+.galleryRow {
+    gap: 1.5rem 0;
+}
+
+
+/* Custom Modal */
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.customModal {
+    display: none;
+    position: fixed;
+    z-index: 11111;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+}
+
+.customModal .customModal.fadeOut {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+.customModal .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.customModal .themeBtn {
+    color: #fff;
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.customModal .close:hover,
+.customModal .close:focus {
+    transform: scale(1.2);
+}
+
+.customModal .customModal-content {
+    position: relative;
+}
+
+.customModal .caption {
+    position: absolute;
+    left: 15px;
+    bottom: 17px;
+    margin: auto;
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    border-radius: 16px;
+    padding: 0.5rem 1rem;
+    z-index: 1111;
+    font-size: 1rem;
+    font-family: 'Genos';
+    font-weight: 600;
+}
+
+.customModal .customModal-content img {
+    width: 100%;
+    height: auto;
 }

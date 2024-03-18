@@ -19,9 +19,10 @@
         </clipPath>
     </defs>
 </svg>
+
 <header>
     <div class="menu">
-        <div class="colorWrapper">
+        <div class="colorWrapper" id="colorAnim">
             <div class="color color-1"></div>
             <div class="color color-2"></div>
             <div class="color color-3"></div>
@@ -53,17 +54,8 @@
                     fill="white"/>
         </svg>
         <span class='btnIcon'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/>
-                <defs>
-                    <linearGradient id="paint0_linear_4024_680" x1="21.4286" y1="0.285714" x2="11.3793" y2="25.4089"
-                                    gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#00AAC1"/>
-                        <stop offset="0.555514" stop-color="#EAE007"/>
-                        <stop offset="1" stop-color="#EF9757"/>
-                    </linearGradient>
-                </defs>
-            </svg>
+            <img src="./assets/images/menuIcon.png" alt="">
+            <img src="./assets/images/menuIconActive.png" alt="">
         </span>
     </button>
 </header>
@@ -489,9 +481,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="copyright">
-                    <p class="smallText">
+                    <a href='#' class="smallText">
                         Mentions légales
-                    </p>
+                    </a>
                     <p class="smallText">
                         ©2024
                     </p>
@@ -501,7 +493,7 @@
     </div>
 </footer>
 <div class="bottomBtn">
-    <button class="themeBtn">
+    <a href="info-cles.html#film" class="themeBtn">
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
@@ -511,7 +503,7 @@
         <span>
                 Film
             </span>
-    </button>
+    </a>
     <button class="themeBtn">
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
@@ -538,7 +530,6 @@
 
 </body>
 <script src="./assets/js/app.js"></script>
-<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>
 

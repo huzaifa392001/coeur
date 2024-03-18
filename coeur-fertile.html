@@ -11,9 +11,10 @@
     <title>Cœur Fertile</title>
 </head>
 <body>
+
 <header>
     <div class="menu">
-        <div class="colorWrapper">
+        <div class="colorWrapper" id="colorAnim">
             <div class="color color-1"></div>
             <div class="color color-2"></div>
             <div class="color color-3"></div>
@@ -45,17 +46,8 @@
                     fill="white"/>
         </svg>
         <span class='btnIcon'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M0 2H20M0 10H20M0 18H20" stroke="url(#paint0_linear_4024_680)" stroke-width="3"/>
-                <defs>
-                    <linearGradient id="paint0_linear_4024_680" x1="21.4286" y1="0.285714" x2="11.3793" y2="25.4089"
-                                    gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#00AAC1"/>
-                        <stop offset="0.555514" stop-color="#EAE007"/>
-                        <stop offset="1" stop-color="#EF9757"/>
-                    </linearGradient>
-                </defs>
-            </svg>
+            <img src="./assets/images/menuIcon.png" alt="">
+            <img src="./assets/images/menuIconActive.png" alt="">
         </span>
     </button>
 </header>
@@ -233,27 +225,24 @@
 </section>
 <section class="sliderSec">
     <div class=panel>
-        <a
-                href="./assets/images/cf-sliderimg1.webp"
-                data-fancybox=""
-                class="sliderImg"
-                data-caption="L’îlot de fraîcheur s’apprécie à tous les étages, jusqu’au rooftop."
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-caption="L’îlot de fraîcheur s’apprécie à tous les étages, jusqu’au rooftop."
+           data-src="./assets/images/cf-sliderimg1.webp"
         >
             <img src="./assets/images/cf-sliderimg1.webp" alt="">
         </a>
-        <a
-                href="./assets/images/cf-sliderimg2.webp"
-                data-fancybox=""
-                class="sliderImg"
-                data-caption="En rooftop, une glassbox réversible accueille une cafétéria, des salles de réunion ou un espace de réception."
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-caption="En rooftop, une glassbox réversible accueille une cafétéria, des salles de réunion ou un espace de réception."
+           data-src="./assets/images/cf-sliderimg2.webp"
         >
             <img src="./assets/images/cf-sliderimg2.webp" alt="">
         </a>
-        <a
-                href="./assets/images/cf-sliderimg3.webp"
-                data-fancybox=""
-                class="sliderImg"
-                data-caption="Au dernier étage, 150 m2 de bureaux profitent de plein pied du rooftop."
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-caption="Au dernier étage, 150 m2 de bureaux profitent de plein pied du rooftop."
+           data-src="./assets/images/cf-sliderimg3.webp"
         >
             <img src="./assets/images/cf-sliderimg3.webp" alt="">
         </a>
@@ -364,19 +353,17 @@
 </section>
 <section class="sliderSec">
     <div class="panel">
-        <a
-                href="./assets/images/cf-sliderimg4.webp"
-                data-fancybox=""
-                class="sliderImg"
-                data-caption="Lectus amet dignissim tellus mauris auctor. A netus semper et amet sed id tellus orci. Egestas duis."
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-caption="Lectus amet dignissim tellus mauris auctor. A netus semper et amet sed id tellus orci. Egestas duis."
+           data-src="./assets/images/cf-sliderimg4.webp"
         >
             <img src="./assets/images/cf-sliderimg4.webp" alt="">
         </a>
-        <a
-                href="./assets/images/cf-sliderimg5.webp"
-                data-fancybox=""
-                class="sliderImg"
-                data-caption="Turpis id enim tellus mauris est integer viverra amet. Eu etiam nunc aliquam viverra sed velit. Id sed risus."
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-caption="Turpis id enim tellus mauris est integer viverra amet. Eu etiam nunc aliquam viverra sed velit. Id sed risus."
+           data-src="./assets/images/cf-sliderimg5.webp"
         >
             <img src="./assets/images/cf-sliderimg5.webp" alt="">
         </a>
@@ -724,17 +711,17 @@
 </section>
 <section class="sliderSec">
     <div class="panel">
-        <a
-                href="./assets/images/cf-sliderimg6-1.webp"
-                data-fancybox=""
-                class="sliderImg"
+
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-src="./assets/images/cf-sliderimg6-1.webp"
         >
             <img src="./assets/images/cf-sliderimg6.webp" alt="">
         </a>
-        <a
-                href="./assets/images/cf-sliderimg7-1.webp"
-                data-fancybox=""
-                class="sliderImg"
+
+        <a href="#" class="image-link sliderImg"
+           data-image-modal
+           data-src="./assets/images/cf-sliderimg7-1.webp"
         >
             <img src="./assets/images/cf-sliderimg7.webp" alt="">
         </a>
@@ -858,7 +845,10 @@
 <footer class="colored">
     <div class="px-4 mb-4 d-flex justify-content-between align-items-center">
         <a href="./comme-un-fruit.html" class="footerBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M134.1 296H436c6.6 0 12-5.4 12-12v-56c0-6.6-5.4-12-12-12H134.1v-46.1c0-21.4-25.9-32.1-41-17L7 239c-9.4 9.4-9.4 24.6 0 33.9l86.1 86.1c15.1 15.1 41 4.4 41-17V296z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path d="M134.1 296H436c6.6 0 12-5.4 12-12v-56c0-6.6-5.4-12-12-12H134.1v-46.1c0-21.4-25.9-32.1-41-17L7 239c-9.4 9.4-9.4 24.6 0 33.9l86.1 86.1c15.1 15.1 41 4.4 41-17V296z"/>
+            </svg>
             <span>
                 Le concept
             </span>
@@ -867,7 +857,10 @@
             <span>
                 La localisation
             </span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M313.9 216H12c-6.6 0-12 5.4-12 12v56c0 6.6 5.4 12 12 12h301.9v46.1c0 21.4 25.9 32.1 41 17l86.1-86.1c9.4-9.4 9.4-24.6 0-33.9l-86.1-86.1c-15.1-15.1-41-4.4-41 17V216z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path d="M313.9 216H12c-6.6 0-12 5.4-12 12v56c0 6.6 5.4 12 12 12h301.9v46.1c0 21.4 25.9 32.1 41 17l86.1-86.1c9.4-9.4 9.4-24.6 0-33.9l-86.1-86.1c-15.1-15.1-41-4.4-41 17V216z"/>
+            </svg>
         </a>
     </div>
     <div class="container-fluid">
@@ -882,9 +875,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="copyright">
-                    <p class="smallText">
+                    <a href='#' class="smallText">
                         Mentions légales
-                    </p>
+                    </a>
                     <p class="smallText">
                         ©2024
                     </p>
@@ -894,7 +887,7 @@
     </div>
 </footer>
 <div class="bottomBtn">
-    <button class="themeBtn">
+    <a href="info-cles.html#film" class="themeBtn">
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
@@ -904,7 +897,7 @@
         <span>
                 Film
             </span>
-    </button>
+    </a>
     <button class="themeBtn">
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
@@ -929,8 +922,37 @@
     </a>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="customModal" data-lenis-prevent>
+    <div class="modal-content">
+        <button class="themeBtn close">
+            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
+                 fill="none">
+                <path
+                        d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                        fill="white"/>
+            </svg>
+            <span>
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M8.87879 11.0001L0.939453 18.9395L3.06077 21.0608L11.0001 13.1214L18.9395 21.0608L21.0608 18.9395L13.1214 11.0001L21.0608 3.06077L18.9395 0.939453L11.0001 8.87879L3.06077 0.939453L0.939453 3.06077L8.87879 11.0001Z"
+                      fill="url(#paint0_linear_4166_1083)"/>
+                <defs>
+                    <linearGradient id="paint0_linear_4166_1083" x1="22.498" y1="-1.2164" x2="7.83819" y2="28.1032"
+                                    gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#00AAC1"/>
+                        <stop offset="0.555514" stop-color="#EAE007"/>
+                        <stop offset="1" stop-color="#EF9757"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            </span>
+        </button>
+        <img id="modal-image" src="" alt="Modal Image">
+        <div id="caption" class="caption"></div>
+    </div>
+</div>
 </body>
 <script src="./assets/js/app.js"></script>
-<script src="./assets/js/DrawSVGPlugin.min.js"></script>
 <script src="./assets/js/index.js"></script>
 </html>
