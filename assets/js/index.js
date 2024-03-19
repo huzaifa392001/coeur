@@ -22,12 +22,11 @@ $(document).ready(function () {
     }
 
     $(window).on("load", function () {
-        window.scrollTo(0, 0);
 
         if (isDesktop) {
             const pageLoc = window.location.href;
             const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
-            if (lastPart === "index.html" || lastPart === "" || lastPart === "index") {
+            if (lastPart === "index.html" || lastPart === "index" || lastPart === "") {
                 HomeBannerAnim();
             } else {
                 bannerAnim();
@@ -42,20 +41,22 @@ $(document).ready(function () {
     horizontalSection();
     secHeading();
     bgAnim();
+    animateSVGCircles();
+    handleIntroVideo()
     document.querySelectorAll('[data-image-modal]').forEach(item => {
         item.addEventListener('click', () => {
             openModal(item);
         });
     });
 
-    document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".close")?.addEventListener("click", () => {
         document.getElementById("myModal").style.display = "none";
     });
 
 });
 
 function HomeBannerAnim() {
-    let headingElem = document.querySelector('.homeBanner .blob h1')
+    let headingElem = document.querySelectorAll('.homeBanner .blob .animate')
     let heading = new SplitType(headingElem, {types: 'words, chars'})
 
     let tl = gsap.timeline({delay: 1, pause: true})
@@ -65,29 +66,47 @@ function HomeBannerAnim() {
             translateZ: 0,
             autoAlpha: 1,
             stagger: 0.1,
-            duration: 1.5,
+            duration: 1,
             ease: "expo.out",
         })
+        .to('.animate ~ button', {
+            autoAlpha: 1,
+            ease: "expo.out",
+        }, "-=0.9")
 }
 
 function mobileBannerAnim() {
-    let headingElem = document.querySelector('.homeBanner .blob h1')
+    let headingElem = document.querySelectorAll('.homeBanner .blob .animate')
     let innerHeadingElem = document.querySelector('.innerBan .content h1')
-    let heading = new SplitType(headingElem ? headingElem : innerHeadingElem, {types: 'words, chars'})
-    gsap.set(innerHeadingElem, {
-        autoAlpha: 1
-    })
+    if (headingElem) {
+        headingElem.forEach((text) => {
+            let heading = new SplitType(text, {types: 'words, chars'})
 
-    let tl = gsap.timeline({delay: 1})
-    tl
-        .to(heading.chars, {
-            translateY: 0,
-            translateZ: 0,
-            autoAlpha: 1,
-            stagger: 0.1,
-            duration: 1.5,
-            ease: "expo.out",
+            let tl = gsap.timeline({delay: 1})
+            tl
+                .to(heading.chars, {
+                    translateY: 0,
+                    translateZ: 0,
+                    autoAlpha: 1,
+                    stagger: 0.1,
+                    duration: 1.5,
+                    ease: "expo.out",
+                })
         })
+    } else {
+        let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
+
+        let tl = gsap.timeline({delay: 1})
+        tl
+            .to(heading.chars, {
+                translateY: 0,
+                translateZ: 0,
+                autoAlpha: 1,
+                stagger: 0.1,
+                duration: 1.5,
+                ease: "expo.out",
+            })
+    }
 
     $('.modalPopup').on('click', function () {
         var modalTarget = $(this).data('modal-target');
@@ -152,6 +171,11 @@ function lenisSetup() {
         smooth: true,
         mouseMultiplier: 1,
     });
+    const hash = window.location.hash;
+    console.log(hash)
+    if (hash && document.querySelector(hash)) {
+        locomotiveScroll.scrollTo(hash)
+    }
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -362,7 +386,41 @@ function bgAnim() {
     });
 
     tl.play(); // Play the timeline
+}
 
+function animateSVGCircles() {
+    // Define the colors
+    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
+
+    // Select all '.homeBanner .blob svg' within the document
+    const svgElements = document.querySelectorAll('.homeBanner .blob svg');
+
+    svgElements.forEach(svg => {
+        // Select circles within the current SVG
+        const circles = svg.querySelectorAll('circle');
+
+        // Function to get the next color in the array
+        function getNextColor(index) {
+            return colors[(index + 1) % colors.length];
+        }
+
+        // GSAP timeline setup
+        const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
+
+        circles.forEach((circle, i) => {
+            tl.to(circle, {
+                // Change the fill color using the getNextColor function
+                attr: {fill: getNextColor(i)},
+                duration: 5,
+                rotation: '+=360',
+                scale: 1.5,
+                transformOrigin: '50% 50%', // Ensure the circle scales and rotates around its center
+                ease: "none"
+            }, "-=4.8"); // Overlap the timing of animations slightly for a smooth transition
+        });
+
+        tl.play(); // Play the timeline
+    });
 }
 
 // Function to open modal
@@ -386,4 +444,50 @@ const closeModal = () => {
     setTimeout(() => {
         modal.style.display = "none";
     }, 500);
+}
+
+function handleIntroVideo() {
+    let introVideoContainer = document.querySelector("#introVideo");
+    let hasVisited = localStorage.getItem('hasVisited');
+
+    if (hasVisited) {
+        // User has already visited, so hide the intro section
+        gsap.to(introVideoContainer, {
+            autoAlpha: 0,
+            duration: 0 // Hide it immediately
+        });
+    } else {
+        // It's the user's first visit
+
+        // Store in localStorage that the user has now visited
+        localStorage.setItem('hasVisited', true);
+
+        let button = document.querySelector('#playBtn');
+        let skipBtn = document.querySelector('#skipBtn');
+        let video = document.querySelector('#introVideo video');
+        let container = document.querySelector("#introVideo .blob");
+
+        button?.addEventListener('click', function () {
+            video?.play();
+            gsap.to(container, {
+                autoAlpha: 0,
+                duration: 0.5 // Fade out the button container
+            });
+        });
+
+        skipBtn?.addEventListener('click', function () {
+            video.pause();
+            gsap.to(introVideoContainer, {
+                autoAlpha: 0,
+                duration: 0.5 // Fade out the video container
+            });
+        });
+
+        video?.addEventListener("ended", function () {
+            gsap.to(introVideoContainer, {
+                autoAlpha: 0,
+                duration: 0.5 // Fade out the video container
+            });
+        });
+    }
 }

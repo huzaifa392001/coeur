@@ -189,8 +189,6 @@ section {
     position: absolute;
     height: 100%;
     width: 100%;
-    transform-origin: center center;
-    overflow: clip;
     user-select: none;
     pointer-events: none;
 }
@@ -318,6 +316,7 @@ section {
     font-family: 'Genos';
     font-weight: 500;
     margin: 0;
+    color: #fff;
 }
 
 /* General Fonts */
@@ -412,23 +411,6 @@ header .menu ul li a {
     user-select: none;
 }
 
-/*header .menu ul li a::before {*/
-/*    position: absolute;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*    height: 3px;*/
-/*    background: #fff;*/
-/*    width: 100%;*/
-/*    content: '';*/
-/*    transform: scaleX(0);*/
-/*    transform-origin: left;*/
-/*    transition: all 0.3s ease-in-out;*/
-/*}*/
-
-/*header .menu ul li a:hover::before {*/
-/*    transform: scaleX(1);*/
-/*}*/
-
 body.active .menu {
     opacity: 1;
     visibility: visible;
@@ -451,12 +433,23 @@ body.active .menu {
     object-fit: cover;
 }
 
-.blob {
+.homeBanner .blob {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.homeBanner .blob > svg {
+    max-width: 558px;
+    max-height: 472px;
+    height: 100%;
+    width: 100%;
+    animation: rotation 25s linear infinite backwards;
+    rotation 25s linear infinite
+    animation-fill-mode: backwards;
 }
 
 @keyframes rotationBig {
@@ -468,16 +461,19 @@ body.active .menu {
     }
 }
 
-.blob img {
-    width: 35%;
+.homeBanner .blob img {
+    width: 30%;
     height: 100%;
     object-fit: contain;
 }
 
-.blob h1 {
+.homeBanner .blob h1 {
     color: #Fff;
     position: absolute;
     text-align: center;
+    font-size: 5.5rem;
+    font-weight: 700;
+    z-index: 11;
 }
 
 .bottomBtn {
@@ -504,7 +500,7 @@ body.active .menu {
     font-family: 'Milky Walky';
     font-size: 1.375rem;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
     text-shadow: 0 0 5px BLACK;
 }
 
@@ -549,6 +545,8 @@ body.active .menu {
 
 .contentBox .content p {
     margin-bottom: 30px;
+    line-height: 1;
+    color: #000;
 }
 
 .contentBox .contentImg {
@@ -571,6 +569,7 @@ body.active .menu {
 
 .contentBox.middle .content {
     width: 65%;
+    margin-left: 18%;
 }
 
 .contentBox.middle .content .themeBtnAltr {
@@ -1543,4 +1542,28 @@ footer .logo img {
 .customModal .customModal-content img {
     width: 100%;
     height: auto;
+}
+
+#introVideo {
+    position: fixed;
+    inset: 0;
+    z-index: 111111;
+}
+
+.homeBanner .blob .themeBtn {
+    margin-top: -8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+}
+
+#skipBtn {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    color: #fff;
+    font-family: 'Milky Walky';
+    background: none;
+    border: none;
+    outline: none;
 }

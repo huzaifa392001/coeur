@@ -10,6 +10,11 @@
         height: 400px;
     }
 
+    .homeBanner .blob svg {
+        max-width: 480px;
+        max-height: 380px;
+    }
+
     .contentCard {
         padding: 1rem;
     }
@@ -98,7 +103,17 @@
     }
 
     .contentBox .bg svg {
-        width: 100%;
+        width: 90%;
+    }
+
+    .contactSec .contentBox .bg svg {
+        width: 75%;
+    }
+
+    .contactSec .contentBox .bg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .contentBox .contentImg {
@@ -180,7 +195,7 @@
         position: unset;
     }
 
-    .contentBox .bg {
+    .contentBox .bg, .contactSec .contentBox .bg {
         display: none;
     }
 
@@ -520,6 +535,11 @@
     .innerBan.contactBan .content {
         top: 25%;
         transform: translateY(-25%);
+    }
+
+    .homeBanner .blob svg {
+        max-width: 95%;
+        max-height: 50%;
     }
 }
 
