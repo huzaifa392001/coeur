@@ -121,6 +121,7 @@ figure {
     font-family: 'Milky Walky';
     font-weight: 400;
     text-transform: uppercase;
+    line-height: 1;
 }
 
 .themeBtnAltr::before,
@@ -539,8 +540,8 @@ body.active .menu {
 }
 
 .contentBox .content h2 {
-    margin: 0 0 10px;
     line-height: 1;
+    margin: 0 0 10px;
 }
 
 .contentBox .content p {
@@ -552,7 +553,7 @@ body.active .menu {
 .contentBox .contentImg {
     position: absolute;
     bottom: -120px;
-    left: -180px;
+    left: -200px;
 }
 
 .contentBox.left .contentImg {
@@ -569,7 +570,7 @@ body.active .menu {
 
 .contentBox.middle .content {
     width: 65%;
-    margin-left: 18%;
+    margin-left: 22%;
 }
 
 .contentBox.middle .content .themeBtnAltr {
@@ -670,6 +671,7 @@ footer .copyright {
 
 .innerBan {
     padding: 0;
+    overflow: hidden;
 }
 
 .bannerImgContainer {
@@ -746,6 +748,7 @@ footer .copyright {
     width: 90%;
     height: 90%;
     object-fit: contain;
+    animation: rotation 15s linear infinite forwards;
 }
 
 .altrContentSec .content .contentImg {
@@ -1311,6 +1314,7 @@ section.imgSec {
 
 .infoclesTable .smallText {
     font-size: 1.25rem;
+    color: #000;
 }
 
 .infoclesTable h3 {
@@ -1430,6 +1434,8 @@ footer .logo img {
     overflow: hidden;
     width: 100%;
     border-radius: 20px;
+    display: block;
+    cursor: pointer;
 }
 
 .galleryImg img {
@@ -1503,6 +1509,11 @@ footer .logo img {
     justify-content: center;
     width: fit-content;
     margin: auto;
+    height: 90%;
+}
+
+.customModal .modal-content img {
+    height: 100%;
 }
 
 .customModal .themeBtn {
@@ -1559,8 +1570,8 @@ footer .logo img {
 
 #skipBtn {
     position: absolute;
-    bottom: 1rem;
-    right: 2rem;
+    bottom: 4rem;
+    right: 4rem;
     color: #fff;
     font-family: 'Milky Walky';
     background: none;

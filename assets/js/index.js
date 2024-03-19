@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    window.scrollTo(0, 0)
     const body = $('body');
     const icon = $('.menuBtn .btnIcon');
     const image = document.getElementById('draggableImage');
@@ -43,6 +44,7 @@ $(document).ready(function () {
     bgAnim();
     animateSVGCircles();
     handleIntroVideo()
+    animateInfoClesBannerColors()
     document.querySelectorAll('[data-image-modal]').forEach(item => {
         item.addEventListener('click', () => {
             openModal(item);
@@ -393,8 +395,8 @@ function animateSVGCircles() {
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
     // Select all '.homeBanner .blob svg' within the document
-    const svgElements = document.querySelectorAll('.homeBanner .blob svg');
-
+    let svgElements = document.querySelectorAll([".homeBanner .blob > svg", ".bgBlob > svg"]);
+    console.log(svgElements)
     svgElements.forEach(svg => {
         // Select circles within the current SVG
         const circles = svg.querySelectorAll('circle');
@@ -418,7 +420,6 @@ function animateSVGCircles() {
                 ease: "none"
             }, "-=4.8"); // Overlap the timing of animations slightly for a smooth transition
         });
-
         tl.play(); // Play the timeline
     });
 }
@@ -460,7 +461,6 @@ function handleIntroVideo() {
         // It's the user's first visit
 
         // Store in localStorage that the user has now visited
-        localStorage.setItem('hasVisited', true);
 
         let button = document.querySelector('#playBtn');
         let skipBtn = document.querySelector('#skipBtn');
@@ -468,6 +468,7 @@ function handleIntroVideo() {
         let container = document.querySelector("#introVideo .blob");
 
         button?.addEventListener('click', function () {
+            localStorage.setItem('hasVisited', true);
             video?.play();
             gsap.to(container, {
                 autoAlpha: 0,
@@ -491,3 +492,71 @@ function handleIntroVideo() {
         });
     }
 }
+
+function infoClesBannerAnim() {
+    let svg = document.querySelector('.infoClesBanner')
+    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
+
+    // Select circles within the current SVG
+    const circles = svg.querySelectorAll('circle');
+
+    // Function to get the next color in the array
+    function getNextColor(index) {
+        return colors[(index + 1) % colors.length];
+    }
+
+    // GSAP timeline setup
+    const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
+
+    circles.forEach((circle, i) => {
+        tl.to(circle, {
+            // Change the fill color using the getNextColor function
+            attr: {fill: getNextColor(i)},
+            duration: 5,
+            rotation: '+=360',
+            scale: 1.5,
+            transformOrigin: '50% 50%', // Ensure the circle scales and rotates around its center
+            ease: "none"
+        }, "-=4.8"); // Overlap the timing of animations slightly for a smooth transition
+    });
+    tl.play(); // Play the timeline
+}
+
+function animateInfoClesBannerColors() {
+    // Define the colors
+    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
+
+    // Select all '.color' divs within '.infoClesBanner' within the document
+    let colorDivs = document.querySelectorAll(".infoClesBanner .color");
+    console.log(colorDivs);
+
+    // Process each .color div individually
+    colorDivs.forEach((div, index) => {
+        // GSAP timeline for current div with infinite loop and yoyo effect
+        const tl = gsap.timeline({repeat: -1, yoyo: true});
+
+        // Starting color index offset by div index to ensure different colors
+        let colorIndex = index;
+
+        // Setup animation for the current div
+        for (let i = 0; i < colors.length; i++) {
+            tl.to(div, {
+                // Change the background color - get the next color in the array for each div
+                backgroundColor: colors[colorIndex % colors.length],
+                duration: 5,
+                scale: 1.05,
+                transformOrigin: '50% 50%',
+                ease: "none"
+            }, '+=0'); // You can adjust this to manage the timing of color changes
+
+            // Move to the next color
+            colorIndex++;
+        }
+
+        // Start the timeline animation
+        tl.play(); // Play the timeline
+    });
+}
+
+
+
