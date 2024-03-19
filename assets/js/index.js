@@ -78,25 +78,11 @@ function HomeBannerAnim() {
 }
 
 function mobileBannerAnim() {
-    let headingElem = document.querySelectorAll('.homeBanner .blob .animate')
-    let innerHeadingElem = document.querySelector('.innerBan .content h1')
-    if (headingElem) {
-        headingElem.forEach((text) => {
-            let heading = new SplitType(text, {types: 'words, chars'})
-
-            let tl = gsap.timeline({delay: 1})
-            tl
-                .to(heading.chars, {
-                    translateY: 0,
-                    translateZ: 0,
-                    autoAlpha: 1,
-                    stagger: 0.1,
-                    duration: 1.5,
-                    ease: "expo.out",
-                })
-        })
-    } else {
-        let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
+    let headingElem = document.querySelectorAll(['.homeBanner .blob .animate', '.innerBan .content h1'])
+    console.log(headingElem)
+    headingElem.forEach((text) => {
+        gsap.set(text, {autoAlpha: 1})
+        let heading = new SplitType(text, {types: 'words, chars'})
 
         let tl = gsap.timeline({delay: 1})
         tl
@@ -108,7 +94,7 @@ function mobileBannerAnim() {
                 duration: 1.5,
                 ease: "expo.out",
             })
-    }
+    })
 
     $('.modalPopup').on('click', function () {
         var modalTarget = $(this).data('modal-target');
@@ -396,7 +382,6 @@ function animateSVGCircles() {
 
     // Select all '.homeBanner .blob svg' within the document
     let svgElements = document.querySelectorAll([".homeBanner .blob > svg", ".bgBlob > svg"]);
-    console.log(svgElements)
     svgElements.forEach(svg => {
         // Select circles within the current SVG
         const circles = svg.querySelectorAll('circle');
@@ -435,7 +420,11 @@ const openModal = (anchor) => {
     modal.style.display = "flex";
     modal.classList.remove("fadeOut");
     modalImg.src = imgSrc;
-    captionText.innerHTML = imgCaption;
+    if (imgCaption) {
+        captionText.innerHTML = imgCaption;
+    } else {
+        captionText.style.display = "none"
+    }
 }
 
 // Function to close modal
@@ -493,43 +482,12 @@ function handleIntroVideo() {
     }
 }
 
-function infoClesBannerAnim() {
-    let svg = document.querySelector('.infoClesBanner')
-    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
-
-    // Select circles within the current SVG
-    const circles = svg.querySelectorAll('circle');
-
-    // Function to get the next color in the array
-    function getNextColor(index) {
-        return colors[(index + 1) % colors.length];
-    }
-
-    // GSAP timeline setup
-    const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
-
-    circles.forEach((circle, i) => {
-        tl.to(circle, {
-            // Change the fill color using the getNextColor function
-            attr: {fill: getNextColor(i)},
-            duration: 5,
-            rotation: '+=360',
-            scale: 1.5,
-            transformOrigin: '50% 50%', // Ensure the circle scales and rotates around its center
-            ease: "none"
-        }, "-=4.8"); // Overlap the timing of animations slightly for a smooth transition
-    });
-    tl.play(); // Play the timeline
-}
-
 function animateInfoClesBannerColors() {
     // Define the colors
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
     // Select all '.color' divs within '.infoClesBanner' within the document
     let colorDivs = document.querySelectorAll(".infoClesBanner .color");
-    console.log(colorDivs);
-
     // Process each .color div individually
     colorDivs.forEach((div, index) => {
         // GSAP timeline for current div with infinite loop and yoyo effect

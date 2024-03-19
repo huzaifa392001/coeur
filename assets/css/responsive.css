@@ -185,6 +185,18 @@
         font-size: 14px;
     }
 
+    .infoClesBanner {
+        overflow: hidden;
+    }
+
+    .customModal .modal-content img {
+        max-width: 100%;
+    }
+
+    .customModal .modal-content {
+        height: fit-content;
+    }
+
     .mainHeading {
         font-size: 7rem;
     }
@@ -302,7 +314,7 @@
     }
 
     .homeBanner .blob img {
-        width: 60%;
+        width: 90%;
     }
 
     .contentBox .contentImg img {
