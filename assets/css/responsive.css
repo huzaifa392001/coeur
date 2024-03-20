@@ -103,11 +103,11 @@
     }
 
     .contentBox .bg svg {
-        width: 90%;
+        width: 100%;
+        height: 100%;
     }
 
     .contactSec .contentBox .bg svg {
-        width: 75%;
     }
 
     .contactSec .contentBox .bg {
@@ -195,6 +195,16 @@
 
     .customModal .modal-content {
         height: fit-content;
+        width: 90%;
+    }
+
+    .customModal .caption {
+        left: 50%;
+        text-align: center;
+        line-height: 1;
+        width: 90%;
+        transform: translateX(-50%);
+        bottom: 5px;
     }
 
     .mainHeading {
@@ -208,30 +218,30 @@
     }
 
     .contentBox .bg, .contactSec .contentBox .bg {
-        display: none;
     }
 
     .contentBox .content {
-        position: unset;
+        /* position: unset; */
         width: 100% !important;
         margin: 0 !important;
+        padding: 0 1rem 0;
+        /* justify-content: end; */
+        top: 60%;
+        transform: translateY(-60%);
     }
 
     .contentBox .content h2 {
-        color: #fff;
     }
 
     .contentBox .content p {
-        color: #fff;
     }
 
     .themeBtnAltr {
-        color: #fff;
+        /* color: #fff; */
         margin-left: 0;
     }
 
     .themeBtnAltr::before, .themeBtnAltr::after {
-        background: #fff;
     }
 
     .contentBox .contentImg {
@@ -243,15 +253,12 @@
     }
 
     .contentBox .content h6 {
-        color: #fff;
     }
 
     .contentBox .content h6 a {
-        color: #fff;
     }
 
     .contentBox .content h6 .links a + a::before {
-        background: #fff;
     }
 
     footer {
@@ -552,6 +559,10 @@
     .homeBanner .blob svg {
         max-width: 95%;
         max-height: 50%;
+    }
+
+    .scrollToBottom {
+        display: none;
     }
 }
 

@@ -79,7 +79,6 @@ function HomeBannerAnim() {
 
 function mobileBannerAnim() {
     let headingElem = document.querySelectorAll(['.homeBanner .blob .animate', '.innerBan .content h1'])
-    console.log(headingElem)
     headingElem.forEach((text) => {
         gsap.set(text, {autoAlpha: 1})
         let heading = new SplitType(text, {types: 'words, chars'})
@@ -201,7 +200,7 @@ function allSliders() {
             clickable: true,
         },
         autoplay: {
-            delay: 1500
+            delay: 2500
         }
     });
 }
@@ -423,6 +422,7 @@ const openModal = (anchor) => {
     if (imgCaption) {
         captionText.innerHTML = imgCaption;
     } else {
+        console.log(imgCaption)
         captionText.style.display = "none"
     }
 }

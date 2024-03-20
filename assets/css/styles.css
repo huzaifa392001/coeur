@@ -751,6 +751,10 @@ footer .copyright {
     animation: rotation 15s linear infinite forwards;
 }
 
+.bgBlob svg {
+    width: 75%;
+    height: 75%;
+}
 .altrContentSec .content .contentImg {
     border-radius: 20px;
     overflow: hidden;
@@ -1409,7 +1413,7 @@ section.imgSec {
     padding: 4rem 0 1rem;
 }
 
-.infoClesFooter p {
+.infoClesFooter p, .infoClesFooter a {
     color: #000;
     text-shadow: none !important;
 }
@@ -1549,6 +1553,7 @@ footer .logo img {
     font-size: 1rem;
     font-family: 'Genos';
     font-weight: 600;
+    box-shadow: 0 0 15px #000;
 }
 
 .customModal .customModal-content img {
