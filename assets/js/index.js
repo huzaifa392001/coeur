@@ -1,42 +1,31 @@
 $(document).ready(function () {
     window.scrollTo(0, 0)
-    const body = $('body');
-    const icon = $('.menuBtn .btnIcon');
-    const image = document.getElementById('draggableImage');
-    const container = document.querySelector('.mapSec .mapImg');
+    allFunc()
+});
+$(window).on("load", function () {
     const isDesktop = window.innerWidth >= 992;
 
-    $('.menuBtn').click(function () {
-        body.toggleClass('active');
-        icon.toggleClass('active');
-    });
 
-    gsap.to(".rotateSvg", {
-        rotation: "+=360",
-        repeat: -1,
-        duration: 10,
-        ease: "none"
-    });
+    if (isDesktop) {
+        const pageLoc = window.location.href;
+        const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
+        if (lastPart === "index.html" || lastPart === "index" || lastPart === "") {
+            HomeBannerAnim();
+        } else {
+            bannerAnim();
+        }
+    } else {
+        mobileBannerAnim();
+    }
+});
 
+function allFunc() {
+    const image = document.getElementById('draggableImage');
+    const container = document.querySelector('.mapSec .mapImg');
     if (image) {
         makeImageDraggableAndScrollable(image, container);
     }
-
-    $(window).on("load", function () {
-
-        if (isDesktop) {
-            const pageLoc = window.location.href;
-            const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
-            if (lastPart === "index.html" || lastPart === "index" || lastPart === "") {
-                HomeBannerAnim();
-            } else {
-                bannerAnim();
-            }
-        } else {
-            mobileBannerAnim();
-        }
-    });
-
+    menuTrigger()
     allSliders();
     stackingImages();
     horizontalSection();
@@ -46,17 +35,23 @@ $(document).ready(function () {
     handleIntroVideo()
     animateInfoClesBannerColors()
     playVideo()
-    document.querySelectorAll('[data-image-modal]').forEach(item => {
-        item.addEventListener('click', () => {
-            openModal(item);
-        });
-    });
+    modalPopup()
+}
 
-    document.querySelector(".close")?.addEventListener("click", () => {
-        document.getElementById("myModal").style.display = "none";
+function menuTrigger() {
+    const body = $('body');
+    const icon = $('.menuBtn .btnIcon');
+    $('.menuBtn').click(function () {
+        body.toggleClass('active');
+        icon.toggleClass('active');
     });
-
-});
+    gsap.to(".rotateSvg", {
+        rotation: "+=360",
+        repeat: -1,
+        duration: 10,
+        ease: "none"
+    });
+}
 
 function HomeBannerAnim() {
     let headingElem = document.querySelectorAll('.homeBanner .blob .animate')
@@ -409,41 +404,52 @@ function animateSVGCircles() {
     });
 }
 
-// Function to open modal
-const openModal = (anchor) => {
-    const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("modal-image");
-    const captionText = document.getElementById("caption");
-    const imgSrc = anchor.getAttribute('data-src');
-    const imgCaption = anchor.getAttribute('data-caption');
-    const isAutoHeight = anchor.getAttribute('data-height-auto')
+function modalPopup() {
+    document.querySelectorAll('[data-image-modal]').forEach(item => {
+        item.addEventListener('click', () => {
+            openModal(item);
+        });
+    });
 
-    modal.style.display = "flex";
-    modal.classList.remove("fadeOut");
-    modalImg.src = imgSrc;
-    if (imgCaption) {
-        captionText.innerHTML = imgCaption;
-    } else {
-        console.log(imgCaption)
-        captionText.style.display = "none"
-    }
-    if (isAutoHeight == 'true') {
-        modal.classList.add("autoHeightModal")
-        console.log(isAutoHeight)
-    } else {
-        if (modal.classList.contains('autoHeightModal')) {
-            modal.classList.remove("autoHeightModal")
+    document.querySelector(".close")?.addEventListener("click", () => {
+        document.getElementById("myModal").style.display = "none";
+    });
+// Function to open modal
+    const openModal = (anchor) => {
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("modal-image");
+        const captionText = document.getElementById("caption");
+        const imgSrc = anchor.getAttribute('data-src');
+        const imgCaption = anchor.getAttribute('data-caption');
+        const isAutoHeight = anchor.getAttribute('data-height-auto')
+
+        modal.style.display = "flex";
+        modal.classList.remove("fadeOut");
+        modalImg.src = imgSrc;
+        if (imgCaption) {
+            captionText.innerHTML = imgCaption;
+        } else {
+            console.log(imgCaption)
+            captionText.style.display = "none"
+        }
+        if (isAutoHeight == 'true') {
+            modal.classList.add("autoHeightModal")
+            console.log(isAutoHeight)
+        } else {
+            if (modal.classList.contains('autoHeightModal')) {
+                modal.classList.remove("autoHeightModal")
+            }
         }
     }
-}
 
 // Function to close modal
-const closeModal = () => {
-    const modal = document.getElementById("myModal");
-    modal.classList.add("fadeOut");
-    setTimeout(() => {
-        modal.style.display = "none";
-    }, 500);
+    const closeModal = () => {
+        const modal = document.getElementById("myModal");
+        modal.classList.add("fadeOut");
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 500);
+    }
 }
 
 function handleIntroVideo() {
@@ -451,15 +457,12 @@ function handleIntroVideo() {
     let hasVisited = localStorage.getItem('hasVisited');
 
     if (hasVisited) {
-        // User has already visited, so hide the intro section
         gsap.to(introVideoContainer, {
             autoAlpha: 0,
             duration: 0 // Hide it immediately
         });
     } else {
-        // It's the user's first visit
-
-        // Store in localStorage that the user has now visited
+        console.log('working')
 
         let button = document.querySelector('#playBtn');
         let skipBtn = document.querySelector('#skipBtn');
@@ -469,6 +472,7 @@ function handleIntroVideo() {
         button?.addEventListener('click', function () {
             localStorage.setItem('hasVisited', true);
             video?.play();
+            video?.setAttribute("controls", "true");
             gsap.to(container, {
                 autoAlpha: 0,
                 duration: 0.5 // Fade out the button container
@@ -476,7 +480,9 @@ function handleIntroVideo() {
         });
 
         skipBtn?.addEventListener('click', function () {
-            video.pause();
+            console.log('here')
+            video?.load()
+            video?.removeAttribute("controls");
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
                 duration: 0.5 // Fade out the video container
