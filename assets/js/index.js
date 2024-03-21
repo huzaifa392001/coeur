@@ -45,6 +45,7 @@ $(document).ready(function () {
     animateSVGCircles();
     handleIntroVideo()
     animateInfoClesBannerColors()
+    playVideo()
     document.querySelectorAll('[data-image-modal]').forEach(item => {
         item.addEventListener('click', () => {
             openModal(item);
@@ -415,6 +416,7 @@ const openModal = (anchor) => {
     const captionText = document.getElementById("caption");
     const imgSrc = anchor.getAttribute('data-src');
     const imgCaption = anchor.getAttribute('data-caption');
+    const isAutoHeight = anchor.getAttribute('data-height-auto')
 
     modal.style.display = "flex";
     modal.classList.remove("fadeOut");
@@ -424,6 +426,14 @@ const openModal = (anchor) => {
     } else {
         console.log(imgCaption)
         captionText.style.display = "none"
+    }
+    if (isAutoHeight == 'true') {
+        modal.classList.add("autoHeightModal")
+        console.log(isAutoHeight)
+    } else {
+        if (modal.classList.contains('autoHeightModal')) {
+            modal.classList.remove("autoHeightModal")
+        }
     }
 }
 
@@ -516,5 +526,20 @@ function animateInfoClesBannerColors() {
     });
 }
 
+function playVideo() {
+    let container = document.querySelector('.videoCont')
+    let button = container?.querySelector('.playBtn')
+    let video = container?.querySelector('video')
 
+    button?.addEventListener('click', function () {
+        gsap.to(button, {autoAlpha: 0})
+        video?.play()
+        video?.setAttribute("controls", "true");
+    })
+    video?.addEventListener('ended', function () {
+        gsap.to(button, {autoAlpha: 1})
+        video?.load()
+        video?.removeAttribute("controls");
+    })
 
+}

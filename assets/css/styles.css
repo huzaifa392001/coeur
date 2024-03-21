@@ -755,6 +755,7 @@ footer .copyright {
     width: 75%;
     height: 75%;
 }
+
 .altrContentSec .content .contentImg {
     border-radius: 20px;
     overflow: hidden;
@@ -1361,10 +1362,9 @@ section.imgSec {
     position: relative;
 }
 
-.videoCont img {
+.videoCont img, .videoCont video {
     width: 100%;
     height: 750px;
-    object-fit: cover;
 }
 
 .videoCont .playBtn {
@@ -1514,7 +1514,8 @@ footer .logo img {
     justify-content: center;
     width: fit-content;
     margin: auto;
-    height: 90%;
+    max-height: 90%;
+    height: 100%;
 }
 
 .customModal .modal-content img {
@@ -1583,4 +1584,8 @@ footer .logo img {
     background: none;
     border: none;
     outline: none;
+}
+
+.autoHeightModal .modal-content {
+    height: fit-content;
 }
