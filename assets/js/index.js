@@ -1,24 +1,26 @@
 $(document).ready(function () {
     gsap.registerPlugin(ScrollTrigger);
     const isDesktop = window.innerWidth >= 992;
-    let locomotiveScroll;
-    locomotiveScroll = new LocomotiveScroll({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        smooth: true,
-        mouseMultiplier: 1,
-    });
-    let hash = window.location.hash;
-    if (hash && document.querySelector(hash)) {
-        locomotiveScroll.scrollTo(hash)
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            locomotiveScroll.scrollTo(this.getAttribute("href"));
+    if (isDesktop) {
+        let locomotiveScroll;
+        locomotiveScroll = new LocomotiveScroll({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+            smooth: true,
+            mouseMultiplier: 1,
         });
-    });
+        let hash = window.location.hash;
+        if (hash && document.querySelector(hash)) {
+            locomotiveScroll.scrollTo(hash)
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                locomotiveScroll.scrollTo(this.getAttribute("href"));
+            });
+        });
+    }
     barba.init({
         sync: true,
         debug: true,
@@ -36,16 +38,18 @@ $(document).ready(function () {
                     data.current.container.remove();
                     if (data.next.container.attributes[1].value === 'index') {
                         console.log('working')
-                        locomotiveScroll.destroy()
+                        isDesktop ? locomotiveScroll.destroy() : ''
                         HomeBannerAnim()
                     } else {
-                        locomotiveScroll = new LocomotiveScroll({
-                            duration: 1.2,
-                            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-                            smooth: true,
-                            mouseMultiplier: 1,
-                        });
-                        locomotiveScroll.scrollTo(0, 0)
+                        if (isDesktop) {
+                            locomotiveScroll = new LocomotiveScroll({
+                                duration: 1.2,
+                                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+                                smooth: true,
+                                mouseMultiplier: 1,
+                            });
+                            locomotiveScroll.scrollTo(0, 0)
+                        }
                         bannerAnim();
                     }
                     ScrollTrigger.refresh();
