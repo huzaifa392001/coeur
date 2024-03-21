@@ -29,6 +29,7 @@ $(document).ready(function () {
             {
                 async leave(data) {
                     ScrollTrigger.getAll().forEach(t => t.kill());
+                    window.scrollTo(0, 0)
                     if ($("body").hasClass("active")) {
                         $('.menuBtn').click()
                     }
