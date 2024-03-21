@@ -443,7 +443,7 @@ body.active .menu {
     overflow: hidden;
 }
 
-.homeBanner .blob > svg {
+.homeBanner .blob > svg, .homeBanner .blob > img {
     max-width: 558px;
     max-height: 472px;
     height: 100%;
@@ -451,6 +451,7 @@ body.active .menu {
     animation: rotation 25s linear infinite backwards;
     rotation 25s linear infinite
     animation-fill-mode: backwards;
+    position: absolute;
 }
 
 @keyframes rotationBig {
@@ -470,7 +471,7 @@ body.active .menu {
 
 .homeBanner .blob h1 {
     color: #Fff;
-    position: absolute;
+    /* position: absolute; */
     text-align: center;
     font-size: 5.5rem;
     font-weight: 700;
@@ -1569,7 +1570,7 @@ footer .logo img {
 }
 
 .homeBanner .blob .themeBtn {
-    margin-top: -8rem;
+    /* margin-top: -8rem; */
     opacity: 0;
     visibility: hidden;
     transition: none;
@@ -1584,6 +1585,7 @@ footer .logo img {
     background: none;
     border: none;
     outline: none;
+    text-shadow: 0 0 BLACK;
 }
 
 .autoHeightModal .modal-content {

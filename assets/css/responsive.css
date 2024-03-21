@@ -10,7 +10,7 @@
         height: 400px;
     }
 
-    .homeBanner .blob > svg {
+    .homeBanner .blob > svg, .homeBanner .blob > img {
         max-width: 480px;
         max-height: 380px;
     }
@@ -321,7 +321,7 @@
     }
 
     .homeBanner .blob .themeBtn {
-        margin-top: -10rem;
+        /* margin-top: -10rem; */
     }
 
     .homeBanner .blob img {
@@ -560,13 +560,19 @@
         transform: translateY(-25%);
     }
 
-    .homeBanner .blob > svg {
+    .homeBanner .blob > svg, .homeBanner .blob > img {
         max-width: 95%;
         max-height: 50%;
     }
 
     .scrollToBottom {
         display: none;
+    }
+
+    #skipBtn {
+        bottom: unset;
+        top: 4rem;
+        right: 1rem;
     }
 }
 
