@@ -10,7 +10,7 @@
         height: 400px;
     }
 
-    .homeBanner .blob svg {
+    .homeBanner .blob > svg {
         max-width: 480px;
         max-height: 380px;
     }
@@ -320,6 +320,10 @@
         font-size: 13px;
     }
 
+    .homeBanner .blob .themeBtn {
+        margin-top: -10rem;
+    }
+
     .homeBanner .blob img {
         width: 90%;
     }
@@ -556,7 +560,7 @@
         transform: translateY(-25%);
     }
 
-    .homeBanner .blob svg {
+    .homeBanner .blob > svg {
         max-width: 95%;
         max-height: 50%;
     }
