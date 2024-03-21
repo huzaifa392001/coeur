@@ -485,7 +485,13 @@ function handleIntroVideo() {
     let hasVisited = localStorage.getItem('hasVisited');
 
     if (hasVisited) {
-        introVideoContainer.innerHTML = null;
+        gsap.to(introVideoContainer, {
+            autoAlpha: 0,
+            duration: 0,// Hide it immediately
+        });
+        if (introVideoContainer) {
+            introVideoContainer.innerHTML = null
+        }
     } else {
         let button = introVideoContainer.querySelector('#playBtn');
         let skipBtn = introVideoContainer.querySelector('#skipBtn');
@@ -507,9 +513,11 @@ function handleIntroVideo() {
             video?.removeAttribute("controls");
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5,// Fade out the video container
+                duration: 0.5, // Fade out the video container
                 onComplete: () => {
-                    introVideoContainer.innerHTML = null;
+                    if (introVideoContainer) {
+                        introVideoContainer.innerHTML = null
+                    }
                 }
             });
         });
@@ -517,9 +525,11 @@ function handleIntroVideo() {
         video?.addEventListener("ended", function () {
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5,// Fade out the video container
+                duration: 0.5, // Fade out the video container
                 onComplete: () => {
-                    introVideoContainer.innerHTML = null;
+                    if (introVideoContainer) {
+                        introVideoContainer.innerHTML = null
+                    }
                 }
             });
         });
