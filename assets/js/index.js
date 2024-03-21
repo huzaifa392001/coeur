@@ -1,8 +1,9 @@
 $(document).ready(function () {
     gsap.registerPlugin(ScrollTrigger);
     const isDesktop = window.innerWidth >= 992;
+    let locomotiveScroll;
     if (isDesktop) {
-        let locomotiveScroll;
+        console.log('working')
         locomotiveScroll = new LocomotiveScroll({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
@@ -73,10 +74,6 @@ $(document).ready(function () {
             },
         ],
     });
-});
-$(window).on("load", function () {
-
-
 });
 
 function allFunc() {
@@ -488,15 +485,12 @@ function handleIntroVideo() {
     let hasVisited = localStorage.getItem('hasVisited');
 
     if (hasVisited) {
-        gsap.to(introVideoContainer, {
-            autoAlpha: 0,
-            duration: 0 // Hide it immediately
-        });
+        introVideoContainer.innerHTML = null;
     } else {
-        let button = document.querySelector('#playBtn');
-        let skipBtn = document.querySelector('#skipBtn');
-        let video = document.querySelector('#introVideo video');
-        let container = document.querySelector("#introVideo .blob");
+        let button = introVideoContainer.querySelector('#playBtn');
+        let skipBtn = introVideoContainer.querySelector('#skipBtn');
+        let video = introVideoContainer.querySelector('#introVideo video');
+        let container = introVideoContainer.querySelector("#introVideo .blob");
 
         button?.addEventListener('click', function () {
             localStorage.setItem('hasVisited', true);
@@ -513,14 +507,20 @@ function handleIntroVideo() {
             video?.removeAttribute("controls");
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5 // Fade out the video container
+                duration: 0.5,// Fade out the video container
+                onComplete: () => {
+                    introVideoContainer.innerHTML = null;
+                }
             });
         });
 
         video?.addEventListener("ended", function () {
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5 // Fade out the video container
+                duration: 0.5,// Fade out the video container
+                onComplete: () => {
+                    introVideoContainer.innerHTML = null;
+                }
             });
         });
     }
