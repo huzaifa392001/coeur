@@ -1,80 +1,23 @@
 $(document).ready(function () {
-    gsap.registerPlugin(ScrollTrigger);
+    window.scrollTo(0, 0)
+    allFunc()
+});
+$(window).on("load", function () {
     const isDesktop = window.innerWidth >= 992;
-    let locomotiveScroll;
+
+
     if (isDesktop) {
-        console.log('working')
-        locomotiveScroll = new LocomotiveScroll({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-            smooth: true,
-            mouseMultiplier: 1,
-        });
-        let hash = window.location.hash;
-        if (hash && document.querySelector(hash)) {
-            locomotiveScroll.scrollTo(hash)
+        const pageLoc = window.location.href;
+        const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
+        if (lastPart === "index.html" || lastPart === "index" || lastPart === "") {
+            HomeBannerAnim();
+        } else {
+            bannerAnim();
+            lenisSetup();
         }
-
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                locomotiveScroll.scrollTo(this.getAttribute("href"));
-            });
-        });
+    } else {
+        mobileBannerAnim();
     }
-    barba.init({
-        sync: true,
-        debug: true,
-        transitions: [
-            {
-                async leave(data) {
-                    ScrollTrigger.getAll().forEach(t => t.kill());
-                    window.scrollTo(0, 0)
-                    if ($("body").hasClass("active")) {
-                        $('.menuBtn').click()
-                    }
-                },
-
-                async enter(data) {
-                    window.scrollTo(0, 0)
-                    data.current.container.remove();
-                    if (data.next.container.attributes[1].value === 'index') {
-                        console.log('working')
-                        isDesktop ? locomotiveScroll.destroy() : ''
-                        HomeBannerAnim()
-                    } else {
-                        if (isDesktop) {
-                            locomotiveScroll = new LocomotiveScroll({
-                                duration: 1.2,
-                                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-                                smooth: true,
-                                mouseMultiplier: 1,
-                            });
-                            locomotiveScroll.scrollTo(0, 0)
-                        }
-                        bannerAnim();
-                    }
-                    ScrollTrigger.refresh();
-                    allFunc()
-                },
-                async once(data) {
-                    if (isDesktop) {
-                        const pageLoc = window.location.href;
-                        const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
-                        if (lastPart === "index.html" || lastPart === "index" || lastPart === "") {
-                            locomotiveScroll.destroy()
-                            HomeBannerAnim()
-                        } else {
-                            bannerAnim();
-                        }
-                    } else {
-                        mobileBannerAnim();
-                    }
-                    allFunc()
-                },
-            },
-        ],
-    });
 });
 
 function allFunc() {
@@ -86,6 +29,7 @@ function allFunc() {
     menuTrigger()
     allSliders();
     stackingImages();
+    horizontalSection();
     secHeading();
     bgAnim();
     animateSVGCircles();
@@ -93,7 +37,6 @@ function allFunc() {
     animateInfoClesBannerColors()
     playVideo()
     modalPopup()
-    horizontalSection();
 }
 
 function menuTrigger() {
@@ -147,10 +90,6 @@ function mobileBannerAnim() {
                 duration: 1.5,
                 ease: "expo.out",
             })
-            .to('.animate ~ button', {
-                autoAlpha: 1,
-                ease: "expo.out",
-            }, "-=0.9")
     })
 
     $('.modalPopup').on('click', function () {
@@ -181,16 +120,16 @@ function bannerAnim() {
         let bannerImage = document.querySelector('.innerBan .bannerImg')
         let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
         gsap.set(innerHeadingElem, {
-            autoAlpha: 1,
+            autoAlpha: 1
         })
-        let tl = gsap.timeline({pause: true, delay: 0.5})
+        let tl = gsap.timeline({pause: true})
         tl
             .to("#myClip path ", {
                 attr: {
                     d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
                 },
                 ease: "none",
-                duration: 1
+                duration: 2
             })
             .to(heading.chars, {
                 translateY: 0,
@@ -200,7 +139,50 @@ function bannerAnim() {
                 duration: 1.5,
                 ease: "expo.out",
             })
+    } else {
+        lenisSetup();
     }
+}
+
+function lenisSetup() {
+    const locomotiveScroll = new LocomotiveScroll({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        smooth: true,
+        mouseMultiplier: 1,
+    });
+    const hash = window.location.hash;
+    console.log(hash)
+    if (hash && document.querySelector(hash)) {
+        locomotiveScroll.scrollTo(hash)
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            locomotiveScroll.scrollTo(this.getAttribute("href"));
+        });
+    });
+
+    $('.modalPopup').on('click', function () {
+        var modalTarget = $(this).data('modal-target');
+        $(modalTarget).toggleClass('active');
+        $('.overlay').toggleClass('active');
+        if (document.querySelector('html').style.overflow === 'hidden') {
+            document.querySelector('html').style.overflow = 'auto'
+        } else {
+            document.querySelector('html').style.overflow = 'hidden'
+        }
+    });
+    $('.overlay').on('click', function () {
+        $('.sideModal.active').toggleClass('active');
+        $('.overlay').toggleClass('active');
+        if (document.querySelector('html').style.overflow === 'hidden') {
+            document.querySelector('html').style.overflow = 'auto'
+        } else {
+            document.querySelector('html').style.overflow = 'hidden'
+        }
+    });
 }
 
 function allSliders() {
@@ -359,14 +341,18 @@ function secHeading() {
 }
 
 function bgAnim() {
+// Define the colors
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
+// Select all divs that will have the colors applied.
     const colorDivs = gsap.utils.toArray('#colorAnim .color');
 
+// Function to get the next color in the array
     function getNextColor(index) {
         return colors[(index + 1) % colors.length];
     }
 
+// GSAP timeline setup
     const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
 
     colorDivs.forEach((div, i) => {
@@ -386,7 +372,7 @@ function animateSVGCircles() {
     // Define the colors
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
-    // Select all '.homeBanner .blob > svg' within the document
+    // Select all '.homeBanner .blob svg' within the document
     let svgElements = document.querySelectorAll([".homeBanner .blob > svg", ".bgBlob > svg"]);
     svgElements.forEach(svg => {
         // Select circles within the current SVG
@@ -416,26 +402,6 @@ function animateSVGCircles() {
 }
 
 function modalPopup() {
-    $('.modalPopup').on('click', function () {
-        var modalTarget = $(this).data('modal-target');
-        $(modalTarget).toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
-    });
-    $('.overlay').on('click', function () {
-        $('.sideModal.active').toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
-    });
-
     document.querySelectorAll('[data-image-modal]').forEach(item => {
         item.addEventListener('click', () => {
             openModal(item);
@@ -460,10 +426,12 @@ function modalPopup() {
         if (imgCaption) {
             captionText.innerHTML = imgCaption;
         } else {
+            console.log(imgCaption)
             captionText.style.display = "none"
         }
         if (isAutoHeight == 'true') {
             modal.classList.add("autoHeightModal")
+            console.log(isAutoHeight)
         } else {
             if (modal.classList.contains('autoHeightModal')) {
                 modal.classList.remove("autoHeightModal")
@@ -488,16 +456,15 @@ function handleIntroVideo() {
     if (hasVisited) {
         gsap.to(introVideoContainer, {
             autoAlpha: 0,
-            duration: 0,// Hide it immediately
+            duration: 0 // Hide it immediately
         });
-        if (introVideoContainer) {
-            introVideoContainer.innerHTML = null
-        }
     } else {
-        let button = introVideoContainer.querySelector('#playBtn');
-        let skipBtn = introVideoContainer.querySelector('#skipBtn');
-        let video = introVideoContainer.querySelector('#introVideo video');
-        let container = introVideoContainer.querySelector("#introVideo .blob");
+        console.log('working')
+
+        let button = document.querySelector('#playBtn');
+        let skipBtn = document.querySelector('#skipBtn');
+        let video = document.querySelector('#introVideo video');
+        let container = document.querySelector("#introVideo .blob");
 
         button?.addEventListener('click', function () {
             localStorage.setItem('hasVisited', true);
@@ -510,28 +477,19 @@ function handleIntroVideo() {
         });
 
         skipBtn?.addEventListener('click', function () {
+            console.log('here')
             video?.load()
             video?.removeAttribute("controls");
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5, // Fade out the video container
-                onComplete: () => {
-                    if (introVideoContainer) {
-                        introVideoContainer.innerHTML = null
-                    }
-                }
+                duration: 0.5 // Fade out the video container
             });
         });
 
         video?.addEventListener("ended", function () {
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5, // Fade out the video container
-                onComplete: () => {
-                    if (introVideoContainer) {
-                        introVideoContainer.innerHTML = null
-                    }
-                }
+                duration: 0.5 // Fade out the video container
             });
         });
     }
