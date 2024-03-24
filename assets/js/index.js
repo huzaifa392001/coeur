@@ -36,6 +36,7 @@ function allFunc() {
     handleIntroVideo()
     animateInfoClesBannerColors()
     playVideo()
+    rotateSvg()
     modalPopup()
 }
 
@@ -45,12 +46,6 @@ function menuTrigger() {
     $('.menuBtn').click(function () {
         body.toggleClass('active');
         icon.toggleClass('active');
-    });
-    gsap.to(".rotateSvg", {
-        rotation: "+=360",
-        repeat: -1,
-        duration: 10,
-        ease: "none"
     });
 }
 
@@ -259,25 +254,13 @@ function horizontalSection() {
     allWrapper.forEach((wrapper) => {
             let width = 0, transform = 0, lastImgWidth = 0;
             let sections = wrapper.querySelectorAll('.panel')
-            let images = wrapper.querySelectorAll('.panel img')
+            let images = wrapper.querySelectorAll('.panel .sliderImg')
             images.forEach((sec) => {
                 width += sec.clientWidth
                 lastImgWidth = sec.clientWidth
             })
-            wrapper.style.width = `${width}px`;
-            if (window.innerWidth >= 1367) {
-                transform = (width / 2)
-            } else if (window.innerWidth >= 992) {
-                transform = (width / 1.5)
-            } else if (window.innerWidth >= 576) {
-                transform = (width - (lastImgWidth / 1.5))
-            } else if (window.innerWidth >= 450) {
-                transform = (width - (lastImgWidth / 2))
-            } else {
-                transform = width - lastImgWidth + 50
-            }
             gsap.to(sections, {
-                x: -transform,
+                x: -(width - lastImgWidth / 1.2),
                 ease: "none",
                 scrollTrigger: {
                     trigger: wrapper,
@@ -482,14 +465,20 @@ function handleIntroVideo() {
             video?.removeAttribute("controls");
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5 // Fade out the video container
+                duration: 0.5,
+                ononComplete: () => {
+                    document.querySelector('html').style.overflow = 'auto'
+                }
             });
         });
 
         video?.addEventListener("ended", function () {
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
-                duration: 0.5 // Fade out the video container
+                duration: 0.5,
+                onComplete: () => {
+                    document.querySelector('html').style.overflow = 'auto'
+                }
             });
         });
     }
@@ -545,4 +534,13 @@ function playVideo() {
         video?.removeAttribute("controls");
     })
 
+}
+
+function rotateSvg() {
+    gsap.to(".rotateSvg", {
+        rotation: "+=360",
+        repeat: -1,
+        duration: 15,
+        ease: "none"
+    });
 }

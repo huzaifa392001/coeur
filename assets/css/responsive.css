@@ -52,7 +52,6 @@
     }
 
     footer p {
-        text-shadow: 0 0 5px black;
     }
 
     footer .logo img {
@@ -66,7 +65,6 @@
 
     footer.colored .logo img, footer.colored p {
         filter: none;
-        text-shadow: none;
     }
 
     .contentCardHeading {
@@ -353,7 +351,6 @@
     }
 
     .themeBtnAltr {
-        width: 100% !important;
         padding: 0 7rem;
     }
 
@@ -529,7 +526,8 @@
         font-size: 1.25rem;
         font-weight: 600;
         flex: 0 1 auto;
-        padding: 0;
+        padding: 0 1rem;
+        min-width: 50%;
     }
 
     .themeBtnAltr::before, .themeBtnAltr::after {
@@ -540,9 +538,10 @@
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 2rem 0;
+        flex-direction: column;
     }
 
-    .videoCont img {
+    .videoCont > img {
         height: 450px;
     }
 
@@ -573,6 +572,9 @@
         bottom: unset;
         top: 4rem;
         right: 1rem;
+    }
+    .videoCont > img, .videoCont video {
+        height: auto;
     }
 }
 

@@ -9,18 +9,6 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <title>Comme Un Fruit</title>
-    <style>
-        @media (max-width: 575px) {
-            .bgBlob {
-                height: 40vh;
-            }
-
-            .lgImgSec {
-                padding-top: 0;
-                margin-top: -5rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -95,7 +83,7 @@
     </a>
 </section>
 <figure class="bgBlob">
-    <svg class="d-md-block d-none" width="1059" height="897" viewBox="0 0 1059 897" fill="none"
+    <svg class="d-md-block d-none rotateSvg" width="1059" height="897" viewBox="0 0 1059 897" fill="none"
          xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_4190_1590" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1059"
               height="897">
@@ -118,7 +106,7 @@
             </filter>
         </defs>
     </svg>
-    <img src="./assets/images/bgBlob.webp" alt="" class="d-md-none">
+    <img src="./assets/images/bgBlob.webp" alt="" class="d-md-none rotateSvg">
 </figure>
 <section class="altrContentSec lgImgSec" id="firstSec">
     <img src="./assets/images/cuf-bg.webp" alt="">
@@ -132,26 +120,13 @@
             il laisse deviner son intériorité par la profondeur de champ et la porosité de la végétation.
         </p>
         <button data-modal-target="#sideModalPopup" class="themeBtnSm modalPopup">
-            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60" fill="none" class="rotateSvg">
                 <path
                         d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
                         fill="white"/>
             </svg>
             <span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M11.5 11.5005V19.8408H8.5V11.5005L0.15969 11.5005L0.15969 8.50049L8.5 8.50049L8.5 0.160156L11.5 0.160156V8.50049H19.8403L19.8403 11.5005L11.5 11.5005Z"
-                          fill="url(#paint0_linear_4024_2292)"/>
-                    <defs>
-                        <linearGradient id="paint0_linear_4024_2292" x1="23.3654" y1="9.59548" x2="-1.42131"
-                                        y2="17.8577" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00AAC1"/>
-                            <stop offset="0.555514" stop-color="#EAE007"/>
-                            <stop offset="1" stop-color="#EF9757"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-
+               <img src="./assets/images/plus.png" alt="">
             </span>
         </button>
     </div>

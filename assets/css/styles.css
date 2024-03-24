@@ -448,19 +448,7 @@ body.active .menu {
     max-height: 472px;
     height: 100%;
     width: 100%;
-    animation: rotation 25s linear infinite backwards;
-    rotation 25s linear infinite
-    animation-fill-mode: backwards;
     position: absolute;
-}
-
-@keyframes rotationBig {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
 }
 
 .homeBanner .blob img {
@@ -520,7 +508,6 @@ body.active .menu {
 }
 
 .contentBox .bg {
-    animation: rotation 25s linear infinite backwards;
     transform-origin: center center;
 }
 
@@ -749,7 +736,6 @@ footer .copyright {
     width: 90%;
     height: 90%;
     object-fit: contain;
-    animation: rotation 15s linear infinite forwards;
 }
 
 .bgBlob svg {
@@ -1352,7 +1338,6 @@ section.imgSec {
     align-items: center;
     justify-content: center;
     z-index: -1;
-    animation: rotation 15s linear infinite forwards;
 }
 
 .infoClesBanner .content .bg svg {
@@ -1363,7 +1348,7 @@ section.imgSec {
     position: relative;
 }
 
-.videoCont img, .videoCont video {
+.videoCont > img, .videoCont video {
     width: 100%;
     height: 750px;
 }

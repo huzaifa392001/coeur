@@ -15,8 +15,9 @@
     <defs>
         <clipPath id="myClip">
 
-            <path d="M 1020.629 208.468 C 989.781 255.454 981.903 337.087 1080.982 402.135 C 1116.167 425.235 1263.104 484.16 1315.117 404.936 C 1336.112 372.957 1413.379 196.889 1310.45 129.312 C 1217.848 68.516 1058.119 151.365 1020.629 208.468 Z"
-                  fill="white"></path>
+            <path
+                d="M 1020.629 208.468 C 989.781 255.454 981.903 337.087 1080.982 402.135 C 1116.167 425.235 1263.104 484.16 1315.117 404.936 C 1336.112 372.957 1413.379 196.889 1310.45 129.312 C 1217.848 68.516 1058.119 151.365 1020.629 208.468 Z"
+                fill="white"></path>
         </clipPath>
     </defs>
 </svg>
@@ -50,8 +51,8 @@
         <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
-                    d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                    fill="white"/>
+                d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                fill="white"/>
         </svg>
         <span class='btnIcon'>
             <img src="./assets/images/menuIcon.webp" alt="">
@@ -77,17 +78,19 @@
     <a href="#firstSec" class="scrollToBottom">
         <span>Défiler</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-            <path d="M168 345.9V44c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12v301.9H41.9c-21.4 0-32.1 25.9-17 41l86.1 86.1c9.4 9.4 24.6 9.4 33.9 0l86.1-86.1c15.1-15.1 4.4-41-17-41H168z"/>
+            <path
+                d="M168 345.9V44c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12v301.9H41.9c-21.4 0-32.1 25.9-17 41l86.1 86.1c9.4 9.4 24.6 9.4 33.9 0l86.1-86.1c15.1-15.1 4.4-41-17-41H168z"/>
         </svg>
     </a>
 </section>
 <figure class="bgBlob">
-    <svg class="d-md-block d-none" width="1059" height="897" viewBox="0 0 1059 897" fill="none"
+    <svg class="d-md-block d-none rotateSvg" width="1059" height="897" viewBox="0 0 1059 897" fill="none"
          xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_4190_1590" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1059"
               height="897">
-            <path d="M673.787 0.785156C841.886 0.785156 1058.9 97.4635 1058.9 397.299C1058.9 503.777 965.043 896.318 681.609 896.318C567.201 896.318 0.200684 815.267 0.200684 503.777C0.200684 223.542 469.497 0.785156 673.787 0.785156Z"
-                  fill="black"/>
+            <path
+                d="M673.787 0.785156C841.886 0.785156 1058.9 97.4635 1058.9 397.299C1058.9 503.777 965.043 896.318 681.609 896.318C567.201 896.318 0.200684 815.267 0.200684 503.777C0.200684 223.542 469.497 0.785156 673.787 0.785156Z"
+                fill="black"/>
         </mask>
         <g mask="url(#mask0_4190_1590)">
             <g filter="url(#filter0_f_4190_1590)">
@@ -105,7 +108,7 @@
             </filter>
         </defs>
     </svg>
-    <img src="./assets/images/bgBlob.webp" alt="" class="d-md-none">
+    <img src="./assets/images/bgBlob.webp" alt="" class="d-md-none rotateSvg">
 </figure>
 <section id="firstSec" class="altrContentSec">
     <div class="customCont container">
@@ -113,7 +116,8 @@
             <div class="col-lg-6">
                 <figure class="imgRow">
                     <img src="./assets/images/cf-img1.webp" alt="" data-scroll data-scroll-speed="0.1">
-                    <img src="./assets/images/cf-img2.webp" alt="" data-scroll data-scroll-speed="0.2">
+                    <img src="./assets/images/cf-img2.webp" alt="" data-scroll data-scroll-speed="0.2"
+                         class="d-none d-md-block">
                     <img src="./assets/images/cf-img3.webp" alt="" data-scroll data-scroll-speed="0.3">
                 </figure>
             </div>
@@ -166,7 +170,7 @@
                 <div class="cardsRow">
                     <div class="cardsRow vertical">
                         <div class="contentCard" data-scroll data-scroll-speed="0.2">
-                            <h6 class="normalText">
+                            <h6 class="normalText" style="text-wrap: nowrap">
                                 Un grand jardin de
                             </h6>
                             <h3 class="contentCardHeading">
@@ -848,7 +852,8 @@
         <a href="./comme-un-fruit.html" class="footerBtn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M134.1 296H436c6.6 0 12-5.4 12-12v-56c0-6.6-5.4-12-12-12H134.1v-46.1c0-21.4-25.9-32.1-41-17L7 239c-9.4 9.4-9.4 24.6 0 33.9l86.1 86.1c15.1 15.1 41 4.4 41-17V296z"/>
+                <path
+                    d="M134.1 296H436c6.6 0 12-5.4 12-12v-56c0-6.6-5.4-12-12-12H134.1v-46.1c0-21.4-25.9-32.1-41-17L7 239c-9.4 9.4-9.4 24.6 0 33.9l86.1 86.1c15.1 15.1 41 4.4 41-17V296z"/>
             </svg>
             <span>
                 Le concept
@@ -860,7 +865,8 @@
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M313.9 216H12c-6.6 0-12 5.4-12 12v56c0 6.6 5.4 12 12 12h301.9v46.1c0 21.4 25.9 32.1 41 17l86.1-86.1c9.4-9.4 9.4-24.6 0-33.9l-86.1-86.1c-15.1-15.1-41-4.4-41 17V216z"/>
+                <path
+                    d="M313.9 216H12c-6.6 0-12 5.4-12 12v56c0 6.6 5.4 12 12 12h301.9v46.1c0 21.4 25.9 32.1 41 17l86.1-86.1c9.4-9.4 9.4-24.6 0-33.9l-86.1-86.1c-15.1-15.1-41-4.4-41 17V216z"/>
             </svg>
         </a>
     </div>
@@ -894,8 +900,8 @@
             <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
                  fill="none">
                 <path
-                        d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                        fill="white"/>
+                    d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                    fill="white"/>
             </svg>
             <span>
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -922,8 +928,8 @@
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
-                    d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                    fill="white"/>
+                d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                fill="white"/>
         </svg>
         <span>
                 Film
@@ -933,8 +939,8 @@
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
-                    d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                    fill="white"/>
+                d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                fill="white"/>
         </svg>
         <span>
                 pers<br>pective
@@ -944,8 +950,8 @@
         <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
              fill="none">
             <path
-                    d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                    fill="white"/>
+                d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                fill="white"/>
         </svg>
         <span>
                 Infos<br>clés
