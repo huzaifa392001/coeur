@@ -85,6 +85,10 @@ function mobileBannerAnim() {
                 duration: 1.5,
                 ease: "expo.out",
             })
+            .to('.animate ~ button', {
+                autoAlpha: 1,
+                ease: "expo.out",
+            }, "-=0.9")
     })
 
     $('.modalPopup').on('click', function () {
@@ -439,7 +443,10 @@ function handleIntroVideo() {
     if (hasVisited) {
         gsap.to(introVideoContainer, {
             autoAlpha: 0,
-            duration: 0 // Hide it immediately
+            duration: 0, // Hide it immediately
+            onComplete: () => {
+                document.querySelector('html').style.overflow = 'auto'
+            }
         });
     } else {
         console.log('working')
@@ -466,7 +473,7 @@ function handleIntroVideo() {
             gsap.to(introVideoContainer, {
                 autoAlpha: 0,
                 duration: 0.5,
-                ononComplete: () => {
+                onComplete: () => {
                     document.querySelector('html').style.overflow = 'auto'
                 }
             });
