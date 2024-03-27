@@ -1,83 +1,92 @@
-$(document).ready(function () {
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
+let mm = gsap.matchMedia();
+let locomotiveScroll;
+let hasVisited = localStorage.getItem('hasVisited');
+document.addEventListener('DOMContentLoaded', function () {
     const isDesktop = window.innerWidth >= 992;
-    let locomotiveScroll;
-    if (isDesktop) {
-        console.log('working')
-        locomotiveScroll = new LocomotiveScroll({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-            smooth: true,
-            mouseMultiplier: 1,
-        });
-        let hash = window.location.hash;
-        if (hash && document.querySelector(hash)) {
-            locomotiveScroll.scrollTo(hash)
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                locomotiveScroll.scrollTo(this.getAttribute("href"));
-            });
-        });
-    }
     barba.init({
-        sync: true,
         debug: true,
+        preventRunning: true,
         transitions: [
             {
-                async leave(data) {
-                    ScrollTrigger.getAll().forEach(t => t.kill());
-                    window.scrollTo(0, 0)
-                    if ($("body").hasClass("active")) {
-                        $('.menuBtn').click()
-                    }
-                },
-
-                async enter(data) {
-                    window.scrollTo(0, 0)
+                sync: true,
+                async beforeLeave(data) {
                     data.current.container.remove();
-                    if (data.next.container.attributes[1].value === 'index') {
-                        console.log('working')
-                        isDesktop ? locomotiveScroll.destroy() : ''
-                        HomeBannerAnim()
-                    } else {
-                        if (isDesktop) {
-                            locomotiveScroll = new LocomotiveScroll({
-                                duration: 1.2,
-                                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-                                smooth: true,
-                                mouseMultiplier: 1,
-                            });
-                            locomotiveScroll.scrollTo(0, 0)
-                        }
-                        bannerAnim();
-                    }
-                    ScrollTrigger.refresh();
-                    allFunc()
+                },
+                async leave(data) {
+                    await leavePage()
+                },
+                async enter(data) {
+                    await enterPage(data)
                 },
                 async once(data) {
-                    if (isDesktop) {
-                        const pageLoc = window.location.href;
-                        const lastPart = pageLoc.substring(pageLoc.lastIndexOf('/') + 1);
-                        if (lastPart === "index.html" || lastPart === "index" || lastPart === "") {
-                            locomotiveScroll.destroy()
-                            HomeBannerAnim()
-                        } else {
-                            bannerAnim();
-                        }
-                    } else {
-                        mobileBannerAnim();
+                    bannerAnimation(data.next.namespace);
+                    handleIntroVideo();
+                    if (data.next.namespace !== 'index') {
+                        initScroll();
                     }
-                    allFunc()
+                    allFunc();
                 },
             },
         ],
     });
 });
 
+function leavePage() {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (locomotiveScroll) {
+        locomotiveScroll.destroy();
+    }
+    if (document.body.classList.contains("active")) {
+        document.body.classList.remove("active");
+        document.querySelector('.menuBtn .btnIcon').classList.remove("active");
+    }
+}
+
+function enterPage(data) {
+    if (data.next.namespace !== 'index') {
+        initScroll();
+    }
+    bannerAnimation(data.next.namespace);
+    allFunc();
+}
+
+function initScroll() {
+    barba.hooks.afterEnter((data) => {
+        if (data.next.url.hash) {
+            const element = document.getElementById(data.next.url.hash);
+            element.scrollIntoView();
+        } else {
+            window.scrollTo(0, 0);
+        }
+        ScrollTrigger.refresh();
+    });
+    mm.add('(min-width: 992px)', () => {
+        locomotiveScroll = new LocomotiveScroll({
+            lenisOptions: {
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+                smooth: true,
+                mouseMultiplier: 1,
+            },
+            scrollCallback: () => {
+                ScrollTrigger.update()
+            }
+        });
+
+        gsap.ticker.lagSmoothing(0)
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                locomotiveScroll.scrollTo(this.getAttribute("href"));
+            });
+        });
+    })
+}
+
 function allFunc() {
+    ScrollTrigger.refresh();
+    handleIntroVideo()
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
     if (image) {
@@ -89,20 +98,104 @@ function allFunc() {
     secHeading();
     bgAnim();
     animateSVGCircles();
-    handleIntroVideo()
     animateInfoClesBannerColors()
     playVideo()
     modalPopup()
     horizontalSection();
 }
 
+function bannerAnimation(loc) {
+    mm.add('(min-width: 992px)', () => {
+        if (loc === 'index' || loc === '') {
+            let headingElem = document.querySelectorAll(['#introVideo .blob .animate', '#homeSec .blob .animate'])
+            let heading = new SplitType(headingElem, {types: 'words, chars'})
+
+            let tl = gsap.timeline({delay: 1, pause: true})
+            tl
+                .to(heading.chars, {
+                    translateY: 0,
+                    translateZ: 0,
+                    autoAlpha: 1,
+                    stagger: 0.1,
+                    duration: 1,
+                    ease: "expo.out",
+                })
+            if (!hasVisited) {
+                console.log('working')
+                tl
+                    .to(heading.chars, {
+                        translateY: 0,
+                        translateZ: 0,
+                        autoAlpha: 1,
+                        stagger: 0.1,
+                        duration: 1,
+                        ease: "expo.out",
+                    })
+                    .to('.animate ~ button', {
+                        autoAlpha: 1,
+                        ease: "expo.out",
+                    }, "-=0.9")
+            }
+        } else {
+            let innerHeadingElem = document.querySelector('.innerBan .content h1')
+            let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
+            gsap.set(innerHeadingElem, {
+                autoAlpha: 1,
+            })
+            let tl = gsap.timeline({delay: 0.5})
+            tl
+                .to("#myClip path ", {
+                    attr: {
+                        d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
+                    },
+                    ease: "none",
+                    duration: 1
+                })
+                .to(heading.chars, {
+                    translateY: 0,
+                    translateZ: 0,
+                    autoAlpha: 1,
+                    stagger: 0.1,
+                    duration: 1.5,
+                    ease: "expo.out",
+                })
+        }
+    })
+    mm.add("(max-width: 991px)", () => {
+        let headingElem = document.querySelectorAll(['.homeBanner .blob .animate', '.innerBan .content h1'])
+        headingElem.forEach((text) => {
+            gsap.set(text, {autoAlpha: 1})
+            let heading = new SplitType(text, {types: 'words, chars'})
+
+            let tl = gsap.timeline({delay: 1})
+            tl
+                .to(heading.chars, {
+                    translateY: 0,
+                    translateZ: 0,
+                    autoAlpha: 1,
+                    stagger: 0.1,
+                    duration: 1.5,
+                    ease: "expo.out",
+                })
+                .to('.animate ~ button', {
+                    autoAlpha: 1,
+                    ease: "expo.out",
+                }, "-=0.9")
+        })
+    })
+}
+
 function menuTrigger() {
-    const body = $('body');
-    const icon = $('.menuBtn .btnIcon');
-    $('.menuBtn').click(function () {
-        body.toggleClass('active');
-        icon.toggleClass('active');
+    const body = document.body;
+    const icon = document.querySelector('.menuBtn .btnIcon');
+    const menuBtn = document.querySelector('.menuBtn');
+
+    menuBtn.addEventListener('click', function () {
+        body.classList.toggle('active');
+        icon.classList.toggle('active');
     });
+
+    // GSAP animation for the SVG rotation
     gsap.to(".rotateSvg", {
         rotation: "+=360",
         repeat: -1,
@@ -111,100 +204,8 @@ function menuTrigger() {
     });
 }
 
-function HomeBannerAnim() {
-    let headingElem = document.querySelectorAll('.homeBanner .blob .animate')
-    let heading = new SplitType(headingElem, {types: 'words, chars'})
-
-    let tl = gsap.timeline({delay: 1, pause: true})
-    tl
-        .to(heading.chars, {
-            translateY: 0,
-            translateZ: 0,
-            autoAlpha: 1,
-            stagger: 0.1,
-            duration: 1,
-            ease: "expo.out",
-        })
-        .to('.animate ~ button', {
-            autoAlpha: 1,
-            ease: "expo.out",
-        }, "-=0.9")
-}
-
-function mobileBannerAnim() {
-    let headingElem = document.querySelectorAll(['.homeBanner .blob .animate', '.innerBan .content h1'])
-    headingElem.forEach((text) => {
-        gsap.set(text, {autoAlpha: 1})
-        let heading = new SplitType(text, {types: 'words, chars'})
-
-        let tl = gsap.timeline({delay: 1})
-        tl
-            .to(heading.chars, {
-                translateY: 0,
-                translateZ: 0,
-                autoAlpha: 1,
-                stagger: 0.1,
-                duration: 1.5,
-                ease: "expo.out",
-            })
-            .to('.animate ~ button', {
-                autoAlpha: 1,
-                ease: "expo.out",
-            }, "-=0.9")
-    })
-
-    $('.modalPopup').on('click', function () {
-        var modalTarget = $(this).data('modal-target');
-        $(modalTarget).toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
-    });
-    $('.overlay').on('click', function () {
-        $('.sideModal.active').toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
-    });
-}
-
-function bannerAnim() {
-    let banner = document.querySelector('.innerBan')
-    if (banner) {
-        let innerHeadingElem = document.querySelector('.innerBan .content h1')
-        let bannerImage = document.querySelector('.innerBan .bannerImg')
-        let heading = new SplitType(innerHeadingElem, {types: 'words, chars'})
-        gsap.set(innerHeadingElem, {
-            autoAlpha: 1,
-        })
-        let tl = gsap.timeline({pause: true, delay: 0.5})
-        tl
-            .to("#myClip path ", {
-                attr: {
-                    d: "M -741.595 132.032 C -1068.187 433.229 -1151.593 956.524 -102.629 1373.504 C 269.88 1521.583 1825.523 1899.312 2376.193 1391.459 C 2598.47 1186.463 3416.507 57.807 2326.783 -375.385 C 1346.392 -765.108 -344.684 -234.017 -741.595 132.032 Z",
-                },
-                ease: "none",
-                duration: 1
-            })
-            .to(heading.chars, {
-                translateY: 0,
-                translateZ: 0,
-                autoAlpha: 1,
-                stagger: 0.1,
-                duration: 1.5,
-                ease: "expo.out",
-            })
-    }
-}
-
 function allSliders() {
-    var swiper = new Swiper(".galleryInnerSlider", {
+    let swiper = new Swiper(".galleryInnerSlider", {
         slidesPerView: '1',
         pagination: {
             el: ".swiper-pagination",
@@ -275,34 +276,18 @@ function horizontalSection() {
     let allWrapper = document.querySelectorAll('.sliderSec')
 
     allWrapper.forEach((wrapper) => {
-            let width = 0, transform = 0, lastImgWidth = 0;
-            let sections = wrapper.querySelectorAll('.panel')
-            let images = wrapper.querySelectorAll('.panel img')
-            images.forEach((sec) => {
-                width += sec.clientWidth
-                lastImgWidth = sec.clientWidth
-            })
-            wrapper.style.width = `${width}px`;
-            if (window.innerWidth >= 1367) {
-                transform = (width / 2)
-            } else if (window.innerWidth >= 992) {
-                transform = (width / 1.5)
-            } else if (window.innerWidth >= 576) {
-                transform = (width - (lastImgWidth / 1.5))
-            } else if (window.innerWidth >= 450) {
-                transform = (width - (lastImgWidth / 2))
-            } else {
-                transform = width - lastImgWidth + 50
-            }
-            gsap.to(sections, {
-                x: -transform,
+            let section = wrapper.querySelector('.panel')
+            let images = wrapper.querySelectorAll('.panel .sliderImg')
+            let lastElement = images[images.length - 1];
+            gsap.to(section, {
+                x: -(section.clientWidth - lastElement.clientWidth / 1.2),
                 ease: "none",
                 scrollTrigger: {
                     trigger: wrapper,
                     pin: true,
                     start: 'top',
                     scrub: 1,
-                    end: () => "+=" + width
+                    end: () => `+=${section.clientWidth}`
                 }
             })
         }
@@ -416,24 +401,26 @@ function animateSVGCircles() {
 }
 
 function modalPopup() {
-    $('.modalPopup').on('click', function () {
-        var modalTarget = $(this).data('modal-target');
-        $(modalTarget).toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
-        }
+    let modalPopups = document.querySelectorAll('.modalPopup');
+    let overlay = document.querySelector('.overlay');
+    let htmlElement = document.documentElement;
+
+    modalPopups?.forEach(function (modalPopup) {
+        modalPopup.addEventListener('click', function () {
+            let modalTarget = document.querySelector(modalPopup.getAttribute('data-modal-target'));
+            modalTarget.classList.toggle('active');
+            overlay.classList.toggle('active');
+            htmlElement.style.overflow = htmlElement.style.overflow === 'hidden' ? 'auto' : 'hidden';
+        });
     });
-    $('.overlay').on('click', function () {
-        $('.sideModal.active').toggleClass('active');
-        $('.overlay').toggleClass('active');
-        if (document.querySelector('html').style.overflow === 'hidden') {
-            document.querySelector('html').style.overflow = 'auto'
-        } else {
-            document.querySelector('html').style.overflow = 'hidden'
+
+    overlay?.addEventListener('click', function () {
+        let activeSideModal = document.querySelector('.sideModal.active');
+        if (activeSideModal) {
+            activeSideModal.classList.toggle('active');
         }
+        overlay.classList.toggle('active');
+        htmlElement.style.overflow = htmlElement.style.overflow === 'hidden' ? 'auto' : 'hidden';
     });
 
     document.querySelectorAll('[data-image-modal]').forEach(item => {
@@ -442,9 +429,13 @@ function modalPopup() {
         });
     });
 
-    document.querySelector(".close")?.addEventListener("click", () => {
-        document.getElementById("myModal").style.display = "none";
-    });
+    let closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener("click", () => {
+            closeModal();
+        });
+    }
+
 // Function to open modal
     const openModal = (anchor) => {
         const modal = document.getElementById("myModal");
@@ -452,24 +443,19 @@ function modalPopup() {
         const captionText = document.getElementById("caption");
         const imgSrc = anchor.getAttribute('data-src');
         const imgCaption = anchor.getAttribute('data-caption');
-        const isAutoHeight = anchor.getAttribute('data-height-auto')
 
         modal.style.display = "flex";
         modal.classList.remove("fadeOut");
         modalImg.src = imgSrc;
-        if (imgCaption) {
-            captionText.innerHTML = imgCaption;
+        captionText.innerHTML = imgCaption || '';
+        captionText.style.display = imgCaption ? "block" : "none";
+
+        if (anchor.getAttribute('data-height-auto') === 'true') {
+            modal.classList.add("autoHeightModal");
         } else {
-            captionText.style.display = "none"
+            modal.classList.remove("autoHeightModal");
         }
-        if (isAutoHeight == 'true') {
-            modal.classList.add("autoHeightModal")
-        } else {
-            if (modal.classList.contains('autoHeightModal')) {
-                modal.classList.remove("autoHeightModal")
-            }
-        }
-    }
+    };
 
 // Function to close modal
     const closeModal = () => {
@@ -478,7 +464,8 @@ function modalPopup() {
         setTimeout(() => {
             modal.style.display = "none";
         }, 500);
-    }
+    };
+
 }
 
 function handleIntroVideo() {
@@ -488,52 +475,64 @@ function handleIntroVideo() {
     if (hasVisited) {
         gsap.to(introVideoContainer, {
             autoAlpha: 0,
-            duration: 0,// Hide it immediately
+            duration: 0,
+            onComplete: () => {
+                document.querySelector("html").style.overflow = 'auto'
+            }
         });
         if (introVideoContainer) {
             introVideoContainer.innerHTML = null
         }
     } else {
-        let button = introVideoContainer.querySelector('#playBtn');
-        let skipBtn = introVideoContainer.querySelector('#skipBtn');
-        let video = introVideoContainer.querySelector('#introVideo video');
-        let container = introVideoContainer.querySelector("#introVideo .blob");
+        if (introVideoContainer) {
+            gsap.set("#introVideo .blob h1", {
+                autoAlpha: 1
+            })
+            let button = introVideoContainer.querySelector('#playBtn');
+            let skipBtn = introVideoContainer.querySelector('#skipBtn');
+            let video = introVideoContainer.querySelector('#introVideo video');
+            let container = introVideoContainer.querySelector("#introVideo .blob");
 
-        button?.addEventListener('click', function () {
-            localStorage.setItem('hasVisited', true);
-            video?.play();
-            video?.setAttribute("controls", "true");
-            gsap.to(container, {
-                autoAlpha: 0,
-                duration: 0.5 // Fade out the button container
-            });
-        });
-
-        skipBtn?.addEventListener('click', function () {
-            video?.load()
-            video?.removeAttribute("controls");
-            gsap.to(introVideoContainer, {
-                autoAlpha: 0,
-                duration: 0.5, // Fade out the video container
-                onComplete: () => {
-                    if (introVideoContainer) {
-                        introVideoContainer.innerHTML = null
+            button?.addEventListener('click', function () {
+                localStorage.setItem('hasVisited', true);
+                video?.play();
+                video?.setAttribute("controls", "true");
+                gsap.to(container, {
+                    autoAlpha: 0,
+                    duration: 0.5,
+                    onComplete: () => {
+                        document.querySelector("html").style.overflow = 'auto'
                     }
-                }
+                });
             });
-        });
 
-        video?.addEventListener("ended", function () {
-            gsap.to(introVideoContainer, {
-                autoAlpha: 0,
-                duration: 0.5, // Fade out the video container
-                onComplete: () => {
-                    if (introVideoContainer) {
-                        introVideoContainer.innerHTML = null
+            skipBtn?.addEventListener('click', function () {
+                video?.load()
+                video?.removeAttribute("controls");
+                gsap.to(introVideoContainer, {
+                    autoAlpha: 0,
+                    duration: 0.5,
+                    onComplete: () => {
+                        if (introVideoContainer) {
+                            introVideoContainer.innerHTML = null
+                            document.querySelector("html").style.overflow = 'auto'
+                        }
                     }
-                }
+                });
             });
-        });
+
+            video?.addEventListener("ended", function () {
+                gsap.to(introVideoContainer, {
+                    autoAlpha: 0,
+                    duration: 0.5, // Fade out the video container
+                    onComplete: () => {
+                        if (introVideoContainer) {
+                            introVideoContainer.innerHTML = null
+                        }
+                    }
+                });
+            });
+        }
     }
 }
 

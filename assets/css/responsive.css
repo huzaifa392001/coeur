@@ -52,7 +52,6 @@
     }
 
     footer p {
-        text-shadow: 0 0 5px black;
     }
 
     footer .logo img {
@@ -185,6 +184,14 @@
         font-size: 14px;
     }
 
+    .bgBlob + * {
+        margin-top: -25rem;
+    }
+
+    .videoCont img, .videoCont video {
+        height: auto;
+    }
+
     .infoClesBanner {
         overflow: hidden;
     }
@@ -222,12 +229,12 @@
 
     .contentBox .content {
         /* position: unset; */
-        width: 100% !important;
-        margin: 0 !important;
+        width: 85% !important;
+        /* margin: 0 !important; */
         padding: 0 1rem 0;
         /* justify-content: end; */
-        top: 60%;
-        transform: translateY(-60%);
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .contentBox .content h2 {
@@ -250,15 +257,6 @@
         right: 1rem !important;
         left: unset !important;
         transform: none !important;
-    }
-
-    .contentBox .content h6 {
-    }
-
-    .contentBox .content h6 a {
-    }
-
-    .contentBox .content h6 .links a + a::before {
     }
 
     footer {
@@ -353,8 +351,7 @@
     }
 
     .themeBtnAltr {
-        width: 100% !important;
-        padding: 0 7rem;
+        padding: 0;
     }
 
     .imgRow {
@@ -525,11 +522,11 @@
 
     .simpleContentSec .btnRow .themeBtnAltr {
         color: #000;
-        flex: 0 1 47%;
         font-size: 1.25rem;
         font-weight: 600;
         flex: 0 1 auto;
-        padding: 0;
+        padding: 0 1rem;
+        min-width: 50%;
     }
 
     .themeBtnAltr::before, .themeBtnAltr::after {
@@ -540,6 +537,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 2rem 0;
+        flex-direction: column;
     }
 
     .videoCont img {
@@ -573,6 +571,24 @@
         bottom: unset;
         top: 4rem;
         right: 1rem;
+    }
+
+    .contentBox .content h6 .links a + a::before {
+        display: none;
+    }
+
+    .contentBox .content h6 .links {
+        flex-direction: column;
+        align-items: self-start;
+    }
+
+    .contactSec .content .logoImg {
+        width: 140px;
+        height: auto;
+    }
+
+    .contentBox .content h6 {
+        margin: 0.5rem 0 0;
     }
 }
 
