@@ -1,41 +1,39 @@
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, MorphSVGPlugin, MotionPathPlugin);
 let mm = gsap.matchMedia();
-let locomotiveScroll;
+let customScroll;
 let hasVisited = localStorage.getItem('hasVisited');
-document.addEventListener('DOMContentLoaded', function () {
-    const isDesktop = window.innerWidth >= 992;
-    barba.init({
-        debug: true,
-        preventRunning: true,
-        transitions: [
-            {
-                sync: true,
-                async beforeLeave(data) {
-                    data.current.container.remove();
-                },
-                async leave(data) {
-                    await leavePage()
-                },
-                async enter(data) {
-                    await enterPage(data)
-                },
-                async once(data) {
-                    bannerAnimation(data.next.namespace);
-                    handleIntroVideo();
-                    if (data.next.namespace !== 'index') {
-                        initScroll();
-                    }
-                    allFunc();
-                },
-            },
-        ],
+const preloadImages = (selector = 'img') => {
+    return new Promise((resolve) => {
+        // The imagesLoaded library is used to ensure all images (including backgrounds) are fully loaded.
+        imagesLoaded(document.querySelectorAll(selector), {background: true}, resolve);
     });
+};
+barba.init({
+    transitions: [
+        {
+            async leave(data) {
+                await leavePage()
+                data.current.container.remove();
+            },
+            async enter(data) {
+                await enterPage(data)
+            },
+            async once(data) {
+                bannerAnimation(data.next.namespace);
+                handleIntroVideo();
+                if (data.next.namespace !== 'index') {
+                    initScroll();
+                }
+                allFunc();
+            },
+        },
+    ],
 });
 
 function leavePage() {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    if (locomotiveScroll) {
-        locomotiveScroll.destroy();
+    if (customScroll) {
+        customScroll.kill()
     }
     if (document.body.classList.contains("active")) {
         document.body.classList.remove("active");
@@ -47,45 +45,22 @@ function enterPage(data) {
     if (data.next.namespace !== 'index') {
         initScroll();
     }
-    bannerAnimation(data.next.namespace);
-    allFunc();
+    preloadImages('.panel .sliderImg img').then(() => {
+        bannerAnimation(data.next.namespace);
+        allFunc();
+    });
 }
 
 function initScroll() {
-    barba.hooks.afterEnter((data) => {
-        if (data.next.url.hash) {
-            const element = document.getElementById(data.next.url.hash);
-            element.scrollIntoView();
-        } else {
-            window.scrollTo(0, 0);
-        }
-        ScrollTrigger.refresh();
+    customScroll = ScrollSmoother.create({
+        smooth: 1,
+        effects: true,
+        smoothTouch: 0.1,
     });
-    mm.add('(min-width: 992px)', () => {
-        locomotiveScroll = new LocomotiveScroll({
-            lenisOptions: {
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-                smooth: true,
-                mouseMultiplier: 1,
-            },
-            scrollCallback: () => {
-                ScrollTrigger.update()
-            }
-        });
-
-        gsap.ticker.lagSmoothing(0)
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                locomotiveScroll.scrollTo(this.getAttribute("href"));
-            });
-        });
-    })
+    customScroll.scrollTop(0);
 }
 
 function allFunc() {
-    ScrollTrigger.refresh();
     handleIntroVideo()
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
@@ -98,10 +73,15 @@ function allFunc() {
     secHeading();
     bgAnim();
     animateSVGCircles();
+    animateSVGColors();
     animateInfoClesBannerColors()
     playVideo()
     modalPopup()
+    pinBlob()
+    // DVDPlayerSaver()
+    animateSVGPath();
     horizontalSection();
+    ScrollTrigger.refresh();
 }
 
 function bannerAnimation(loc) {
@@ -121,7 +101,6 @@ function bannerAnimation(loc) {
                     ease: "expo.out",
                 })
             if (!hasVisited) {
-                console.log('working')
                 tl
                     .to(heading.chars, {
                         translateY: 0,
@@ -196,12 +175,12 @@ function menuTrigger() {
     });
 
     // GSAP animation for the SVG rotation
-    gsap.to(".rotateSvg", {
-        rotation: "+=360",
-        repeat: -1,
-        duration: 10,
-        ease: "none"
-    });
+    // gsap.to(".rotateSvg", {
+    //     rotation: "+=360",
+    //     repeat: -1,
+    //     duration: 10,
+    //     ease: "none"
+    // });
 }
 
 function allSliders() {
@@ -276,18 +255,22 @@ function horizontalSection() {
     let allWrapper = document.querySelectorAll('.sliderSec')
 
     allWrapper.forEach((wrapper) => {
+            let width = 0;
             let section = wrapper.querySelector('.panel')
             let images = wrapper.querySelectorAll('.panel .sliderImg')
+            images.forEach((img) => {
+                width += img.clientWidth
+            })
             let lastElement = images[images.length - 1];
             gsap.to(section, {
-                x: -(section.clientWidth - lastElement.clientWidth / 1.2),
+                x: -(width - lastElement.clientWidth / 1.2),
                 ease: "none",
                 scrollTrigger: {
                     trigger: wrapper,
                     pin: true,
                     start: 'top',
                     scrub: 1,
-                    end: () => `+=${section.clientWidth}`
+                    end: () => `+=${width}`
                 }
             })
         }
@@ -400,6 +383,36 @@ function animateSVGCircles() {
     });
 }
 
+function animateSVGColors() {
+    // Define the colors
+    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
+
+    // Select .colorWrapper inside the SVG within the document
+    let colorWrappers = document.querySelectorAll([".bgBlob > svg .color", ".homeBanner .blob svg .color"]);
+
+    // GSAP timeline setup for the colorWrapper div
+    const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
+
+    // Function to get the next color in the array
+    function getNextColor(index) {
+        return colors[(index + 1) % colors.length];
+    }
+
+    colorWrappers.forEach((div, i) => {
+        // Change the background color using the defined colors, set duration and easing
+        tl.to(div, {
+            backgroundColor: getNextColor(i),
+            duration: 15,
+            rotation: '+=360',
+            scale: 1.5,
+            transformOrigin: '50% 50%', // Ensure the circle scales and rotates around its center
+            ease: "none"
+        }, "-=14.8"); // Overlap the timing of animations slightly for a smooth transition
+    });
+
+    tl.play(); // Play the timeline
+}
+
 function modalPopup() {
     let modalPopups = document.querySelectorAll('.modalPopup');
     let overlay = document.querySelector('.overlay');
@@ -425,6 +438,7 @@ function modalPopup() {
 
     document.querySelectorAll('[data-image-modal]').forEach(item => {
         item.addEventListener('click', () => {
+            // customScroll.kill()
             openModal(item);
         });
     });
@@ -432,6 +446,7 @@ function modalPopup() {
     let closeButton = document.querySelector('.close');
     if (closeButton) {
         closeButton.addEventListener("click", () => {
+            // initScroll()
             closeModal();
         });
     }
@@ -587,3 +602,68 @@ function playVideo() {
     })
 
 }
+
+function pinBlob() {
+    let end = document.querySelector('body').offsetHeight;
+    let section = document.querySelectorAll('.sliderSec .sliderImg')
+    if (section.length > 0) {
+        section.forEach((sec) => {
+            end += sec.offsetHeight
+        })
+    }
+    ScrollTrigger.create({
+        trigger: ".bgBlob",
+        start: 'top top',
+        pin: ".bgBlob",
+        pinSpacing: false,
+        end: `+=${end}`
+    })
+}
+
+function animateSVGPath() {
+    // Removed yoyo: true to stop reversing the animation at each step.
+    let tl = gsap.timeline({defaults: {duration: 3, ease: "none"}, repeat: -1});
+
+    tl.to('#blob1', {morphSVG: '#blob2'})
+        .to('#blob1', {morphSVG: '#blob3'})
+        .to('#blob1', {morphSVG: '#blob4'})
+        .to('#blob1', {morphSVG: '#blob1'}); // Morphs back to the original shape, completes the loop
+}
+
+function DVDPlayerSaver() {
+    const bounceDuration = 2; // Duration of each bounce
+    const screenWidth = document.querySelector('.bgBlob').innerWidth; // The width of the viewport
+    const screenHeight = document.querySelector('.bgBlob').innerHeight; // The height of the viewport
+    const svgWidth = document.querySelector('.bgBlob .rotateSvg').clientWidth; // The width of the SVG
+    const svgHeight = document.querySelector('.bgBlob .rotateSvg').clientHeight; // The height of the SVG
+
+    let posX = Math.random() * (screenWidth - svgWidth);
+    let posY = Math.random() * (screenHeight - svgHeight);
+    let directionX = 1;
+    let directionY = 1;
+
+// Setup an interval to change directions when hitting edges
+    setInterval(function () {
+        // Calculate new position
+        posX += directionX * (screenWidth - svgWidth) * 0.1; // Move 10% of the screen width
+        posY += directionY * (screenHeight - svgHeight) * 0.1; // Move 10% of the screen height
+
+        // Reverse direction if hitting an edge
+        if (posX <= 0 || posX >= screenWidth - svgWidth) {
+            directionX *= -1;
+        }
+        if (posY <= 0 || posY >= screenHeight - svgHeight) {
+            directionY *= -1;
+        }
+
+        // Animate SVG to new position
+        gsap.to('.bgBlob .rotateSvg', {
+            duration: bounceDuration,
+            x: posX,
+            y: posY,
+            ease: "none" // No easing for a consistent speed
+        });
+    }, bounceDuration * 1000); // Interval matches the duration of the bounce animation
+
+}
+

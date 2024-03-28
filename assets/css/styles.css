@@ -21,31 +21,7 @@
 }
 
 body {
-    overflow-x: hidden;
-}
-
-html.lenis body {
     overflow-x: clip;
-}
-
-html.lenis {
-    height: auto;
-}
-
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-    pointer-events: none;
 }
 
 .img-auto {
@@ -194,27 +170,36 @@ section {
     pointer-events: none;
 }
 
-.colorWrapper .color {
+.colorWrapper .color,
+svg .color {
     position: absolute;
     width: 100vw;
     height: 100vh;
     border-radius: 100%;
 }
 
-.colorWrapper .color.color-1 {
+svg .color {
+    filter: blur(120px);
+    -webkit-filter: blur(120px);
+}
+
+.colorWrapper .color.color-1,
+svg .color.color-1 {
     background: var(--color-1);
     left: -50%;
     top: 0;
     z-index: 1;
 }
 
-.colorWrapper .color.color-2 {
+.colorWrapper .color.color-2,
+svg .color.color-2 {
     background: var(--color-2);
     top: -30%;
     left: 30%;
 }
 
-.colorWrapper .color.color-3 {
+.colorWrapper .color.color-3,
+svg .color.color-3 {
     background: var(--color-3);
     right: -40%;
     top: 40%;
@@ -341,6 +326,7 @@ header .menu {
     user-select: none;
     transition: all 0.3s ease-in-out;
     background: #fff;
+    height: 100vh;
 }
 
 header .menuBtn {
@@ -394,7 +380,7 @@ header .menuBtn .btnIcon.active img:last-child {
 }
 
 header .menu ul {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -448,7 +434,6 @@ body.active .menu {
     max-height: 472px;
     height: 100%;
     width: 100%;
-    animation: rotation 25s linear infinite backwards;
     rotation 25s linear infinite
     animation-fill-mode: backwards;
     position: absolute;
@@ -749,7 +734,6 @@ footer .copyright {
     width: 90%;
     height: 90%;
     object-fit: contain;
-    animation: rotation 15s linear infinite forwards;
 }
 
 .bgBlob svg {
@@ -1488,7 +1472,6 @@ footer .logo img {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
     animation: fadeIn 0.5s ease-in-out;
     align-items: center;
@@ -1497,7 +1480,7 @@ footer .logo img {
 }
 
 .customModal .customModal.fadeOut {
-    animation: fadeOut 0.5s ease-in-out;
+    animation: fadeOut 0.5s;
 }
 
 .customModal .modal-content {
@@ -1616,5 +1599,11 @@ footer .logo img {
 
 #introVideo .blob h1 {
     opacity: 0;
+    visibility: hidden;
+}
+
+#blob2,
+#blob3,
+#blob4 {
     visibility: hidden;
 }

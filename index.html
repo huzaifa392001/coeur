@@ -16,15 +16,55 @@
     <title>Cœur Fertile</title>
 </head>
 <body data-barba="wrapper">
-<div class="wrapper">
-    <main data-barba="container" data-barba-namespace="index">
+<main data-barba="container" data-barba-namespace="index">
+    <header>
+        <div class="menu">
+            <div class="colorWrapper" id="colorAnim">
+                <div class="color color-1"></div>
+                <div class="color color-2"></div>
+                <div class="color color-3"></div>
+                <div class="backdrop"></div>
+            </div>
+            <ul>
+                <li>
+                    <a href="./index.html" class="cardHeading">accueil</a>
+                </li>
+                <li>
+                    <a href="./comme-un-fruit.html" class="cardHeading">le concept</a>
+                </li>
+                <li>
+                    <a href="coeur-fertile.html" class="cardHeading">le batiment</a>
+                </li>
+                <li>
+                    <a href="./gentily.html" class="cardHeading">la localisation</a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="cardHeading">contact</a>
+                </li>
+            </ul>
+        </div>
+        <button class="menuBtn">
+            <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60"
+                 viewBox="0 0 70 60"
+                 fill="none">
+                <path
+                        d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                        fill="white"/>
+            </svg>
+            <span class='btnIcon'>
+            <img src="./assets/images/menuIcon.webp" alt="">
+            <img src="./assets/images/menuIconActive.webp" alt="">
+        </span>
+        </button>
+    </header>
+    <div class="wrapper">
         <style>
             html {
                 scroll-behavior: smooth;
                 height: 100%;
                 overflow-y: scroll;
                 scroll-snap-type: y mandatory;
-                overflow: hidden;
+                overflow-x: hidden;
             }
 
             section {
@@ -44,27 +84,37 @@
                 <source src="https://res.cloudinary.com/dipjekzsa/video/upload/v1710895830/COEUR_FERTILE_1_mvaymz.mp4">
             </video>
             <div class="blob flex-column">
-                <svg class="d-md-block d-none" fill="none" viewBox="0 0 558 472" xmlns="http://www.w3.org/2000/svg">
-                    <mask id="a" x="0" y="0" width="558" height="472" style="mask-type:alpha"
-                          maskUnits="userSpaceOnUse">
-                        <path d="M355.021 0C443.619 0 558 50.9554 558 208.987C558 265.107 508.53 472 359.143 472C298.844 472 0 429.281 0 265.107C0 117.407 247.348 0 355.021 0Z"
-                              fill="#000"/>
-                    </mask>
-                    <g mask="url(#a)">
-                        <g filter="url(#b)">
-                            <circle cx="65" cy="209" r="362" fill="#EAE007"/>
-                            <circle cx="496" cy="65" r="326" fill="#EF9757"/>
-                            <circle cx="443.5" cy="485.5" r="291.5" fill="#00AAC1"/>
-                        </g>
+                <svg width="709" height="600" viewBox="0 0 709 600" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <!-- Define the clipPath with the same path you want to clip the content by -->
+                    <clipPath id="clip-path">
+                        <path id="blob1"
+                              d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
+                              fill="black"/>
+                        <path id="blob2"
+                              d="M0 218.257C0 122.99 64.7738 9.63362e-06 265.661 9.63362e-06C337.001 9.63362e-06 600 53.1931 600 213.824C600 278.663 545.697 600 337.001 600C149.246 600 0 334.035 0 218.257Z"
+                              fill="black"/>
+                        <path id="blob3"
+                              d="M259.068 600C146.557 600 1.30438 535.226 1.30438 334.339C1.30438 262.999 64.126 0 253.833 0C330.408 0 709.911 54.3034 709.911 262.999C709.911 450.754 395.803 600 259.068 600Z"
+                              fill="black"/>
+                        <path id="blob4"
+                              d="M600 381.743C600 477.01 535.226 600 334.339 600C262.999 600 0 546.807 0 386.176C0 321.337 54.3034 0 262.999 0C450.754 0 600 265.965 600 381.743Z"
+                              fill="black"/>
+                    </clipPath>
+
+                    <!-- Use the clip path by referencing its ID -->
+                    <g clip-path="url(#clip-path)">
+                        <!-- Place your divs here as 'foreignObject' elements -->
+                        <foreignObject width="709" height="600">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-1"></div>
+                        </foreignObject>
+                        <foreignObject width="709" height="600">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-2"></div>
+                        </foreignObject>
+                        <foreignObject width="709" height="600">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-3"></div>
+                        </foreignObject>
                     </g>
-                    <defs>
-                        <filter id="b" x="-697" y="-661" width="1955" height="1838" color-interpolation-filters="sRGB"
-                                filterUnits="userSpaceOnUse">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur result="effect1_foregroundBlur_4180_1493" stdDeviation="200"/>
-                        </filter>
-                    </defs>
                 </svg>
                 <img src="./assets/images/bannerBlob.webp" alt="" class="d-md-none">
                 <h1 class="mainHeading animate">
@@ -107,70 +157,32 @@
             <div class="color color-3"></div>
             <div class="backdrop"></div>
         </div>
-        <header>
-            <div class="menu">
-                <div class="colorWrapper" id="colorAnim">
-                    <div class="color color-1"></div>
-                    <div class="color color-2"></div>
-                    <div class="color color-3"></div>
-                    <div class="backdrop"></div>
-                </div>
-                <ul>
-                    <li>
-                        <a href="./index.html" class="cardHeading">accueil</a>
-                    </li>
-                    <li>
-                        <a href="./comme-un-fruit.html" class="cardHeading">le concept</a>
-                    </li>
-                    <li>
-                        <a href="coeur-fertile.html" class="cardHeading">le batiment</a>
-                    </li>
-                    <li>
-                        <a href="./gentily.html" class="cardHeading">la localisation</a>
-                    </li>
-                    <li>
-                        <a href="./contact.html" class="cardHeading">contact</a>
-                    </li>
-                </ul>
-            </div>
-            <button class="menuBtn">
-                <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                     fill="none">
-                    <path
-                            d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                            fill="white"/>
-                </svg>
-                <span class='btnIcon'>
-            <img src="./assets/images/menuIcon.webp" alt="">
-            <img src="./assets/images/menuIconActive.webp" alt="">
-        </span>
-            </button>
-        </header>
         <section class="homeBanner p-0" id="homeSec">
             <!--        <img src="./assets/images/bannerBg.webp" alt="" class="w-100 h-100 object-fit-cover">-->
             <video autoplay loop muted poster="./assets/images/bannerBg.webp">
                 <source src="https://res.cloudinary.com/dipjekzsa/video/upload/v1710934713/Coeur-Fertile-Accueil_1_frvzcd.mp4   ">
             </video>
             <div class="blob">
-                <svg class="d-md-block d-none" fill="none" viewBox="0 0 1059 897" xmlns="http://www.w3.org/2000/svg">
-                    <mask id="d" x="0" y="0" width="100%" height="100%" style="mask-type:alpha"
-                          maskUnits="userSpaceOnUse">
-                        <path d="m673.79 0.785c168.1 0 385.11 96.678 385.11 396.52 0 106.48-93.857 499.02-377.29 499.02-114.41-1e-3 -681.41-81.052-681.41-392.54 0-280.24 469.3-502.99 673.59-502.99z"
-                              fill="#000"/>
-                    </mask>
-                    <g filter="url(#c)" mask="url(#d)">
-                        <circle cx="123.53" cy="397.32" r="686.83" fill="#EAE007"/>
-                        <circle cx="941.27" cy="124.11" r="618.52" fill="#EF9757"/>
-                        <circle cx="841.66" cy="921.93" r="553.07" fill="#00AAC1"/>
+                <svg width="709" height="600" viewBox="0 0 709 600" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <!-- Define the clipPath with the same path you want to clip the content by -->
+                    <clipPath id="clip-path">
+                        <path d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"/>
+                    </clipPath>
+
+                    <!-- Use the clip path by referencing its ID -->
+                    <g clip-path="url(#clip-path)">
+                        <!-- Place your divs here as 'foreignObject' elements -->
+                        <foreignObject width="709" height="600">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-1"></div>
+                        </foreignObject>
+                        <foreignObject width="709" height="600">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-2"></div>
+                        </foreignObject>
+                        <foreignObject width="709" height="600">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-3"></div>
+                        </foreignObject>
                     </g>
-                    <defs>
-                        <filter id="c" x="-963.3" y="-894.41" width="2991.4" height="2769.4"
-                                color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                            <feGaussianBlur result="effect1_foregroundBlur_4055_1733" stdDeviation="200"/>
-                        </filter>
-                    </defs>
                 </svg>
                 <img src="./assets/images/bannerBlob.webp" alt="" class="d-md-none">
                 <h1 class="mainHeading animate">
@@ -200,9 +212,11 @@
                     <div class="content">
                         <h2 class="cardHeading secHeading">Comme <br> un fruit !</h2>
                         <p class="smallText">
-                            Cœur fertile s’apprécie comme un fruit. Derrière son écorce urbaine, sa façade minérale, il
+                            Cœur fertile s’apprécie comme un fruit. Derrière son écorce urbaine, sa façade
+                            minérale, il
                             révèle
-                            une composition subtile et surprenante, une incroyable richesse d’organisation, de textures,
+                            une composition subtile et surprenante, une incroyable richesse d’organisation, de
+                            textures,
                             de
                             transparence et de couleurs. Pour un parfait équilibre.
                         </p>
@@ -231,11 +245,15 @@
                     <div class="content">
                         <h2 class="cardHeading secHeading">Cœur <br> fertile</h2>
                         <p class="smallText">
-                            Cœur fertile est un immeuble différent, singulier et vivant grâce à une forte présence de la
-                            végétation. Ici, la nature s’exprime pleinement. II y a le potager sur le rooftop, les
-                            terrasses, le verger et le jardin en son coeur qui se prolonge à l’intérieur. Ce couloir
+                            Cœur fertile est un immeuble différent, singulier et vivant grâce à une forte
+                            présence de la
+                            végétation. Ici, la nature s’exprime pleinement. II y a le potager sur le rooftop,
+                            les
+                            terrasses, le verger et le jardin en son coeur qui se prolonge à l’intérieur. Ce
+                            couloir
                             végétal
-                            offre une progression douce, de la ville au jardin, au jardin d’hiver et jusqu’à son bureau.
+                            offre une progression douce, de la ville au jardin, au jardin d’hiver et jusqu’à son
+                            bureau.
                         </p>
                         <a href="./coeur-fertile.html" class="themeBtnAltr">
                     <span>
@@ -263,9 +281,11 @@
                         <h2 class="cardHeading secHeading">Gentilly,<br>
                             porte d’entrée <br>de paris</h2>
                         <p class="smallText">
-                            Reliée à Paris par une passerelle, Gentilly, accessible en métro, en RER, en tramway, en
+                            Reliée à Paris par une passerelle, Gentilly, accessible en métro, en RER, en
+                            tramway, en
                             voiture
-                            ou à vélo, entre le parc Pablo Picasso et la Parc de la Cité Internationale Universitaire du
+                            ou à vélo, entre le parc Pablo Picasso et la Parc de la Cité Internationale
+                            Universitaire du
                             14e, Coeur fertile est une destination connectée.
                         </p>
                         <a href="./gentily.html" class="themeBtnAltr">
@@ -321,41 +341,6 @@
                 </div>
             </div>
         </section>
-        <div class="bottomBtn">
-            <a href="info-cles.html#film" class="themeBtn">
-                <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                     fill="none">
-                    <path
-                            d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                            fill="white"/>
-                </svg>
-                <span>
-                Film
-            </span>
-            </a>
-            <button class="themeBtn">
-                <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                     fill="none">
-                    <path
-                            d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                            fill="white"/>
-                </svg>
-                <span>
-                pers<br>pective
-            </span>
-            </button>
-            <a href='./info-cles.html' class="themeBtn">
-                <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                     fill="none">
-                    <path
-                            d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                            fill="white"/>
-                </svg>
-                <span>
-                Infos<br>clés
-            </span>
-            </a>
-        </div>
 
         <footer>
             <div class="container-fluid">
@@ -381,8 +366,46 @@
                 </div>
             </div>
         </footer>
-    </main>
-</div>
+    </div>
+    <div class="bottomBtn">
+        <a href="info-cles.html#film" class="themeBtn">
+            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60"
+                 viewBox="0 0 70 60"
+                 fill="none">
+                <path
+                        d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                        fill="white"/>
+            </svg>
+            <span>
+                Film
+            </span>
+        </a>
+        <button class="themeBtn">
+            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60"
+                 viewBox="0 0 70 60"
+                 fill="none">
+                <path
+                        d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                        fill="white"/>
+            </svg>
+            <span>
+                pers<br>pective
+            </span>
+        </button>
+        <a href='./info-cles.html' class="themeBtn">
+            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60"
+                 viewBox="0 0 70 60"
+                 fill="none">
+                <path
+                        d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
+                        fill="white"/>
+            </svg>
+            <span>
+                Infos<br>clés
+            </span>
+        </a>
+    </div>
+</main>
 
 </body>
 
@@ -391,7 +414,10 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="./assets/js/scroll.min.js"></script>
+<script src="./assets/js/morph.min.js"></script>
+<script src="./assets/js/motionPath.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/@barba/core"></script>

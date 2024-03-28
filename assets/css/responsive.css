@@ -173,10 +173,10 @@
         animation: scaled 10s linear infinite alternate;
     }
 
-    body {
-        overflow: initial;
-        overflow-x: clip;
-    }
+    /*body {*/
+    /*    overflow: initial;*/
+    /*    overflow-x: clip;*/
+    /*}*/
 }
 
 @media (max-width: 768.98px) {
