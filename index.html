@@ -86,10 +86,12 @@
             <div class="blob flex-column">
                 <svg class="rotateSvg d-none d-md-block" width="709" height="600" viewBox="0 0 709 600" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path">
-                        <path d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
-                              fill="black"/>
-                    </clipPath>
+                    <defs>
+                        <clipPath id="clip-path">
+                            <path d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
+                                  fill="black"/>
+                        </clipPath>
+                    </defs>
                     <g clip-path="url(#clip-path)">
                         <foreignObject width="709" height="600">
                             <div xmlns="http://www.w3.org/1999/xhtml" class="color color-1"></div>
@@ -144,21 +146,17 @@
             <div class="backdrop"></div>
         </div>
         <section class="homeBanner p-0" id="homeSec">
-            <!--        <img src="./assets/images/bannerBg.webp" alt="" class="w-100 h-100 object-fit-cover">-->
             <video autoplay loop muted poster="./assets/images/bannerBg.webp">
                 <source src="https://res.cloudinary.com/dipjekzsa/video/upload/v1710934713/Coeur-Fertile-Accueil_1_frvzcd.mp4   ">
             </video>
             <div class="blob">
-                <svg width="709" height="600" viewBox="0 0 709 600" fill="none"
+                <svg class="rotateSvg d-none d-md-block" width="709" height="600" viewBox="0 0 709 600" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
-                    <!-- Define the clipPath with the same path you want to clip the content by -->
                     <clipPath id="clip-path">
-                        <path d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"/>
+                        <path d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
+                              fill="black"/>
                     </clipPath>
-
-                    <!-- Use the clip path by referencing its ID -->
                     <g clip-path="url(#clip-path)">
-                        <!-- Place your divs here as 'foreignObject' elements -->
                         <foreignObject width="709" height="600">
                             <div xmlns="http://www.w3.org/1999/xhtml" class="color color-1"></div>
                         </foreignObject>
@@ -170,7 +168,7 @@
                         </foreignObject>
                     </g>
                 </svg>
-                <img src="./assets/images/bannerBlob.webp" alt="" class="d-md-none">
+                <img src="./assets/images/bannerBlob.webp" alt="" class="d-md-none rotateSvg">
                 <h1 class="mainHeading animate">
                     Cœur fertile
                 </h1>
