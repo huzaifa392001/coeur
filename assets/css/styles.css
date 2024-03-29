@@ -505,7 +505,6 @@ body.active .menu {
 }
 
 .contentBox .bg {
-    animation: rotation 25s linear infinite backwards;
     transform-origin: center center;
 }
 

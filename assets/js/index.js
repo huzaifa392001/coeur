@@ -175,12 +175,12 @@ function menuTrigger() {
     });
 
     // GSAP animation for the SVG rotation
-    // gsap.to(".rotateSvg", {
-    //     rotation: "+=360",
-    //     repeat: -1,
-    //     duration: 10,
-    //     ease: "none"
-    // });
+    gsap.to(".rotateSvg", {
+        rotation: "+=360",
+        repeat: -1,
+        duration: 15,
+        ease: "none"
+    });
 }
 
 function allSliders() {
@@ -657,7 +657,7 @@ function DVDPlayerSaver() {
         }
 
         // Animate SVG to new position
-        gsap.to('.bgBlob .rotateSvg', {
+        gsap.to('.bgBlob svg', {
             duration: bounceDuration,
             x: posX,
             y: posY,
