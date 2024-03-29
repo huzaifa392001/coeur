@@ -45,7 +45,7 @@ function enterPage(data) {
     if (data.next.namespace !== 'index') {
         initScroll();
     }
-    preloadImages('.panel .sliderImg img').then(() => {
+    preloadImages('img').then(() => {
         bannerAnimation(data.next.namespace);
         allFunc();
     });
