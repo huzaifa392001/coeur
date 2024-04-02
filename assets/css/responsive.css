@@ -601,13 +601,9 @@
 
     .colorBlob {
         width: 100vw;
-        transform-origin: center center;
         height: 100vh;
         overflow: visible;
-        position: absolute;
-        inset: 0;
-        left: -50%;
-        transform: translateX(35%) scale(0.55);
+        transform: scale(0.55);
     }
 
     .bgBlob {
