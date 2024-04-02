@@ -68,7 +68,6 @@
             <svg width="0" height="0" class="position-absolute">
                 <defs>
                     <clipPath id="myClip">
-
                         <path d="M 1020.629 208.468 C 989.781 255.454 981.903 337.087 1080.982 402.135 C 1116.167 425.235 1263.104 484.16 1315.117 404.936 C 1336.112 372.957 1413.379 196.889 1310.45 129.312 C 1217.848 68.516 1058.119 151.365 1020.629 208.468 Z"
                               fill="white"></path>
                     </clipPath>
@@ -115,10 +114,9 @@
                 </a>
             </section>
             <figure class="bgBlob">
-                <svg width="709" height="600" viewBox="0 0 709 600" fill="none"
+                <svg width="0" class="position-absolute animateSvg" height="0" viewBox="0 0 709 600" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
-                    <!-- Define the clipPath with the same path you want to clip the content by -->
-                    <clipPath id="clip-path">
+                    <clipPath id="animateShape">
                         <path id="blob1"
                               d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
                               fill="black"/>
@@ -132,23 +130,15 @@
                               d="M600 381.743C600 477.01 535.226 600 334.339 600C262.999 600 0 546.807 0 386.176C0 321.337 54.3034 0 262.999 0C450.754 0 600 265.965 600 381.743Z"
                               fill="black"/>
                     </clipPath>
-
-                    <!-- Use the clip path by referencing its ID -->
-                    <g clip-path="url(#clip-path)">
-                        <!-- Place your divs here as 'foreignObject' elements -->
-                        <foreignObject width="709" height="600">
-                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-1"></div>
-                        </foreignObject>
-                        <foreignObject width="709" height="600">
-                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-2"></div>
-                        </foreignObject>
-                        <foreignObject width="709" height="600">
-                            <div xmlns="http://www.w3.org/1999/xhtml" class="color color-3"></div>
-                        </foreignObject>
-                    </g>
                 </svg>
-                <!--                <img src="./assets/images/bgBlob.webp" alt="" class="d-md-none rotateSvg"-->
-<!--                     style="transform: translate3d(0px, 0px, 0px) rotate(223.992deg);">-->
+                <div class="colorBlob">
+                    <div class="colorWrapper">
+                        <div class="color color-1"></div>
+                        <div class="color color-2"></div>
+                        <div class="color color-3"></div>
+                        <div class="backdrop"></div>
+                    </div>
+                </div>
             </figure>
             <section id="firstSec" class="altrContentSec">
                 <div class="customCont container">
@@ -1015,11 +1005,11 @@
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="./assets/js/scroll.min.js"></script>
 <script src="./assets/js/morph.min.js"></script>
 <script src="./assets/js/motionPath.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/@barba/core"></script>
 <script src="./assets/js/index.js"></script>
 </html>

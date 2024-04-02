@@ -23,6 +23,13 @@ barba.init({
                 handleIntroVideo();
                 if (data.next.namespace !== 'index') {
                     initScroll();
+                    if (data.next.url.hash !== undefined) {
+                        customScroll.scrollTo(
+                            `#${data.next.url.hash}`,
+                            true,
+                            "top"
+                        );
+                    }
                 }
                 allFunc();
             },
@@ -44,6 +51,13 @@ function leavePage() {
 function enterPage(data) {
     if (data.next.namespace !== 'index') {
         initScroll();
+        if (data.next.url.hash !== undefined) {
+            customScroll.scrollTo(
+                `#${data.next.url.hash}`,
+                true,
+                "top"
+            );
+        }
     }
     preloadImages('img').then(() => {
         bannerAnimation(data.next.namespace);
@@ -58,21 +72,30 @@ function initScroll() {
         smoothTouch: 0.1,
     });
     customScroll.scrollTop(0);
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            customScroll.scrollTo(
+                this.getAttribute("href"),
+                true,
+                "top"
+            );
+        });
+    });
 }
 
 function allFunc() {
+    menuTrigger()
     handleIntroVideo()
     const image = document.getElementById('draggableImage');
     const container = document.querySelector('.mapSec .mapImg');
     if (image) {
         makeImageDraggableAndScrollable(image, container);
     }
-    menuTrigger()
     allSliders();
     stackingImages();
     secHeading();
     bgAnim();
-    animateSVGCircles();
     animateSVGColors();
     animateInfoClesBannerColors()
     playVideo()
@@ -171,6 +194,7 @@ function menuTrigger() {
 
     menuBtn.addEventListener('click', function () {
         body.classList.toggle('active');
+        console.log('working')
         icon.classList.toggle('active');
     });
 
@@ -329,7 +353,7 @@ function secHeading() {
 function bgAnim() {
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
-    const colorDivs = gsap.utils.toArray('#colorAnim .color');
+    const colorDivs = gsap.utils.toArray('.colorAnim .color');
 
     function getNextColor(index) {
         return colors[(index + 1) % colors.length];
@@ -350,67 +374,29 @@ function bgAnim() {
     tl.play(); // Play the timeline
 }
 
-function animateSVGCircles() {
-    // Define the colors
-    const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
-
-    // Select all '.homeBanner .blob > svg' within the document
-    let svgElements = document.querySelectorAll([".homeBanner .blob > svg", ".bgBlob > svg"]);
-    svgElements.forEach(svg => {
-        // Select circles within the current SVG
-        const circles = svg.querySelectorAll('circle');
-
-        // Function to get the next color in the array
-        function getNextColor(index) {
-            return colors[(index + 1) % colors.length];
-        }
-
-        // GSAP timeline setup
-        const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
-
-        circles.forEach((circle, i) => {
-            tl.to(circle, {
-                // Change the fill color using the getNextColor function
-                attr: {fill: getNextColor(i)},
-                duration: 5,
-                rotation: '+=360',
-                scale: 1.5,
-                transformOrigin: '50% 50%', // Ensure the circle scales and rotates around its center
-                ease: "none"
-            }, "-=4.8"); // Overlap the timing of animations slightly for a smooth transition
-        });
-        tl.play(); // Play the timeline
-    });
-}
-
 function animateSVGColors() {
     // Define the colors
     const colors = ["#BCCF02", "#EF9757", "#00AAC1"];
 
-    // Select .colorWrapper inside the SVG within the document
-    let colorWrappers = document.querySelectorAll([".bgBlob > svg .color", ".homeBanner .blob svg .color"]);
+    let colorWrappers = document.querySelectorAll([".colorBlob .color"]);
 
-    // GSAP timeline setup for the colorWrapper div
-    const tl = gsap.timeline({repeat: -1, yoyo: true}); // infinitely repeat the timeline
+    if (colorWrappers.length >= 1) {
+        const tl = gsap.timeline({repeat: -1, yoyo: true});
 
-    // Function to get the next color in the array
-    function getNextColor(index) {
-        return colors[(index + 1) % colors.length];
+        function getNextColor(index) {
+            return colors[(index + 1) % colors.length];
+        }
+
+        colorWrappers.forEach((div, i) => {
+            tl.to(div, {
+                backgroundColor: getNextColor(i),
+                duration: 15,
+                ease: "none"
+            }, "-=14.8");
+        });
+
+        tl.play();
     }
-
-    colorWrappers.forEach((div, i) => {
-        // Change the background color using the defined colors, set duration and easing
-        tl.to(div, {
-            backgroundColor: getNextColor(i),
-            duration: 15,
-            rotation: '+=360',
-            scale: 1.5,
-            transformOrigin: '50% 50%', // Ensure the circle scales and rotates around its center
-            ease: "none"
-        }, "-=14.8"); // Overlap the timing of animations slightly for a smooth transition
-    });
-
-    tl.play(); // Play the timeline
 }
 
 function modalPopup() {
@@ -606,64 +592,30 @@ function playVideo() {
 function pinBlob() {
     let end = document.querySelector('body').offsetHeight;
     let section = document.querySelectorAll('.sliderSec .sliderImg')
-    if (section.length > 0) {
-        section.forEach((sec) => {
-            end += sec.offsetHeight
+    if (document.querySelector('.bgBlob')) {
+        if (section.length > 0) {
+            section.forEach((sec) => {
+                end += sec.offsetHeight
+            })
+        }
+        ScrollTrigger.create({
+            trigger: ".bgBlob",
+            start: 'top top',
+            pin: ".bgBlob",
+            pinSpacing: false,
+            end: `+=${end}`
         })
     }
-    ScrollTrigger.create({
-        trigger: ".bgBlob",
-        start: 'top top',
-        pin: ".bgBlob",
-        pinSpacing: false,
-        end: `+=${end}`
-    })
 }
 
 function animateSVGPath() {
     // Removed yoyo: true to stop reversing the animation at each step.
-    let tl = gsap.timeline({defaults: {duration: 3, ease: "none"}, repeat: -1});
+    let tl = gsap.timeline({defaults: {duration: 5, ease: "none"}, repeat: -1});
 
-    tl.to('#blob1', {morphSVG: '#blob2'})
-        .to('#blob1', {morphSVG: '#blob3'})
-        .to('#blob1', {morphSVG: '#blob4'})
-        .to('#blob1', {morphSVG: '#blob1'}); // Morphs back to the original shape, completes the loop
+    if (document.querySelector('.animateSvg #blob1')) {
+        tl.to('.animateSvg #blob1', {morphSVG: '.animateSvg #blob2'})
+            .to('.animateSvg #blob1', {morphSVG: '.animateSvg #blob3'})
+            .to('.animateSvg #blob1', {morphSVG: '.animateSvg #blob4'})
+            .to('.animateSvg #blob1', {morphSVG: '.animateSvg #blob1'}); // Morphs back to the original shape, completes the loop
+    }
 }
-
-function DVDPlayerSaver() {
-    const bounceDuration = 2; // Duration of each bounce
-    const screenWidth = document.querySelector('.bgBlob').innerWidth; // The width of the viewport
-    const screenHeight = document.querySelector('.bgBlob').innerHeight; // The height of the viewport
-    const svgWidth = document.querySelector('.bgBlob .rotateSvg').clientWidth; // The width of the SVG
-    const svgHeight = document.querySelector('.bgBlob .rotateSvg').clientHeight; // The height of the SVG
-
-    let posX = Math.random() * (screenWidth - svgWidth);
-    let posY = Math.random() * (screenHeight - svgHeight);
-    let directionX = 1;
-    let directionY = 1;
-
-// Setup an interval to change directions when hitting edges
-    setInterval(function () {
-        // Calculate new position
-        posX += directionX * (screenWidth - svgWidth) * 0.1; // Move 10% of the screen width
-        posY += directionY * (screenHeight - svgHeight) * 0.1; // Move 10% of the screen height
-
-        // Reverse direction if hitting an edge
-        if (posX <= 0 || posX >= screenWidth - svgWidth) {
-            directionX *= -1;
-        }
-        if (posY <= 0 || posY >= screenHeight - svgHeight) {
-            directionY *= -1;
-        }
-
-        // Animate SVG to new position
-        gsap.to('.bgBlob svg', {
-            duration: bounceDuration,
-            x: posX,
-            y: posY,
-            ease: "none" // No easing for a consistent speed
-        });
-    }, bounceDuration * 1000); // Interval matches the duration of the bounce animation
-
-}
-

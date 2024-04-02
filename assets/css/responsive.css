@@ -5,6 +5,14 @@
 }
 
 @media (max-width: 1366px) {
+    /*.homeSvg {*/
+    /*    height: 500px;*/
+    /*    width: 600px;*/
+    /*}*/
+    /*.homeBanner .blob > .colorBlob {*/
+    /*    height: 500px;*/
+    /*    width: 600px;*/
+    /*}*/
     .imgRow img {
         max-width: 200px;
         height: 400px;
@@ -589,6 +597,28 @@
 
     .contentBox .content h6 {
         margin: 0.5rem 0 0;
+    }
+
+    .colorBlob {
+        width: 100vw;
+        transform-origin: center center;
+        height: 100vh;
+        overflow: visible;
+        position: absolute;
+        inset: 0;
+        left: -50%;
+        transform: translateX(35%) scale(0.55);
+    }
+
+    .bgBlob {
+        display: block;
+    }
+
+    .homeBanner .blob > .colorBlob {
+        left: 0;
+        transform: scale(0.55);
+        height: auto;
+        width: auto;
     }
 }
 

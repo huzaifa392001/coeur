@@ -422,11 +422,19 @@ body.active .menu {
 
 .homeBanner .blob {
     position: absolute;
-    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    width: 709px;
+}
+
+.homeBanner .blob > .colorBlob {
+    position: absolute;
 }
 
 .homeBanner .blob > svg, .homeBanner .blob > img {
@@ -434,8 +442,6 @@ body.active .menu {
     max-height: 472px;
     height: 100%;
     width: 100%;
-    rotation 25s linear infinite
-    animation-fill-mode: backwards;
     position: absolute;
 }
 
@@ -720,24 +726,17 @@ footer .copyright {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: -1;
     pointer-events: none;
     user-select: none;
-    overflow: clip;
 }
 
 .bgBlob img,
 .bgBlob svg {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
 }
 
 .bgBlob svg {
-    width: 75%;
-    height: 75%;
 }
 
 .altrContentSec .content .contentImg {
@@ -1605,4 +1604,38 @@ footer .logo img {
 #blob3,
 #blob4 {
     visibility: hidden;
+}
+
+.colorBlob {
+    height: 600px;
+    width: 709px;
+    clip-path: url(#animateShape);
+    position: relative;
+    overflow: hidden;
+}
+
+.colorBlob .color {
+    height: 100%;
+    width: 100%;
+    filter: blur(100px);
+    -webkit-filter: blur(100px);
+    animation: hoverAndScale 15s infinite alternate;
+}
+
+@keyframes hoverAndScale {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1.25) rotate(360deg);
+    }
+}
+
+.colorBlob .backdrop {
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+}
+
+.homeWrapper {
+    position: fixed;
 }
