@@ -1,590 +1,605 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <title>Gentilly</title>
 </head>
+
 <body data-barba="wrapper">
-<main data-barba="container" data-barba-namespace="gentily">
-    <header>
-        <div class="menu">
-            <div class="colorWrapper" id="colorAnim">
-                <div class="color color-1"></div>
-                <div class="color color-2"></div>
-                <div class="color color-3"></div>
-                <div class="backdrop"></div>
+    <main data-barba="container" data-barba-namespace="gentily">
+        <header>
+            <div class="menu">
+                <div class="colorWrapper" id="colorAnim">
+                    <div class="color color-1"></div>
+                    <div class="color color-2"></div>
+                    <div class="color color-3"></div>
+                    <div class="backdrop"></div>
+                </div>
+                <ul>
+                    <li>
+                        <a href="./index.html" class="cardHeading">accueil</a>
+                    </li>
+                    <li>
+                        <a href="./comme-un-fruit.html" class="cardHeading">le concept</a>
+                    </li>
+                    <li>
+                        <a href="coeur-fertile.html" class="cardHeading">le batiment</a>
+                    </li>
+                    <li>
+                        <a href="./gentily.html" class="cardHeading">la localisation</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html" class="cardHeading">contact</a>
+                    </li>
+                </ul>
             </div>
-            <ul>
-                <li>
-                    <a href="./index.html" class="cardHeading">accueil</a>
-                </li>
-                <li>
-                    <a href="./comme-un-fruit.html" class="cardHeading">le concept</a>
-                </li>
-                <li>
-                    <a href="coeur-fertile.html" class="cardHeading">le batiment</a>
-                </li>
-                <li>
-                    <a href="./gentily.html" class="cardHeading">la localisation</a>
-                </li>
-                <li>
-                    <a href="./contact.html" class="cardHeading">contact</a>
-                </li>
-            </ul>
-        </div>
-        <button class="menuBtn">
-            <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                 fill="none">
-                <path
+            <button class="menuBtn">
+                <svg class='rotateSvg' xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
+                    fill="none">
+                    <path
                         d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                        fill="white"/>
-            </svg>
-            <span class='btnIcon'>
-            <img src="./assets/images/menuIcon.webp" alt="">
-            <img src="./assets/images/menuIconActive.webp" alt="">
-        </span>
-        </button>
-    </header>
-    <div id="smooth-wrapper">
-        <div id="smooth-content">
-            <style>
-                .innerContentBox .content {
-                    margin-left: 22%;
-                    width: 65%;
-                }
-            </style>
-            <svg width="0" height="0" class="position-absolute">
-                <defs>
-                    <clipPath id="myClip">
-                        <path d="M 399.629 452.468 C 368.781 499.454 360.903 581.087 459.982 646.135 C 495.167 669.235 642.104 728.16 694.117 648.936 C 715.112 616.957 792.379 440.889 689.45 373.312 C 596.848 312.516 437.119 395.365 399.629 452.468 Z"
-                              fill="white"></path>
-                    </clipPath>
-                </defs>
-            </svg>
-            <section class="innerBan">
-                <div class="contentBox innerContentBox">
-                    <div class="bg">
-                        <svg fill="none" viewBox="0 0 740 733" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m460.2 688.4c-110.46 63.772-289.75 82.542-403.56-114.58-40.417-70.004-127.74-363.69 58.502-471.21 75.177-43.404 478.52-205.22 596.75-0.434 106.37 184.24-117.45 508.73-251.69 586.23z"
-                                  fill="#fff"/>
-                        </svg>
-                    </div>
-                    <div class="content">
-                        <h2 class="cardHeading secHeading">Gentilly,<br>
-                            porte d’entrée <br>de paris</h2>
-                        <p class="smallText">
-                            Reliée à Paris par une passerelle, Gentilly, accessible en métro, en RER, en tramway, en
-                            voiture
-                            ou à vélo, entre le parc Pablo Picasso et la Parc de la Cité Internationale Universitaire du
-                            14e, Coeur fertile est une destination connectée.
-                        </p>
-                    </div>
-                </div>
-                <figure class="bannerImgContainer">
-                    <div class="colorWrapper">
-                        <div class="color color-1"></div>
-                        <div class="color color-2"></div>
-                        <div class="color color-3"></div>
-                        <div class="backdrop"></div>
-                    </div>
-                    <img src="./assets/images/gentilyBg.webp" alt="" class="">
-                </figure>
-                <div class="content full">
-                    <h1 class="mainHeading nowrap">
-                        Gentilly, <br>
-                        porte d’entrée de paris
-                    </h1>
-                </div>
-                <a href="#firstSec" class="scrollToBottom">
-                    <span>Défiler</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-                        <path d="M168 345.9V44c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12v301.9H41.9c-21.4 0-32.1 25.9-17 41l86.1 86.1c9.4 9.4 24.6 9.4 33.9 0l86.1-86.1c15.1-15.1 4.4-41-17-41H168z"/>
-                    </svg>
-                </a>
-            </section>
-            <figure class="bgBlob">
-                <svg width="0" class="position-absolute animateSvg" height="0" viewBox="0 0 709 600" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="animateShape">
-                        <path id="blob1"
-                              d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
-                              fill="black"/>
-                        <path id="blob2"
-                              d="M0 218.257C0 122.99 64.7738 9.63362e-06 265.661 9.63362e-06C337.001 9.63362e-06 600 53.1931 600 213.824C600 278.663 545.697 600 337.001 600C149.246 600 0 334.035 0 218.257Z"
-                              fill="black"/>
-                        <path id="blob3"
-                              d="M259.068 600C146.557 600 1.30438 535.226 1.30438 334.339C1.30438 262.999 64.126 0 253.833 0C330.408 0 709.911 54.3034 709.911 262.999C709.911 450.754 395.803 600 259.068 600Z"
-                              fill="black"/>
-                        <path id="blob4"
-                              d="M600 381.743C600 477.01 535.226 600 334.339 600C262.999 600 0 546.807 0 386.176C0 321.337 54.3034 0 262.999 0C450.754 0 600 265.965 600 381.743Z"
-                              fill="black"/>
-                    </clipPath>
+                        fill="white" />
                 </svg>
-                <div class="colorBlob">
-                    <div class="colorWrapper">
-                        <div class="color color-1"></div>
-                        <div class="color color-2"></div>
-                        <div class="color color-3"></div>
-                        <div class="backdrop"></div>
-                    </div>
-                </div>
-            </figure>
-            <section id="firstSec" class="altrContentSec">
-                <div class="customCont container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="content pe-md-5">
-                                <h2 class="cardHeading secHeading">
-                                    CÔTÉ PRATIQUE !
-                                </h2>
-                                <p class="normalText">
-                                    Situé à proximité du RER B, Coeur Fertile sera également accessible par la nouvelle
-                                    station
-                                    de Métro ligne 14 Kremlin Bicêtre dès 2024.
-                                </p>
-                                <p class="normalText">
-                                    L’immeuble se rejoint aussi en voiture et en vélo grâce aux nouvelles pistes
-                                    cyclables.
-                                </p>
-                                <h4 class="normalText">
-                                    EN TRANSPORT
-                                </h4>
-                                <p class="normalText m-0">
-                                    <span>RER B</span>, station Gentilly (7 min à pied)
-                                </p>
-                                <p class="normalText m-0">
-                                    <span>Métro ligne 14</span>, station Kremlin Bicêtre Hôpital (6min)
-                                </p>
-                                <p class="normalText m-0">
-                                    <span>Tram T3</span>, station Stade Charléty (12 min)
-                                </p>
-                                <p class="normalText">
-                                    <span>Bus 57</span>, 125
-                                </p>
-                                <h4 class="normalText">
-                                    EN VÉLO
-                                </h4>
-                                <p class="normalText">
-                                    <span>3 stations velib</span>’ à la gare RER, dans la rue commerçante Charles Frérot
-                                    et à
-                                    côté du périphérique
-                                </p>
-                                <h4 class="normalText">
-                                    EN VOITURE
-                                </h4>
-                                <p class="normalText m-0">
-                                    Périphérique <span>Porte de Gentilly</span> à 700 m
-                                </p>
-                                <p class="normalText m-0">
-                                    <span>Autoroute A6</span> à 500 m
-                                </p>
-                                <p class="caption">
-                                    Source <br>
-                                    TC : 7-8 min à pied des gares + Carte Grand Paris Express <br>
-                                    Vélo et voiture : Google Map
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 ms-auto d-md-block d-none">
-                            <figure class="contentImg">
-                                <img src="./assets/images/g-img-1.webp" alt="">
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="mapSec">
-                <figure class="mapImg">
-                    <img src="./assets/images/mapImg.webp" alt="" id="draggableImage">
-                </figure>
-                <div class="contentTable">
-                    <h3 class="contentCardHeading">Temps de transport</h3>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol"></div>
-                        <div class="contentTableCol">
-                            <svg width="31" height="41" viewBox="0 0 31 41" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M0 8.84277C0 7.18592 1.34315 5.84277 3 5.84277H27.0121C28.6689 5.84277 30.0121 7.18592 30.0121 8.84277V32.8549C30.0121 34.3665 28.894 35.6171 27.4397 35.8246V37.9998C27.4397 39.6567 26.0954 40.9998 24.4385 40.9998C22.7816 40.9998 21.4373 39.6567 21.4373 37.9998V35.8549H8.57494V37.9998C8.57494 39.6567 7.23059 40.9998 5.57373 40.9998C3.91688 40.9998 2.57252 39.6567 2.57252 37.9998V35.8246C1.11815 35.6171 0 34.3666 0 32.8549V8.84277ZM3.42987 16.2751C3.42987 15.7228 3.87758 15.2751 4.42987 15.2751H25.582C26.1343 15.2751 26.582 15.7228 26.582 16.2751V24.565C26.582 25.1172 26.1343 25.565 25.582 25.565H4.42987C3.87758 25.565 3.42987 25.1172 3.42987 24.565V16.2751ZM5.57359 8.41524C4.38964 8.41524 3.42987 9.37501 3.42987 10.559C3.42987 11.7429 4.38965 12.7027 5.57359 12.7027H24.4383C25.6223 12.7027 26.582 11.7429 26.582 10.559C26.582 9.37501 25.6223 8.41524 24.4383 8.41524H5.57359ZM7.71731 31.1387C7.71731 32.3227 6.75753 33.2824 5.57359 33.2824C4.38964 33.2824 3.42987 32.3227 3.42987 31.1387C3.42987 29.9548 4.38964 28.995 5.57359 28.995C6.75753 28.995 7.71731 29.9548 7.71731 31.1387ZM24.4386 33.2824C25.6225 33.2824 26.5823 32.3227 26.5823 31.1387C26.5823 29.9548 25.6225 28.995 24.4386 28.995C23.2547 28.995 22.2949 29.9548 22.2949 31.1387C22.2949 32.3227 23.2547 33.2824 24.4386 33.2824Z"
-                                      fill="black"/>
-                            </svg>
-
-                        </div>
-                        <div class="contentTableCol">
-                            <svg width="30" height="42" viewBox="0 0 30 42" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <rect x="9" y="20" width="4" height="4" rx="2" fill="black"/>
-                                <path d="M6 35L12.6977 26M12.6977 26H18.5581L24 35H18.1395L12.6977 26Z" stroke="black"
-                                      stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="16" y="20" width="8" height="4" rx="2" fill="black"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M6.71053 41.1544C10.4166 41.1544 13.4211 38.15 13.4211 34.4439C13.4211 30.7378 10.4166 27.7334 6.71053 27.7334C3.0044 27.7334 0 30.7378 0 34.4439C0 38.15 3.0044 41.1544 6.71053 41.1544ZM6.71059 37.9965C8.67265 37.9965 10.2632 36.406 10.2632 34.4439C10.2632 32.4818 8.67265 30.8913 6.71059 30.8913C4.74853 30.8913 3.15796 32.4818 3.15796 34.4439C3.15796 36.406 4.74853 37.9965 6.71059 37.9965Z"
-                                      fill="black"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M23.2887 41.1544C26.9948 41.1544 29.9992 38.15 29.9992 34.4439C29.9992 30.7378 26.9948 27.7334 23.2887 27.7334C19.5825 27.7334 16.5781 30.7378 16.5781 34.4439C16.5781 38.15 19.5825 41.1544 23.2887 41.1544ZM23.2887 37.9965C25.2508 37.9965 26.8413 36.406 26.8413 34.4439C26.8413 32.4818 25.2508 30.8913 23.2887 30.8913C21.3267 30.8913 19.7361 32.4818 19.7361 34.4439C19.7361 36.406 21.3267 37.9965 23.2887 37.9965Z"
-                                      fill="black"/>
+                <span class='btnIcon'>
+                    <img src="./assets/images/menuIcon.webp" alt="">
+                    <img src="./assets/images/menuIconActive.webp" alt="">
+                </span>
+            </button>
+        </header>
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+                <style>
+                    .innerContentBox .content {
+                        margin-left: 22%;
+                        width: 65%;
+                    }
+                </style>
+                <svg width="0" height="0" class="position-absolute">
+                    <defs>
+                        <clipPath id="myClip">
+                            <path
+                                d="M 399.629 452.468 C 368.781 499.454 360.903 581.087 459.982 646.135 C 495.167 669.235 642.104 728.16 694.117 648.936 C 715.112 616.957 792.379 440.889 689.45 373.312 C 596.848 312.516 437.119 395.365 399.629 452.468 Z"
+                                fill="white"></path>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <section class="innerBan">
+                    <div class="contentBox innerContentBox">
+                        <div class="bg">
+                            <svg fill="none" viewBox="0 0 740 733" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m460.2 688.4c-110.46 63.772-289.75 82.542-403.56-114.58-40.417-70.004-127.74-363.69 58.502-471.21 75.177-43.404 478.52-205.22 596.75-0.434 106.37 184.24-117.45 508.73-251.69 586.23z"
+                                    fill="#fff" />
                             </svg>
                         </div>
-                        <div class="contentTableCol">
-                            <svg width="30" height="44" viewBox="0 0 30 44" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M6.67825 21C5.5861 21 4.60723 21.674 4.21751 22.6942L2.69669 26.6757H2.02703C0.907531 26.6757 0 27.5832 0 28.7027C0 29.8222 0.907529 30.7297 2.02703 30.7297H2.39927L2.42229 36.8069C2.42715 38.091 3.3502 39.1577 4.56819 39.386V41.2109C4.56819 42.5871 5.68379 43.7027 7.05995 43.7027C8.43611 43.7027 9.55171 42.5871 9.55171 41.2109V39.4311H20.2307V41.2109C20.2307 42.5871 21.3463 43.7027 22.7224 43.7027C24.0986 43.7027 25.2142 42.5871 25.2142 41.2109V39.3859C26.432 39.1575 27.3549 38.0909 27.3598 36.8069L27.3828 30.7297H27.9729C29.0924 30.7297 29.9999 29.8222 29.9999 28.7027C29.9999 27.5832 29.0924 26.6757 27.9729 26.6757H27.1621C27.1366 26.6757 27.1112 26.6761 27.0859 26.6771L25.5645 22.6942C25.1748 21.674 24.1959 21 23.1038 21H6.67825ZM7.55125 23.9664C7.16527 23.9664 6.82455 24.2185 6.71162 24.5876L5.62731 28.1314C5.45464 28.6958 5.87676 29.2664 6.46694 29.2664H23.3153C23.9055 29.2664 24.3276 28.6958 24.1549 28.1314L23.0706 24.5876C22.9577 24.2185 22.617 23.9664 22.231 23.9664H7.55125ZM8.83971 35.5155C8.83971 36.4984 8.04285 37.2953 7.05988 37.2953C6.07691 37.2953 5.28005 36.4984 5.28005 35.5155C5.28005 34.5325 6.07691 33.7356 7.05988 33.7356C8.04285 33.7356 8.83971 34.5325 8.83971 35.5155ZM22.7226 37.2953C23.7056 37.2953 24.5024 36.4984 24.5024 35.5155C24.5024 34.5325 23.7056 33.7356 22.7226 33.7356C21.7396 33.7356 20.9428 34.5325 20.9428 35.5155C20.9428 36.4984 21.7396 37.2953 22.7226 37.2953Z"
-                                      fill="black"/>
-                            </svg>
-
-                        </div>
-                    </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
+                        <div class="content">
+                            <h2 class="cardHeading secHeading">Gentilly,<br>
+                                porte d’entrée <br>de paris</h2>
                             <p class="smallText">
-                                Châtelet
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                21
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                27
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                28
+                                Reliée à Paris par une passerelle, Gentilly, accessible en métro, en RER, en tramway, en
+                                voiture
+                                ou à vélo, entre le parc Pablo Picasso et la Parc de la Cité Internationale
+                                Universitaire du
+                                14e, Coeur fertile est une destination connectée.
                             </p>
                         </div>
                     </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                Gare du Nord
-                            </p>
+                    <figure class="bannerImgContainer">
+                        <div class="colorWrapper">
+                            <div class="color color-1"></div>
+                            <div class="color color-2"></div>
+                            <div class="color color-3"></div>
+                            <div class="backdrop"></div>
                         </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                28
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                40
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                39
-                            </p>
-                        </div>
+                        <img src="./assets/images/gentilyBg.webp" alt="" class="">
+                    </figure>
+                    <div class="content full">
+                        <h1 class="mainHeading nowrap">
+                            Gentilly, <br>
+                            porte d’entrée de paris
+                        </h1>
                     </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                Gare de Lyon
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                19
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                21
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                20
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                Gare Saint-Lazare
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                26
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                39
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                35
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                CDG Étoile
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                30
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                41
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                31
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                Opéra
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                30
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                37
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                32
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                Aéroport d’Orly
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                22
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                -
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                21
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contentTableRow">
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                Aéroport CDG 1
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                65
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                -
-                            </p>
-                        </div>
-                        <div class="contentTableCol">
-                            <p class="smallText">
-                                48
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="altrContentSec">
-                <div class="customCont container">
-                    <div class="row align-items-center flex-md-row flex-column-reverse">
-                        <div class="col-lg-5">
-                            <div class="cardsRow gentily">
-                                <div class="cardsRow vertical" data-speed="1.2">
-                                    <div class="contentCard">
-                                        <h3 class="contentCardHeading">
-                                            CHEZ LOUISE
-                                        </h3>
-                                        <h6 class="normalText">
-                                            2 rue Lecocq
-                                        </h6>
-                                    </div>
-                                    <div class="contentCard">
-                                        <h3 class="contentCardHeading">
-                                            LE P'TIT BISTROT
-                                        </h3>
-                                        <h6 class="normalText">
-                                            129 rue Marius Sidobre, Arcueil
-                                        </h6>
-                                    </div>
-                                    <figure class="imgCard d-none d-md-block">
-                                        <img src="./assets/images/g-img-3.webp" alt="">
-                                    </figure>
-                                </div>
-                                <div class="cardsRow vertical" data-speed="1.6">
-                                    <figure class="imgCard d-none d-md-block">
-                                        <img src="./assets/images/g-img-2.webp" alt="">
-                                    </figure>
-                                    <div class="contentCard">
-                                        <h3 class="contentCardHeading">
-                                            PREGO
-                                        </h3>
-                                        <h6 class="normalText">
-                                            17 place Henri Barbusse
-                                        </h6>
-                                    </div>
-                                    <div class="contentCard">
-                                        <h3 class="contentCardHeading">
-                                            LA TERRASSE DU MARCHÉ
-                                        </h3>
-                                        <h6 class="normalText">
-                                            8 Pl. Victoire du 8 MAI 1945
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 mx-auto">
-                            <div class="content pe-md-5">
-                                <h2 class="cardHeading secHeading">
-                                    ON MANGe dEHORS !
-                                </h2>
-                                <p class="normalText">
-                                    Gentilly offre un environnement dynamique avec des commerces de proximité concentrés
-                                    rue
-                                    Charles
-                                    Frérot : La Vie Claire, Picard, Franprix, Pharmacie, La Poste et plusieurs banques.
-                                </p>
-                                <p class="normalText">
-                                    A l’heure du déjeuner, on s’attable chez Prego, le restaurant installé face à la
-                                    place
-                                    arborée
-                                    de la mairie, à La terrasse du Marché, Chez Louise ou au P’tit Bistrot. On s’arrête
-                                    à la
-                                    Sauge
-                                    prendre quelques plats à emporter avant de s’installer, en voisins, au parc Pablo
-                                    Picasso
-                                    qui
-                                    s’étend sur 2 hectares. En chemin, on s’attarde sur le parcours souterrain de la
-                                    Bièvre
-                                    symbolisé en surface par un alignement de ginko biloba. Pour en savoir plus, on suit
-                                    l’évolution
-                                    de la rénaturation de la Bièvre, entre Arcueil et Gentilly, où la rivière refait
-                                    surface sur
-                                    600
-                                    mètres.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <footer class="colored">
-                <div class="px-4 mb-4 d-flex justify-content-start align-items-center">
-                    <a href="./coeur-fertile.html" class="footerBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M134.1 296H436c6.6 0 12-5.4 12-12v-56c0-6.6-5.4-12-12-12H134.1v-46.1c0-21.4-25.9-32.1-41-17L7 239c-9.4 9.4-9.4 24.6 0 33.9l86.1 86.1c15.1 15.1 41 4.4 41-17V296z"/>
+                    <a href="#firstSec" class="scrollToBottom">
+                        <span>Défiler</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                            <path
+                                d="M168 345.9V44c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12v301.9H41.9c-21.4 0-32.1 25.9-17 41l86.1 86.1c9.4 9.4 24.6 9.4 33.9 0l86.1-86.1c15.1-15.1 4.4-41-17-41H168z" />
                         </svg>
-                        <span>
-                Le bâtiment
-            </span>
                     </a>
-                </div>
-                <div class="container-fluid">
-                    <div class="row align-items-start">
-                        <div class="col-sm-6">
-                            <div class="logo">
-                                <p class="smallText">
-                                    Une réalisation
-                                </p>
-                                <img src="./assets/images/footer_logo.webp" alt="">
+                </section>
+                <figure class="bgBlob">
+                    <svg width="0" class="position-absolute " height="0" viewBox="0 0 709 600" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <clipPath id="animateShape" class="animateSvg">
+                            <path id="blob1"
+                                d="M450.843 0C563.354 0 708.607 64.7738 708.607 265.661C708.607 337.001 645.785 600 456.078 600C379.503 600 0 545.697 0 337.001C0 149.246 314.108 0 450.843 0Z"
+                                fill="black" />
+                            <path id="blob2"
+                                d="M0 218.257C0 122.99 64.7738 9.63362e-06 265.661 9.63362e-06C337.001 9.63362e-06 600 53.1931 600 213.824C600 278.663 545.697 600 337.001 600C149.246 600 0 334.035 0 218.257Z"
+                                fill="black" />
+                            <path id="blob3"
+                                d="M259.068 600C146.557 600 1.30438 535.226 1.30438 334.339C1.30438 262.999 64.126 0 253.833 0C330.408 0 709.911 54.3034 709.911 262.999C709.911 450.754 395.803 600 259.068 600Z"
+                                fill="black" />
+                            <path id="blob4"
+                                d="M600 381.743C600 477.01 535.226 600 334.339 600C262.999 600 0 546.807 0 386.176C0 321.337 54.3034 0 262.999 0C450.754 0 600 265.965 600 381.743Z"
+                                fill="black" />
+                        </clipPath>
+                    </svg>
+                    <div class="movingBlob">
+                        <div class="colorBlob d-md-block d-none">
+                            <div class="colorWrapper">
+                                <div class="color color-1"></div>
+                                <div class="color color-2"></div>
+                                <div class="color color-3"></div>
+                                <div class="backdrop"></div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="copyright">
-                                <a href='./mention.html' class="smallText">
-                                    Mentions légales
-                                </a>
+                        <img src="./assets/images/bgBlob.webp" class="d-md-none" alt="">
+                    </div>
+                </figure>
+                <section id="firstSec" class="altrContentSec">
+                    <div class="customCont container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="content pe-md-5">
+                                    <h2 class="cardHeading secHeading">
+                                        CÔTÉ PRATIQUE !
+                                    </h2>
+                                    <p class="normalText">
+                                        Situé à proximité du RER B, Coeur Fertile sera également accessible par la
+                                        nouvelle
+                                        station
+                                        de Métro ligne 14 Kremlin Bicêtre dès 2024.
+                                    </p>
+                                    <p class="normalText">
+                                        L’immeuble se rejoint aussi en voiture et en vélo grâce aux nouvelles pistes
+                                        cyclables.
+                                    </p>
+                                    <h4 class="normalText">
+                                        EN TRANSPORT
+                                    </h4>
+                                    <p class="normalText m-0">
+                                        <span>RER B</span>, station Gentilly (7 min à pied)
+                                    </p>
+                                    <p class="normalText m-0">
+                                        <span>Métro ligne 14</span>, station Kremlin Bicêtre Hôpital (6min)
+                                    </p>
+                                    <p class="normalText m-0">
+                                        <span>Tram T3</span>, station Stade Charléty (12 min)
+                                    </p>
+                                    <p class="normalText">
+                                        <span>Bus 57</span>, 125
+                                    </p>
+                                    <h4 class="normalText">
+                                        EN VÉLO
+                                    </h4>
+                                    <p class="normalText">
+                                        <span>3 stations velib</span>’ à la gare RER, dans la rue commerçante Charles
+                                        Frérot
+                                        et à
+                                        côté du périphérique
+                                    </p>
+                                    <h4 class="normalText">
+                                        EN VOITURE
+                                    </h4>
+                                    <p class="normalText m-0">
+                                        Périphérique <span>Porte de Gentilly</span> à 700 m
+                                    </p>
+                                    <p class="normalText m-0">
+                                        <span>Autoroute A6</span> à 500 m
+                                    </p>
+                                    <p class="caption">
+                                        Source <br>
+                                        TC : 7-8 min à pied des gares + Carte Grand Paris Express <br>
+                                        Vélo et voiture : Google Map
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 ms-auto d-md-block d-none">
+                                <figure class="contentImg">
+                                    <img src="./assets/images/g-img-1.webp" alt="">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mapSec">
+                    <figure class="mapImg">
+                        <img src="./assets/images/mapImg.webp" alt="" id="draggableImage">
+                    </figure>
+                    <div class="contentTable">
+                        <h3 class="contentCardHeading">Temps de transport</h3>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol"></div>
+                            <div class="contentTableCol">
+                                <svg width="31" height="41" viewBox="0 0 31 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M0 8.84277C0 7.18592 1.34315 5.84277 3 5.84277H27.0121C28.6689 5.84277 30.0121 7.18592 30.0121 8.84277V32.8549C30.0121 34.3665 28.894 35.6171 27.4397 35.8246V37.9998C27.4397 39.6567 26.0954 40.9998 24.4385 40.9998C22.7816 40.9998 21.4373 39.6567 21.4373 37.9998V35.8549H8.57494V37.9998C8.57494 39.6567 7.23059 40.9998 5.57373 40.9998C3.91688 40.9998 2.57252 39.6567 2.57252 37.9998V35.8246C1.11815 35.6171 0 34.3666 0 32.8549V8.84277ZM3.42987 16.2751C3.42987 15.7228 3.87758 15.2751 4.42987 15.2751H25.582C26.1343 15.2751 26.582 15.7228 26.582 16.2751V24.565C26.582 25.1172 26.1343 25.565 25.582 25.565H4.42987C3.87758 25.565 3.42987 25.1172 3.42987 24.565V16.2751ZM5.57359 8.41524C4.38964 8.41524 3.42987 9.37501 3.42987 10.559C3.42987 11.7429 4.38965 12.7027 5.57359 12.7027H24.4383C25.6223 12.7027 26.582 11.7429 26.582 10.559C26.582 9.37501 25.6223 8.41524 24.4383 8.41524H5.57359ZM7.71731 31.1387C7.71731 32.3227 6.75753 33.2824 5.57359 33.2824C4.38964 33.2824 3.42987 32.3227 3.42987 31.1387C3.42987 29.9548 4.38964 28.995 5.57359 28.995C6.75753 28.995 7.71731 29.9548 7.71731 31.1387ZM24.4386 33.2824C25.6225 33.2824 26.5823 32.3227 26.5823 31.1387C26.5823 29.9548 25.6225 28.995 24.4386 28.995C23.2547 28.995 22.2949 29.9548 22.2949 31.1387C22.2949 32.3227 23.2547 33.2824 24.4386 33.2824Z"
+                                        fill="black" />
+                                </svg>
+
+                            </div>
+                            <div class="contentTableCol">
+                                <svg width="30" height="42" viewBox="0 0 30 42" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="9" y="20" width="4" height="4" rx="2" fill="black" />
+                                    <path d="M6 35L12.6977 26M12.6977 26H18.5581L24 35H18.1395L12.6977 26Z"
+                                        stroke="black" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <rect x="16" y="20" width="8" height="4" rx="2" fill="black" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.71053 41.1544C10.4166 41.1544 13.4211 38.15 13.4211 34.4439C13.4211 30.7378 10.4166 27.7334 6.71053 27.7334C3.0044 27.7334 0 30.7378 0 34.4439C0 38.15 3.0044 41.1544 6.71053 41.1544ZM6.71059 37.9965C8.67265 37.9965 10.2632 36.406 10.2632 34.4439C10.2632 32.4818 8.67265 30.8913 6.71059 30.8913C4.74853 30.8913 3.15796 32.4818 3.15796 34.4439C3.15796 36.406 4.74853 37.9965 6.71059 37.9965Z"
+                                        fill="black" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M23.2887 41.1544C26.9948 41.1544 29.9992 38.15 29.9992 34.4439C29.9992 30.7378 26.9948 27.7334 23.2887 27.7334C19.5825 27.7334 16.5781 30.7378 16.5781 34.4439C16.5781 38.15 19.5825 41.1544 23.2887 41.1544ZM23.2887 37.9965C25.2508 37.9965 26.8413 36.406 26.8413 34.4439C26.8413 32.4818 25.2508 30.8913 23.2887 30.8913C21.3267 30.8913 19.7361 32.4818 19.7361 34.4439C19.7361 36.406 21.3267 37.9965 23.2887 37.9965Z"
+                                        fill="black" />
+                                </svg>
+                            </div>
+                            <div class="contentTableCol">
+                                <svg width="30" height="44" viewBox="0 0 30 44" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.67825 21C5.5861 21 4.60723 21.674 4.21751 22.6942L2.69669 26.6757H2.02703C0.907531 26.6757 0 27.5832 0 28.7027C0 29.8222 0.907529 30.7297 2.02703 30.7297H2.39927L2.42229 36.8069C2.42715 38.091 3.3502 39.1577 4.56819 39.386V41.2109C4.56819 42.5871 5.68379 43.7027 7.05995 43.7027C8.43611 43.7027 9.55171 42.5871 9.55171 41.2109V39.4311H20.2307V41.2109C20.2307 42.5871 21.3463 43.7027 22.7224 43.7027C24.0986 43.7027 25.2142 42.5871 25.2142 41.2109V39.3859C26.432 39.1575 27.3549 38.0909 27.3598 36.8069L27.3828 30.7297H27.9729C29.0924 30.7297 29.9999 29.8222 29.9999 28.7027C29.9999 27.5832 29.0924 26.6757 27.9729 26.6757H27.1621C27.1366 26.6757 27.1112 26.6761 27.0859 26.6771L25.5645 22.6942C25.1748 21.674 24.1959 21 23.1038 21H6.67825ZM7.55125 23.9664C7.16527 23.9664 6.82455 24.2185 6.71162 24.5876L5.62731 28.1314C5.45464 28.6958 5.87676 29.2664 6.46694 29.2664H23.3153C23.9055 29.2664 24.3276 28.6958 24.1549 28.1314L23.0706 24.5876C22.9577 24.2185 22.617 23.9664 22.231 23.9664H7.55125ZM8.83971 35.5155C8.83971 36.4984 8.04285 37.2953 7.05988 37.2953C6.07691 37.2953 5.28005 36.4984 5.28005 35.5155C5.28005 34.5325 6.07691 33.7356 7.05988 33.7356C8.04285 33.7356 8.83971 34.5325 8.83971 35.5155ZM22.7226 37.2953C23.7056 37.2953 24.5024 36.4984 24.5024 35.5155C24.5024 34.5325 23.7056 33.7356 22.7226 33.7356C21.7396 33.7356 20.9428 34.5325 20.9428 35.5155C20.9428 36.4984 21.7396 37.2953 22.7226 37.2953Z"
+                                        fill="black" />
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
                                 <p class="smallText">
-                                    ©2024
+                                    Châtelet
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    21
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    27
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    28
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    Gare du Nord
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    28
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    40
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    39
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    Gare de Lyon
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    19
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    21
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    20
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    Gare Saint-Lazare
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    26
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    39
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    35
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    CDG Étoile
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    30
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    41
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    31
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    Opéra
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    30
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    37
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    32
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    Aéroport d’Orly
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    22
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    -
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    21
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contentTableRow">
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    Aéroport CDG 1
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    65
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    -
+                                </p>
+                            </div>
+                            <div class="contentTableCol">
+                                <p class="smallText">
+                                    48
                                 </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </footer>
+                </section>
+                <section class="altrContentSec">
+                    <div class="customCont container">
+                        <div class="row align-items-center flex-md-row flex-column-reverse">
+                            <div class="col-lg-5">
+                                <div class="cardsRow gentily">
+                                    <div class="cardsRow vertical" data-speed="1.2">
+                                        <div class="contentCard">
+                                            <h3 class="contentCardHeading">
+                                                CHEZ LOUISE
+                                            </h3>
+                                            <h6 class="normalText">
+                                                2 rue Lecocq
+                                            </h6>
+                                        </div>
+                                        <div class="contentCard">
+                                            <h3 class="contentCardHeading">
+                                                LE P'TIT BISTROT
+                                            </h3>
+                                            <h6 class="normalText">
+                                                129 rue Marius Sidobre, Arcueil
+                                            </h6>
+                                        </div>
+                                        <figure class="imgCard d-none d-md-block">
+                                            <img src="./assets/images/g-img-3.webp" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="cardsRow vertical" data-speed="1.6">
+                                        <figure class="imgCard d-none d-md-block">
+                                            <img src="./assets/images/g-img-2.webp" alt="">
+                                        </figure>
+                                        <div class="contentCard">
+                                            <h3 class="contentCardHeading">
+                                                PREGO
+                                            </h3>
+                                            <h6 class="normalText">
+                                                17 place Henri Barbusse
+                                            </h6>
+                                        </div>
+                                        <div class="contentCard">
+                                            <h3 class="contentCardHeading">
+                                                LA TERRASSE DU MARCHÉ
+                                            </h3>
+                                            <h6 class="normalText">
+                                                8 Pl. Victoire du 8 MAI 1945
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 mx-auto">
+                                <div class="content pe-md-5">
+                                    <h2 class="cardHeading secHeading">
+                                        ON MANGe dEHORS !
+                                    </h2>
+                                    <p class="normalText">
+                                        Gentilly offre un environnement dynamique avec des commerces de proximité
+                                        concentrés
+                                        rue
+                                        Charles
+                                        Frérot : La Vie Claire, Picard, Franprix, Pharmacie, La Poste et plusieurs
+                                        banques.
+                                    </p>
+                                    <p class="normalText">
+                                        A l’heure du déjeuner, on s’attable chez Prego, le restaurant installé face à la
+                                        place
+                                        arborée
+                                        de la mairie, à La terrasse du Marché, Chez Louise ou au P’tit Bistrot. On
+                                        s’arrête
+                                        à la
+                                        Sauge
+                                        prendre quelques plats à emporter avant de s’installer, en voisins, au parc
+                                        Pablo
+                                        Picasso
+                                        qui
+                                        s’étend sur 2 hectares. En chemin, on s’attarde sur le parcours souterrain de la
+                                        Bièvre
+                                        symbolisé en surface par un alignement de ginko biloba. Pour en savoir plus, on
+                                        suit
+                                        l’évolution
+                                        de la rénaturation de la Bièvre, entre Arcueil et Gentilly, où la rivière refait
+                                        surface sur
+                                        600
+                                        mètres.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer class="colored">
+                    <div class="px-4 mb-4 d-flex justify-content-start align-items-center">
+                        <a href="./coeur-fertile.html" class="footerBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M134.1 296H436c6.6 0 12-5.4 12-12v-56c0-6.6-5.4-12-12-12H134.1v-46.1c0-21.4-25.9-32.1-41-17L7 239c-9.4 9.4-9.4 24.6 0 33.9l86.1 86.1c15.1 15.1 41 4.4 41-17V296z" />
+                            </svg>
+                            <span>
+                                Le bâtiment
+                            </span>
+                        </a>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row align-items-start">
+                            <div class="col-sm-6">
+                                <div class="logo">
+                                    <p class="smallText">
+                                        Une réalisation
+                                    </p>
+                                    <img src="./assets/images/footer_logo.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="copyright">
+                                    <a href='./mention.html' class="smallText">
+                                        Mentions légales
+                                    </a>
+                                    <p class="smallText">
+                                        ©2024
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
-    <div class="bottomBtn">
-        <a href="info-cles.html#film" class="themeBtn">
-            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                 fill="none">
-                <path
+        <div class="bottomBtn">
+            <a href="info-cles.html#film" class="themeBtn">
+                <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
+                    fill="none">
+                    <path
                         d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                        fill="white"/>
-            </svg>
-            <span>
-                Film
-            </span>
-        </a>
-        <button class="themeBtn">
-            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                 fill="none">
-                <path
+                        fill="white" />
+                </svg>
+                <span>
+                    Film
+                </span>
+            </a>
+            <button class="themeBtn">
+                <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
+                    fill="none">
+                    <path
                         d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                        fill="white"/>
-            </svg>
-            <span>
-                pers<br>pective
-            </span>
-        </button>
-        <a href='./info-cles.html' class="themeBtn">
-            <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
-                 fill="none">
-                <path
+                        fill="white" />
+                </svg>
+                <span>
+                    pers<br>pective
+                </span>
+            </button>
+            <a href='./info-cles.html' class="themeBtn">
+                <svg class="rotateSvg" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60"
+                    fill="none">
+                    <path
                         d="M44.5367 0.107422C55.6511 0.107422 70 6.50612 70 26.3508C70 33.3982 63.7941 59.3786 45.0539 59.3786C37.4894 59.3786 0 54.0143 0 33.3982C0 14.8507 31.0293 0.107422 44.5367 0.107422Z"
-                        fill="white"/>
-            </svg>
-            <span>
-                Infos<br>clés
-            </span>
-        </a>
-    </div>
-</main>
+                        fill="white" />
+                </svg>
+                <span>
+                    Infos<br>clés
+                </span>
+            </a>
+        </div>
+    </main>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
@@ -595,8 +610,5 @@
 <script src="./assets/js/motionPath.min.js"></script>
 <script src="https://unpkg.com/@barba/core"></script>
 <script src="./assets/js/index.js"></script>
+
 </html>
-
-
-
-
