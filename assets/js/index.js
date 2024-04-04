@@ -93,7 +93,7 @@ function allFunc() {
   stackingImages();
   secHeading();
   bgAnim();
-  animateSVGColors();
+  // animateSVGColors();
   animateInfoClesBannerColors();
   playVideo();
   modalPopup();
@@ -667,7 +667,7 @@ function DVDPlayer() {
     yMax = win.innerHeight - boxTop - boxHeight,
     request = null,
     direction = "se",
-    speed = 2.2,
+    speed = 0.5,
     timeout = null;
 
   init();
